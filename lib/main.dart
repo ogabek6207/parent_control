@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parent_control/src/ui/main_screen.dart';
+import 'package:parent_control/src/ui/onboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,19 +9,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-platform: TargetPlatform.iOS,
+        platform: TargetPlatform.iOS,
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home:  MainScreen(),
+      home: const OnBoardScreen(),
     );
   }
 }
-
