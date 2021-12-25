@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parent_control/src/ui/main_screen.dart';
-import 'package:parent_control/src/ui/onboard_screen.dart';
+import 'package:parent_control/src/ui/onboard/onboard_screen.dart';
 
 void main() {
   runApp(const MyApp());

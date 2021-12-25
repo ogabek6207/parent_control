@@ -22,7 +22,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
           'Set tasks and control the time spent online and the content of the child',
     ),
     OnboardModel(
-      msg: "Сontrsdcsd c c sol and educate correctly",
+      msg: "Help us to improve the app",
       image: 'assets/images/onboard_one.png',
       title:
           'Set tasks and contrsd c dc a sc scaol the time spent online and the content of the child',
@@ -31,13 +31,13 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       msg: "Сontrol as ca c ac a dc educate correctly",
       image: 'assets/images/onboard_one.png',
       title:
-          'Set tasks and asc a c adv av  the time spent online and the content of the child',
+          'We constantly monitor feedback and need your opinion',
     ),
     OnboardModel(
-      msg: "Сontrol and educate correctly",
+      msg: "Create profiles  for your kids",
       image: 'assets/images/onboard_one.png',
       title:
-          'Set tasks and control the time spent online and the content of the child',
+          'Create unique profiles for your kids for their different lifestyles',
     ),
   ];
 
