@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/ui/dialog/center_dialog.dart';
+import 'package:parent_control/src/ui/photos/photos_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AddChildScreen extends StatefulWidget {
@@ -76,10 +77,18 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 SizedBox(
                   height: 40 * h,
                 ),
-                Image.asset(
-                  "assets/images/image.png",
-                  height: 128 * o,
-                  width: 128 * o,
+
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return const PhotosScreen();
+                    },),);
+                  },
+                  child: Image.asset(
+                    "assets/images/image.png",
+                    height: 128 * o,
+                    width: 128 * o,
+                  ),
                 ),
                 Row(
                   children: [

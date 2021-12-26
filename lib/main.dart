@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
+import 'package:parent_control/src/ui/onboard/onboard_screen.dart';
 import 'package:parent_control/src/ui/photos/photos_screen.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PhotosScreen(),
+      home: const AddChildScreen(),
     );
   }
 }
