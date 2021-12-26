@@ -23,21 +23,21 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     ),
     OnboardModel(
       msg: "Help us to improve the app",
-      image: 'assets/images/onboard_one.png',
-      title:
-          'Set tasks and contrsd c dc a sc scaol the time spent online and the content of the child',
-    ),
-    OnboardModel(
-      msg: "Сontrol as ca c ac a dc educate correctly",
-      image: 'assets/images/onboard_one.png',
+      image: 'assets/images/onboard_two.png',
       title:
           'We constantly monitor feedback and need your opinion',
     ),
     OnboardModel(
       msg: "Create profiles  for your kids",
-      image: 'assets/images/onboard_one.png',
+      image: 'assets/images/onboard_three.png',
       title:
           'Create unique profiles for your kids for their different lifestyles',
+    ),
+    OnboardModel(
+      msg: "Pre-configured  popular services",
+      image: 'assets/images/onboard_four.png',
+      title:
+          '9:41 Pre-configured  popular services Subscribe to unlock all the features, just 3.99/week Continue Terms of UsestorPrivacy policy',
     ),
   ];
 
@@ -57,7 +57,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              _selectedIndex == 1 ? Colors.red : AppTheme.blue,
+             AppTheme.blue,
               AppTheme.blue1,
             ],
           ),
@@ -128,7 +128,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             GestureDetector(
               onTap: () {
                 controller.jumpToPage(
-                  2,
+                  1,
                   // duration: const Duration(microseconds: 270),
                   // curve: Curves.easeInOut,
                 );
@@ -182,7 +182,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Terms of Use",
+                        "Restore",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -197,7 +197,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Terms of Use",
+                        "Privacy policy",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
