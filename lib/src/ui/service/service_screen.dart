@@ -13,6 +13,12 @@ class ServiceScreen extends StatefulWidget {
 class _ServiceScreenState extends State<ServiceScreen> {
   bool errorText = true;
   bool isLoading = false;
+  bool one = false;
+  bool two = false;
+  bool three = false;
+  bool four = false;
+  bool five = false;
+  bool six = false;
 
   @override
   @override
@@ -96,30 +102,44 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      two = !two;
+                    });
+                  },
+                  child: two
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
+                        ),
+                ),
                 SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/container.svg",
-                      color: AppTheme.blue,
-                    ),
-                    Center(
-                      child: SvgPicture.asset(
-                        "assets/icons/done.svg",
-                        color: AppTheme.white,
-                      ),
-                    ),
-                  ],
-                ),),
-
-                SizedBox(width: 16*w,),
-
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
+          SizedBox(
+            height: 8 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
@@ -150,30 +170,44 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/container.svg",
-                        color: AppTheme.blue,
-                      ),
-                      Center(
-                        child: SvgPicture.asset(
-                          "assets/icons/done.svg",
-                          color: AppTheme.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      one = !one;
+                    });
+                  },
+                  child: one
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
                         ),
-                      ),
-                    ],
-                  ),),
-
-                SizedBox(width: 16*w,),
-
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
+          SizedBox(
+            height: 8 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
@@ -204,30 +238,44 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/container.svg",
-                        color: AppTheme.blue,
-                      ),
-                      Center(
-                        child: SvgPicture.asset(
-                          "assets/icons/done.svg",
-                          color: AppTheme.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      three = !three;
+                    });
+                  },
+                  child: three
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
                         ),
-                      ),
-                    ],
-                  ),),
-
-                SizedBox(width: 16*w,),
-
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
+          SizedBox(
+            height: 8 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
@@ -258,30 +306,44 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/container.svg",
-                        color: AppTheme.blue,
-                      ),
-                      Center(
-                        child: SvgPicture.asset(
-                          "assets/icons/done.svg",
-                          color: AppTheme.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      four = !four;
+                    });
+                  },
+                  child: four
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
                         ),
-                      ),
-                    ],
-                  ),),
-
-                SizedBox(width: 16*w,),
-
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
+          SizedBox(
+            height: 8 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
@@ -312,30 +374,44 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/container.svg",
-                        color: AppTheme.blue,
-                      ),
-                      Center(
-                        child: SvgPicture.asset(
-                          "assets/icons/done.svg",
-                          color: AppTheme.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      five = !five;
+                    });
+                  },
+                  child: five
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
                         ),
-                      ),
-                    ],
-                  ),),
-
-                SizedBox(width: 16*w,),
-
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
+          SizedBox(
+            height: 8 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
@@ -366,31 +442,41 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SizedBox(
-                  height: 24,
-                  width: 24,
-                  child: Stack(
-                    children: [
-                      SvgPicture.asset(
-                        "assets/icons/container.svg",
-                        color: AppTheme.blue,
-                      ),
-                      Center(
-                        child: SvgPicture.asset(
-                          "assets/icons/done.svg",
-                          color: AppTheme.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      six = !six;
+                    });
+                  },
+                  child: six
+                      ?SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: Stack(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/container.svg",
+                          color: AppTheme.blue,
                         ),
-                      ),
-                    ],
-                  ),),
-
-                SizedBox(width: 16*w,),
-
+                        Center(
+                          child: SvgPicture.asset(
+                            "assets/icons/done.svg",
+                            color: AppTheme.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                      : SvgPicture.asset(
+                    "assets/icons/unselect.svg",
+                  ),
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
               ],
             ),
           ),
-          SizedBox(height: 8*h,),
-
 
         ],
       ),
