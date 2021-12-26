@@ -77,12 +77,16 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 SizedBox(
                   height: 40 * h,
                 ),
-
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return const PhotosScreen();
-                    },),);
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const PhotosScreen();
+                        },
+                      ),
+                    );
                   },
                   child: Image.asset(
                     "assets/images/image.png",
@@ -165,11 +169,12 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Name",
-                        hintStyle: TextStyle(
-                          color: AppTheme.black.withOpacity(0.3),
-                        )),
+                      border: InputBorder.none,
+                      hintText: "Name",
+                      hintStyle: TextStyle(
+                        color: AppTheme.black.withOpacity(0.3),
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
