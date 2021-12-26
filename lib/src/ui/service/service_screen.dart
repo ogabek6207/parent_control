@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
-import 'package:parent_control/src/ui/dialog/center_dialog.dart';
-import 'package:parent_control/src/ui/photos/photos_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceScreen extends StatefulWidget {
@@ -13,7 +11,6 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
-  final TextEditingController _controller = TextEditingController();
   bool errorText = true;
   bool isLoading = false;
 
@@ -99,11 +96,302 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 ),
                 const Spacer(),
-                SvgPicture.asset("assets/icons/done.svg",
-                color: AppTheme.blue,),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/container.svg",
+                      color: AppTheme.blue,
+                    ),
+                    Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/done.svg",
+                        color: AppTheme.white,
+                      ),
+                    ),
+                  ],
+                ),),
+
+                SizedBox(width: 16*w,),
+
               ],
             ),
           ),
+          SizedBox(height: 8*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+            decoration: BoxDecoration(
+              color: AppTheme.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Image.asset(
+                  "assets/images/tiktok.png",
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Text(
+                  "Instagram",
+                  style: TextStyle(
+                    color: AppTheme.black,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16,
+                    height: 19 / 16 * h,
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/container.svg",
+                        color: AppTheme.blue,
+                      ),
+                      Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/done.svg",
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),),
+
+                SizedBox(width: 16*w,),
+
+              ],
+            ),
+          ),
+          SizedBox(height: 8*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+            decoration: BoxDecoration(
+              color: AppTheme.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Image.asset(
+                  "assets/images/youtube.png",
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Text(
+                  "Instagram",
+                  style: TextStyle(
+                    color: AppTheme.black,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16,
+                    height: 19 / 16 * h,
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/container.svg",
+                        color: AppTheme.blue,
+                      ),
+                      Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/done.svg",
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),),
+
+                SizedBox(width: 16*w,),
+
+              ],
+            ),
+          ),
+          SizedBox(height: 8*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+            decoration: BoxDecoration(
+              color: AppTheme.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Image.asset(
+                  "assets/images/twitter.png",
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Text(
+                  "Instagram",
+                  style: TextStyle(
+                    color: AppTheme.black,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16,
+                    height: 19 / 16 * h,
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/container.svg",
+                        color: AppTheme.blue,
+                      ),
+                      Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/done.svg",
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),),
+
+                SizedBox(width: 16*w,),
+
+              ],
+            ),
+          ),
+          SizedBox(height: 8*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+            decoration: BoxDecoration(
+              color: AppTheme.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Image.asset(
+                  "assets/images/steam.png",
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Text(
+                  "Instagram",
+                  style: TextStyle(
+                    color: AppTheme.black,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16,
+                    height: 19 / 16 * h,
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/container.svg",
+                        color: AppTheme.blue,
+                      ),
+                      Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/done.svg",
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),),
+
+                SizedBox(width: 16*w,),
+
+              ],
+            ),
+          ),
+          SizedBox(height: 8*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+            decoration: BoxDecoration(
+              color: AppTheme.white,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Image.asset(
+                  "assets/images/facebook.png",
+                ),
+                SizedBox(
+                  width: 16 * w,
+                ),
+                Text(
+                  "Instagram",
+                  style: TextStyle(
+                    color: AppTheme.black,
+                    fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 16,
+                    height: 19 / 16 * h,
+                  ),
+                ),
+                const Spacer(),
+                SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/container.svg",
+                        color: AppTheme.blue,
+                      ),
+                      Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/done.svg",
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),),
+
+                SizedBox(width: 16*w,),
+
+              ],
+            ),
+          ),
+          SizedBox(height: 8*h,),
+
+
         ],
       ),
     );
