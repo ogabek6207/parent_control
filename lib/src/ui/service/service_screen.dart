@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
@@ -477,7 +479,30 @@ class _ServiceScreenState extends State<ServiceScreen> {
               ],
             ),
           ),
-
+          SizedBox(height: 120*h,),
+          Container(
+            height: 56,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.symmetric(horizontal: 40 * w),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(32 * o),
+            ),
+            child: Center(
+              child: Text(
+                "Save",
+                style: TextStyle(
+                    color: AppTheme.blue,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    height: 21 / 18 * h),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 32 * h,
+          ),
         ],
       ),
     );

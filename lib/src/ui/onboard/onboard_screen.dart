@@ -214,7 +214,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             ),
             SizedBox(
               height: (Platform.isIOS ? 44 : 32) * h,
-            )
+            ),
           ],
         ),
       ),
