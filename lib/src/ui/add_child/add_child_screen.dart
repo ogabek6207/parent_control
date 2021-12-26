@@ -11,6 +11,7 @@ class AddChildScreen extends StatefulWidget {
 }
 
 class _AddChildScreenState extends State<AddChildScreen> {
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -18,20 +19,26 @@ class _AddChildScreenState extends State<AddChildScreen> {
     double o = (h + w) / 2;
     return Scaffold(
       backgroundColor: AppTheme.blue,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
+
         children: [
           SizedBox(
             height: 60 * h,
           ),
-          Text(
-            "Create your child profile",
-            style: TextStyle(
-                color: AppTheme.white,
-                fontSize: 22 * o,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.w500,
-                height: 26 / 22 * h),
+          Row(
+            children: [
+              const Spacer(),
+              Text(
+                "Create your child profile",
+                style: TextStyle(
+                    color: AppTheme.white,
+                    fontSize: 22 * o,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    height: 26 / 22 * h),
+              ),
+              const Spacer(),
+            ],
           ),
           Container(
             height: 648 * h,
@@ -45,14 +52,119 @@ class _AddChildScreenState extends State<AddChildScreen> {
               borderRadius: BorderRadius.circular(8 * o),
               color: AppTheme.white,
             ),
-            child: Column(
+            child: ListView(
               children: [
-                SizedBox(height: 40*h,),
-           Image.asset("assets/images/image.png",
-                height: 128*o,
-                  width: 128*o,
-
+                SizedBox(
+                  height: 40 * h,
                 ),
+                Image.asset(
+                  "assets/images/image.png",
+                  height: 128 * o,
+                  width: 128 * o,
+                ),
+                Row(
+                  children: [
+                    const Spacer(),
+                    SizedBox(
+                      height: 108 * h,
+                      width: 72 * w,
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/mask_group1.svg",
+                            height: 72 * o,
+                            width: 72 * o,
+                          ),
+                          const Spacer(),
+                          Text(
+                            "Boy",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16,
+                              height: 19 / 16 * h,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 38 * w,
+                    ),
+                    SizedBox(
+                      height: 108 * h,
+                      width: 72 * w,
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/mask_group.svg",
+                            height: 72 * o,
+                            width: 72 * o,
+                          ),
+                          const Spacer(),
+                          Text(
+                            "Girl",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                              fontSize: 16,
+                              height: 19 / 16 * h,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+                SizedBox(
+                  height: 28 * h,
+                ),
+                Container(
+                  height: 56 * h,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                  padding: EdgeInsets.only(left: 16 * w),
+                  decoration: BoxDecoration(
+                    color: AppTheme.milk,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                   hintText: "Name",
+                     hintStyle: TextStyle(
+                       color: AppTheme.black.withOpacity(0.3),
+
+
+                     )
+                    ),
+                  ),
+                ),SizedBox(height: 152*h,),
+                Container(
+                  height: 56,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                  decoration: BoxDecoration(
+                    color: AppTheme.milk,
+                    borderRadius: BorderRadius.circular(32 * o),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Add child",
+                      style: TextStyle(
+                          color: AppTheme.dark.withOpacity(0.3),
+                          fontSize: 18,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
+                          height: 21 / 18 * h),
+                    ),
+                  ),
+                ),
+
               ],
             ),
           ),
