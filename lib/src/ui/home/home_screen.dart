@@ -6,7 +6,7 @@ import 'package:parent_control/src/model/home_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
-   HomeScreen({Key? key}) : super(key: key);
+   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
