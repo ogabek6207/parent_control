@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/ui/alert/alert_screen.dart';
+import 'package:parent_control/src/ui/setting/setting_screen.dart';
+import 'package:parent_control/src/ui/tasks/tasks_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home/home_screen.dart';
@@ -19,13 +22,10 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> data = [
     const HomeScreen(),
+    const TasksScreen(),
+    const AlertScreen(),
+    const SettingScreen(),
   ];
-
-  @override
-  void initState() {
-    _changeLanguage();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,39 +48,45 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
-                ? SvgPicture.asset("assets/icons/home3.svg")
-                : SvgPicture.asset("assets/icons/home2.svg"),
+                ? SvgPicture.asset("assets/icons/home.svg")
+                : SvgPicture.asset("assets/icons/home.svg"),
             label: "home",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 1
                 ? SvgPicture.asset(
-              "assets/icons/briefcase.svg",
-              color: AppTheme.blue,
-            )
+                    "assets/icons/tasks.svg",
+                    color: AppTheme.blue,
+                  )
                 : SvgPicture.asset(
-              "assets/icons/briefcase.svg",
-            ),
+                    "assets/icons/tasks.svg",
+                  ),
             label: "reconnoiter",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
                 ? SvgPicture.asset(
-              "assets/icons/setting.svg",
-              color: AppTheme.blue,
-            )
+                    "assets/icons/bell.svg",
+                    color: AppTheme.blue,
+                  )
                 : SvgPicture.asset(
-              "assets/icons/setting.svg",
-            ),
-            label:"irritant",
+                    "assets/icons/bell.svg",
+                  ),
+            label: "irritant",
+          ),
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 2
+                ? SvgPicture.asset(
+                    "assets/icons/setting.svg",
+                    color: AppTheme.blue,
+                  )
+                : SvgPicture.asset(
+                    "assets/icons/setting.svg",
+                  ),
+            label: "irritant",
           ),
         ],
       ),
     );
-  }
-
-  Future<void> _changeLanguage() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String lan = prefs.getString("language") ?? "ru";
   }
 }
