@@ -20,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> data = [
-    const HomeScreen(),
+     HomeScreen(),
     const TasksScreen(),
     const AlertScreen(),
     const SettingScreen(),

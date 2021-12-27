@@ -1,8 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/ui/dialog/center_dialog.dart';
-import 'package:parent_control/src/ui/photos/photos_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AddChildScreen extends StatefulWidget {
@@ -13,9 +14,11 @@ class AddChildScreen extends StatefulWidget {
 }
 
 class _AddChildScreenState extends State<AddChildScreen> {
+  final ImagePicker _picker = ImagePicker();
   final TextEditingController _controller = TextEditingController();
   bool errorText = true;
   bool isLoading = false;
+  File? data;
 
   @override
   void initState() {
@@ -79,20 +82,19 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const PhotosScreen();
-                        },
-                      ),
-                    );
+                    getGalleryData();
                   },
-                  child: Image.asset(
-                    "assets/images/image.png",
-                    height: 128 * o,
-                    width: 128 * o,
-                  ),
+                  child: data == null
+                      ? Image.asset(
+                          "assets/images/image.png",
+                          height: 128 * o,
+                          width: 128 * o,
+                        )
+                      : Image.file(
+                          data!,
+                          height: 128 * o,
+                          width: 128 * o,
+                        ),
                 ),
                 Row(
                   children: [
@@ -216,5 +218,19 @@ class _AddChildScreenState extends State<AddChildScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> getGalleryData() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      data = File(image!.path);
+    });
+  }
+
+  Future<void> getCameraData() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      data = File(image!.path);
+    });
   }
 }

@@ -1,46 +1,34 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
-import 'package:parent_control/src/model/onboard_model.dart';
-import 'package:parent_control/src/ui/photos/photos_screen.dart';
+import 'package:parent_control/src/model/home_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  String? _retrieveDataError;
   int _selectedIndex = 0;
-  List<OnboardModel> data = [
-    OnboardModel(
+  List<HomeModel> data = [
+    HomeModel(
       msg: "Control and educate correctly",
-      image: 'assets/images/onboard_one.png',
-      title:
-          'Set tasks and control the time spent online and the content of the child',
+      image: "assets/images/schoolgirl.png",
+      time:
+          'School 8am - 14pm',
     ),
-    OnboardModel(
+    HomeModel(
       msg: "Help us to improve the app",
-      image: 'assets/images/onboard_two.png',
-      title: 'We constantly monitor feedback and need your opinion',
+      image: "assets/images/schoolgirl_1.png",
+      time: 'Free time 14am - 16pm',
     ),
-    OnboardModel(
-      msg: "Create profiles  for your kids",
-      image: 'assets/images/onboard_three.png',
-      title:
-          'Create unique profiles for your kids for their different lifestyles',
-    ),
-    OnboardModel(
-      msg: "Pre-configured  popular services",
-      image: 'assets/images/onboard_four.png',
-      title:
-          '9:41 Pre-configured  popular services Subscribe to unlock all the features, just 3.99/week Continue Terms of UsestorPrivacy policy',
-    ),
+
   ];
 
   PageController controller = PageController();
@@ -103,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       borderRadius:
                                           BorderRadius.circular(8 * o),
                                       child: Image.asset(
-                                        "assets/images/schoolgirl.png",
+                                            data[index].image,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -156,10 +144,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 14*h,),
+                              SizedBox(
+                                height: 14 * h,
+                              ),
                               Row(
                                 children: [
-                                  SizedBox(width: 16*w,),
+                                  SizedBox(
+                                    width: 16 * w,
+                                  ),
                                   Container(
                                     height: 27 * h,
                                     width: 156,
@@ -168,85 +160,102 @@ class _HomeScreenState extends State<HomeScreen> {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Center(
-                                      child: Text("School 8am - 14pm",
-                                      style: TextStyle(
-                                        color: AppTheme.dark,
-
-                                        fontSize: 16*o,
-                                        fontWeight: FontWeight.normal,
-                                        fontStyle: FontStyle.normal,
-                                        height: 19/16*h
-                                      ),
+                                      child: Text(
+                                        data[index].time,
+                                        style: TextStyle(
+                                            color: AppTheme.dark,
+                                            fontSize: 16 * o,
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle: FontStyle.normal,
+                                            height: 19 / 16 * h),
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-                            SizedBox(height: 24*h,),
+                              SizedBox(
+                                height: 24 * h,
+                              ),
                               Row(
                                 children: [
-                                  SizedBox(width: 14*w,),
-                                  Container(height: 72*h,
-                                  width: 84*w,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.milk,
-                                    borderRadius: BorderRadius.circular(8*o),
-
+                                  SizedBox(
+                                    width: 14 * w,
                                   ),
-                                  child: Column(
-
-                                    children: [
-                                      SizedBox(height: 5*h,),
-                                      Text("3",
-                                      style: TextStyle(
-                                        fontSize: 24,
-                                        height: 29/24*h,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppTheme.blue1,
-                                      ),
-                                      ),
-                                      SizedBox(height: 4*h,),
-                                      Text("Left to  complete",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 12*o,
-                                          height: 14/12*h,
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.normal,
-                                          color: AppTheme.grey,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  ),
-                                  SizedBox(width: 14*w,),
-                                  Container(height: 72*h,
-                                    width: 84*w,
+                                  Container(
+                                    height: 72 * h,
+                                    width: 84 * w,
                                     decoration: BoxDecoration(
                                       color: AppTheme.milk,
-                                      borderRadius: BorderRadius.circular(8*o),
-
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
                                     ),
                                     child: Column(
-
                                       children: [
-                                        SizedBox(height: 5*h,),
-                                        Text("2",
+                                        SizedBox(
+                                          height: 5 * h,
+                                        ),
+                                        Text(
+                                          "3",
                                           style: TextStyle(
                                             fontSize: 24,
-                                            height: 29/24*h,
+                                            height: 29 / 24 * h,
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.w500,
+                                            color: AppTheme.blue1,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 4 * h,
+                                        ),
+                                        Text(
+                                          "Left to  complete",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 12 * o,
+                                            height: 14 / 12 * h,
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.normal,
+                                            color: AppTheme.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 14 * w,
+                                  ),
+                                  Container(
+                                    height: 72 * h,
+                                    width: 84 * w,
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.milk,
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 5 * h,
+                                        ),
+                                        Text(
+                                          "2",
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            height: 29 / 24 * h,
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w500,
                                             color: AppTheme.red,
                                           ),
                                         ),
-                                        SizedBox(height: 4*h,),
-                                        Text("Alerts need review",
+                                        SizedBox(
+                                          height: 4 * h,
+                                        ),
+                                        Text(
+                                          "Alerts need review",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 12*o,
-                                            height: 14/12*h,
+                                            fontSize: 12 * o,
+                                            height: 14 / 12 * h,
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.normal,
                                             color: AppTheme.grey,
@@ -255,33 +264,41 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(width: 14*w,),
-                                  Container(height: 72*h,
-                                    width: 84*w,
+                                  SizedBox(
+                                    width: 14 * w,
+                                  ),
+                                  Container(
+                                    height: 72 * h,
+                                    width: 84 * w,
                                     decoration: BoxDecoration(
                                       color: AppTheme.milk,
-                                      borderRadius: BorderRadius.circular(8*o),
-
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
                                     ),
                                     child: Column(
-
                                       children: [
-                                        SizedBox(height: 5*h,),
-                                        Text("12",
+                                        SizedBox(
+                                          height: 5 * h,
+                                        ),
+                                        Text(
+                                          "12",
                                           style: TextStyle(
                                             fontSize: 24,
-                                            height: 29/24*h,
+                                            height: 29 / 24 * h,
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w500,
                                             color: AppTheme.black,
                                           ),
                                         ),
-                                        SizedBox(height: 4*h,),
-                                        Text("Tasks for the week",
+                                        SizedBox(
+                                          height: 4 * h,
+                                        ),
+                                        Text(
+                                          "Tasks for the week",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 12*o,
-                                            height: 14/12*h,
+                                            fontSize: 12 * o,
+                                            height: 14 / 12 * h,
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.normal,
                                             color: AppTheme.grey,
@@ -290,56 +307,85 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(width: 14*w,),
+                                  SizedBox(
+                                    width: 14 * w,
+                                  ),
                                 ],
                               ),
-
-SizedBox(height: 30*h,),
+                              SizedBox(
+                                height: 30 * h,
+                              ),
                               Row(
                                 children: [
                                   const Spacer(),
-                                  Text("3 activities ",
-                                  style: TextStyle(
-                                    color: AppTheme.blue1,
-                                    fontSize: 16*o,
-                                    height: 19/16*h,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.normal,
-
-
+                                  Text(
+                                    "3 activities ",
+                                    style: TextStyle(
+                                      color: AppTheme.blue1,
+                                      fontSize: 16 * o,
+                                      height: 19 / 16 * h,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.normal,
+                                    ),
                                   ),
-
-
+                                  Text(
+                                    "for today",
+                                    style: TextStyle(
+                                      color: AppTheme.black,
+                                      fontSize: 16 * o,
+                                      height: 19 / 16 * h,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.normal,
+                                    ),
                                   ),
-                                  Text("for today",
-                                  style: TextStyle(
-                                    color: AppTheme.black,
-                                    fontSize: 16*o,
-                                    height: 19/16*h,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.normal,
-
-
+                                  SizedBox(
+                                    width: 4 * w,
                                   ),
-
-
-                                  ),
-SizedBox(width: 4*w,),
-SvgPicture.asset("assets/icons/arrow_right.svg"),
+                                  SvgPicture.asset(
+                                      "assets/icons/arrow_right.svg"),
                                   const Spacer(),
                                 ],
                               ),
-SizedBox(height: 30*h,),
-                              SvgPicture.asset("assets/icons/group.svg",
-                              height: 40*h,
-                                width: 291,
-
+                              SizedBox(
+                                height: 30 * h,
                               ),
-                              SizedBox(height: 38*h,),
-
+                              SvgPicture.asset(
+                                "assets/icons/group.svg",
+                                height: 40 * h,
+                                width: 291,
+                              ),
+                              SizedBox(
+                                height: 38 * h,
+                              ),
+                              const Spacer(),
+                              Container(
+                                height: 56,
+                                width: MediaQuery.of(context).size.width,
+                                margin:
+                                    EdgeInsets.symmetric(horizontal: 40 * w),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.red,
+                                  borderRadius: BorderRadius.circular(32 * o),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "2 alerts need review",
+                                    style: TextStyle(
+                                        color: AppTheme.white,
+                                        fontSize: 18,
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w500,
+                                        height: 21 / 18 * h),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 32 * h,
+                              ),
                             ],
                           ),
                         ),
+
                       ],
                     ),
                   );
