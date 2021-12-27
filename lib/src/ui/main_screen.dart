@@ -1,156 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
-import 'package:parent_control/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  State<StatefulWidget> createState() {
+    return _MainScreenState();
+  }
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
 
+  List<Widget> data = [
+    const HomeScreen(),
+  ];
+
+  @override
+  void initState() {
+    _changeLanguage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    double h = Utils.windowHeight(context);
-    double w = Utils.windowWidth(context);
-    double o = (h + w) / 2;
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration:  BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              AppTheme.blue,
-              AppTheme.blue1,
-            ],
+      body: data[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (_index) {
+          setState(() {
+            _selectedIndex = _index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: const TextStyle(
+          color: Colors.red,
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+        ),
+        selectedItemColor: AppTheme.blue,
+        items: [
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 0
+                ? SvgPicture.asset("assets/icons/home3.svg")
+                : SvgPicture.asset("assets/icons/home2.svg"),
+            label: "home",
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 104 * h,
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 1
+                ? SvgPicture.asset(
+              "assets/icons/briefcase.svg",
+              color: AppTheme.blue,
+            )
+                : SvgPicture.asset(
+              "assets/icons/briefcase.svg",
             ),
-            Container(
-              height: 280,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 16 * w),
-              child: ClipRRect(
-                child: Image.asset("assets/images/onboard_one.png"),
-              ),
+            label: "reconnoiter",
+          ),
+          BottomNavigationBarItem(
+            icon: _selectedIndex == 2
+                ? SvgPicture.asset(
+              "assets/icons/setting.svg",
+              color: AppTheme.blue,
+            )
+                : SvgPicture.asset(
+              "assets/icons/setting.svg",
             ),
-            SizedBox(
-              height: 44 * h,
-            ),
-            Row(
-              children: [
-                Spacer(),
-                Text(
-                  "Сontrol and educate correctly",
-                  style: TextStyle(
-                      color: AppTheme.white,
-                      fontSize: 28 * o,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      height: 36 / 28 * h),
-                ),
-                Spacer(),
-              ],
-            ),
-            SizedBox(
-              height: 18 * h,
-            ),
-            Text(
-              "Set tasks and control the time spent online and the content of the child",
-              style: TextStyle(
-                color: AppTheme.white,
-                fontSize: 18 * o,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-              ),
-            ),
-            SizedBox(
-              height: 82 * h,
-            ),
-            Container(
-              height: 56,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 56 * w),
-              decoration: BoxDecoration(
-                color: AppTheme.white,
-                borderRadius: BorderRadius.circular(36 * o),
-              ),
-              child: Center(
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                    color: AppTheme.blue1,
-                    fontSize: 18 * o,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 35 * h),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 16 * w),
-              child: Row(
-                children: [
-                  const Spacer(),
-                  Text(
-                    "Terms of Use",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      fontFamily: AppTheme.fontFamilyPoppins,
-                      fontStyle: FontStyle.normal,
-                      height: 20 / 14 * h,
-                      color: AppTheme.bluePrimary,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 40 * w,
-                  ),
-                  Text(
-                    "Terms of Use",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      fontFamily: AppTheme.fontFamilyPoppins,
-                      fontStyle: FontStyle.normal,
-                      height: 20 / 14 * h,
-                      color: AppTheme.bluePrimary,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 40 * w,
-                  ),
-                  Text(
-                    "Terms of Use",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      fontFamily: AppTheme.fontFamilyPoppins,
-                      fontStyle: FontStyle.normal,
-                      height: 20 / 14 * h,
-                      color: AppTheme.bluePrimary,
-                    ),
-                  ),
-                  const Spacer(),
-                ],
-              ),
-            ),
-          ],
-        ),
+            label:"irritant",
+          ),
+        ],
       ),
     );
+  }
+
+  Future<void> _changeLanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String lan = prefs.getString("language") ?? "ru";
   }
 }
