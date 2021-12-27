@@ -61,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
                 : SvgPicture.asset(
                     "assets/icons/tasks.svg",
                   ),
-            label: "reconnoiter",
+            label: "Tasks",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
@@ -72,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
                 : SvgPicture.asset(
                     "assets/icons/bell.svg",
                   ),
-            label: "irritant",
+            label: "Alerts",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
@@ -83,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
                 : SvgPicture.asset(
                     "assets/icons/setting.svg",
                   ),
-            label: "irritant",
+            label: "Settings",
           ),
         ],
       ),
