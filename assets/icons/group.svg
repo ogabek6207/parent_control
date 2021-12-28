@@ -1,22 +1,23 @@
 <svg width="295" height="44" viewBox="0 0 295 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M289 30L242 22L195 38L148 22L101 30L54 6L7 14" stroke="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 289 30)" fill="#FF4A4A"/>
-<circle r="5" transform="matrix(-1 0 0 1 289 30)" fill="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 289 30)" stroke="white" stroke-width="2"/>
-<circle r="5" transform="matrix(-1 0 0 1 242 22)" fill="#0400E0"/>
-<circle r="5" transform="matrix(-1 0 0 1 242 22)" fill="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 242 22)" stroke="white" stroke-width="2"/>
-<circle r="5" transform="matrix(-1 0 0 1 195 38)" fill="#00E677"/>
-<circle r="5" transform="matrix(-1 0 0 1 195 38)" fill="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 195 38)" stroke="white" stroke-width="2"/>
-<circle r="5" transform="matrix(-1 0 0 1 148 22)" fill="#45B1FF"/>
-<circle r="5" transform="matrix(-1 0 0 1 148 22)" fill="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 148 22)" stroke="white" stroke-width="2"/>
-<circle r="5" transform="matrix(-1 0 0 1 101 30)" fill="black" stroke="white" stroke-width="2"/>
-<circle r="5" transform="matrix(-1 0 0 1 54 6)" fill="#8358DE"/>
-<circle r="5" transform="matrix(-1 0 0 1 54 6)" fill="black"/>
-<circle r="5" transform="matrix(-1 0 0 1 54 6)" stroke="white" stroke-width="2"/>
-<circle r="6" transform="matrix(-1 0 0 1 7 14)" fill="#E5FF44"/>
-<circle r="6" transform="matrix(-1 0 0 1 7 14)" fill="#0051EE"/>
-<circle r="6" transform="matrix(-1 0 0 1 7 14)" stroke="white" stroke-width="2"/>
+    <path d="M289 30L242 22L195 38L148 22L101 30L54 6L7 14" stroke="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 289 30)" fill="#FF4A4A" />
+    <circle r="5" transform="matrix(-1 0 0 1 289 30)" fill="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 289 30)" stroke="white" stroke-width="2" />
+    <circle r="5" transform="matrix(-1 0 0 1 242 22)" fill="#0400E0" />
+    <circle r="5" transform="matrix(-1 0 0 1 242 22)" fill="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 242 22)" stroke="white" stroke-width="2" />
+    <circle r="5" transform="matrix(-1 0 0 1 195 38)" fill="#00E677" />
+    <circle r="5" transform="matrix(-1 0 0 1 195 38)" fill="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 195 38)" stroke="white" stroke-width="2" />
+    <circle r="5" transform="matrix(-1 0 0 1 148 22)" fill="#45B1FF" />
+    <circle r="5" transform="matrix(-1 0 0 1 148 22)" fill="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 148 22)" stroke="white" stroke-width="2" />
+    <circle r="5" transform="matrix(-1 0 0 1 101 30)" fill="black" stroke="white"
+        stroke-width="2" />
+    <circle r="5" transform="matrix(-1 0 0 1 54 6)" fill="#8358DE" />
+    <circle r="5" transform="matrix(-1 0 0 1 54 6)" fill="black" />
+    <circle r="5" transform="matrix(-1 0 0 1 54 6)" stroke="white" stroke-width="2" />
+    <circle r="6" transform="matrix(-1 0 0 1 7 14)" fill="#E5FF44" />
+    <circle r="6" transform="matrix(-1 0 0 1 7 14)" fill="#0051EE" />
+    <circle r="6" transform="matrix(-1 0 0 1 7 14)" stroke="white" stroke-width="2" />
 </svg>

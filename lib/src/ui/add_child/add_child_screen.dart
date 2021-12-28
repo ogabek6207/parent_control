@@ -19,20 +19,12 @@ class _AddChildScreenState extends State<AddChildScreen> {
   bool errorText = true;
   bool isLoading = false;
   File? data;
+  bool girl = false;
+  bool boy = false;
 
   @override
   void initState() {
-    _controller.addListener(() {
-      if (_controller.text.length > 4) {
-        setState(() {
-          errorText = true;
-        });
-      } else {
-        setState(() {
-          errorText = false;
-        });
-      }
-    });
+    super.initState();
   }
 
   @override
@@ -80,34 +72,236 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 SizedBox(
                   height: 40 * h,
                 ),
-                GestureDetector(
+
+                data == null
+                    ? GestureDetector(
                   onTap: () {
-                    getGalleryData();
+                    showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return Column(
+                            children: [
+                              Container(
+                                height: 180,
+                                width: MediaQuery.of(context).size.width,
+                                color: Colors.transparent,
+                                child: Container(
+                                  height: 100,
+                                  width: MediaQuery.of(context).size.width,
+                                  margin: EdgeInsets.only(
+                                    left: 16 * w,
+                                    right: 16 * w,
+                                    bottom: 16 * h,
+                                    top: 16 * h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.white,
+                                    borderRadius: BorderRadius.circular(12 * o),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 15 * h,
+                                      ),
+                                      Text(
+                                        "photos",
+                                        style: TextStyle(
+                                          color: AppTheme.grey,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 15 * h,
+                                      ),
+                                      Container(
+                                        height: 1,
+                                        width:
+                                        MediaQuery.of(context).size.width,
+                                        color: AppTheme.grey,
+                                      ),
+
+                                      GestureDetector(onTap: (){
+                                        getGalleryData();
+                                      },
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 15 * h,
+                                          ),
+                                          Text(
+                                            "From Photos",
+                                            style: TextStyle(
+                                              color: AppTheme.blue,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15 * h,
+                                          ),
+                                        ],
+                                      ),
+                                      ),
+
+                                      Container(
+                                        height: 1,
+                                        width:
+                                        MediaQuery.of(context).size.width,
+                                        color: AppTheme.grey,
+                                      ),
+
+
+                                      GestureDetector(
+                                        onTap: (){
+                                       getCameraData();
+                                        },
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 15 * h,
+                                            ),
+
+
+
+                                            Text(
+                                              "Take Picture",
+                                              style: TextStyle(
+                                                color: AppTheme.blue,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              GestureDetector(
+                                onTap:  (){
+                                  Navigator.pop(context);
+                                },
+                                child:    Container(height: 56*h,
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.white,
+                                    borderRadius: BorderRadius.circular(10*o),
+
+                                  ),
+                                  margin: EdgeInsets.symmetric(horizontal: 16*w),
+                                  child:
+
+
+
+                                  Center(
+                                    child: Text(
+                                      "Cancel",
+                                      style: TextStyle(
+                                        color: AppTheme.blue,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+
+                                ),
+                              ),
+
+                            ],
+                          );
+                        });
                   },
-                  child: data == null
-                      ? Image.asset(
-                          "assets/images/image.png",
-                          height: 128 * o,
-                          width: 128 * o,
+                  child: Container(
+                    height: 128 * h,
+                    width: 128 * h,
+                    decoration: BoxDecoration(
+                      color: AppTheme.greyD2,
+                      borderRadius: BorderRadius.circular(
+                        11 * h,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/gallery.svg",
                         )
-                      : Image.file(
-                          data!,
-                          height: 128 * o,
-                          width: 128 * o,
+                      ],
+                    ),
+                  ),
+                )
+                    : Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.file(
+                        data!,
+                        height: 128 * h,
+                        width: 128 * h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 4 * h,
                         ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              data = null;
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(left: 90 * w),
+                            child: SvgPicture.asset(
+                              "assets/icons/close.svg",
+                              height: 24 * o,
+                              width: 24 * o,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 48 * h,
                 ),
                 Row(
                   children: [
                     const Spacer(),
-                    SizedBox(
+                    Container(
                       height: 108 * h,
                       width: 72 * w,
+                      color: Colors.transparent,
                       child: Column(
                         children: [
-                          SvgPicture.asset(
-                            "assets/icons/mask_group1.svg",
-                            height: 72 * o,
-                            width: 72 * o,
+                          Container(
+                            color: Colors.transparent,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  boy = true;
+                                  girl = false;
+                                });
+                              },
+                              child: boy
+                                  ? SvgPicture.asset(
+                                      "assets/icons/boy_blue.svg",
+                                      height: 72 * o,
+                                      width: 72 * o,
+                                    )
+                                  : SvgPicture.asset(
+                                      "assets/icons/mask_group1.svg",
+                                      height: 72 * o,
+                                      width: 72 * o,
+                                    ),
+                            ),
                           ),
                           const Spacer(),
                           Text(
@@ -131,10 +325,24 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       width: 72 * w,
                       child: Column(
                         children: [
-                          SvgPicture.asset(
-                            "assets/icons/mask_group.svg",
-                            height: 72 * o,
-                            width: 72 * o,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                girl = true;
+                                boy = false;
+                              });
+                            },
+                            child: girl
+                                ? SvgPicture.asset(
+                                    "assets/icons/girl_select.svg",
+                                    height: 72 * o,
+                                    width: 72 * o,
+                                  )
+                                : SvgPicture.asset(
+                                    "assets/icons/mask_group.svg",
+                                    height: 72 * o,
+                                    width: 72 * o,
+                                  ),
                           ),
                           const Spacer(),
                           Text(
@@ -196,7 +404,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: Colors.transparent,
+                      color: AppTheme.milk,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(
