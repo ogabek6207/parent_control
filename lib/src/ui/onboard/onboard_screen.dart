@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/onboard_model.dart';
+import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class OnBoardScreen extends StatefulWidget {
@@ -24,8 +25,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     OnboardModel(
       msg: "Help us to improve the app",
       image: 'assets/images/onboard_two.png',
-      title:
-          'We constantly monitor feedback and need your opinion',
+      title: 'We constantly monitor feedback and need your opinion',
     ),
     OnboardModel(
       msg: "Create profiles  for your kids",
@@ -57,7 +57,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-             AppTheme.blue,
+              AppTheme.blue,
               AppTheme.blue1,
             ],
           ),
@@ -127,11 +127,21 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             ),
             GestureDetector(
               onTap: () {
-                controller.jumpToPage(
-                  1,
-                  // duration: const Duration(microseconds: 270),
-                  // curve: Curves.easeInOut,
-                );
+                _selectedIndex++;
+                if (_selectedIndex == 4) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const AddChildScreen();
+                      },
+                    ),
+                  );
+                } else {
+                  controller.jumpToPage(
+                    _selectedIndex,
+                  );
+                }
               },
               child: Container(
                 height: 56,

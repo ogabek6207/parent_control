@@ -20,7 +20,7 @@ class Repository {
   Future<List<UserModel>> getProduct() => databaseHelper.getProduct();
 
   //social
-  Future<List<SocialModel>> getSocial() => databaseHelper.getSocial();
+  Future<List<SocialModel>> getSocial(int id) => databaseHelper.getSocial(id);
 
   //notes
   Future<List<NotesModel>> getNotes() => databaseHelper.getNotes();

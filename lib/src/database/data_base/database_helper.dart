@@ -159,9 +159,10 @@ class DatabaseHelper {
   }
 
   //social get
-  Future<List<SocialModel>> getSocial() async {
+  Future<List<SocialModel>> getSocial(int id) async {
     var dbClient = await db;
-    List<Map> list = await dbClient.rawQuery('SELECT * FROM $tableSocial');
+    List<Map> list = await dbClient
+        .rawQuery('SELECT * FROM $tableSocial WHERE $columnSocialUserId = $id');
     List<SocialModel> social = <SocialModel>[];
     for (int i = 0; i < list.length; i++) {
       var items = SocialModel(
@@ -227,7 +228,6 @@ class DatabaseHelper {
     );
   }
 
-
   //social update
   Future<int> updateSocial(SocialModel social) async {
     var dbClient = await db;
@@ -249,7 +249,6 @@ class DatabaseHelper {
     var dbClient = await db;
     await dbClient.rawQuery('DELETE FROM $tableUser');
   }
-
 
 //social clear
   Future<void> clearSocial() async {
