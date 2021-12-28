@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/ui/dialog/center_dialog.dart';
+import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AddChildScreen extends StatefulWidget {
@@ -395,8 +396,10 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     print(errorText);
                     if (_controller.text.length >= 4) {
                       isLoading = false;
-                      Navigator.pop(context);
-                      BottomDialog.sendDialog(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return const ServiceScreen();
+                      },),);
+
                     }
                   },
                   child: Container(
