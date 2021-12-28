@@ -4,11 +4,13 @@ import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/ui/alert/alert_screen.dart';
 import 'package:parent_control/src/ui/setting/setting_screen.dart';
 import 'package:parent_control/src/ui/tasks/tasks_screen.dart';
-
 import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+
+
+
+  MainScreen({Key? key, }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> data = [
-     HomeScreen(),
+          HomeScreen(),
     const TasksScreen(),
     const AlertScreen(),
     const SettingScreen(),
