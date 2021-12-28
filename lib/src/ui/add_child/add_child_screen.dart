@@ -274,28 +274,29 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       color: Colors.transparent,
                       child: Column(
                         children: [
-                          Container(
-                            color: Colors.transparent,
-                            child: GestureDetector(
+                          GestureDetector(
                               onTap: () {
                                 setState(() {
                                   boy = true;
                                   girl = false;
                                 });
                               },
-                              child: boy
-                                  ? SvgPicture.asset(
-                                      "assets/icons/boy_blue.svg",
-                                      height: 72 * o,
-                                      width: 72 * o,
-                                    )
-                                  : SvgPicture.asset(
-                                      "assets/icons/mask_group1.svg",
-                                      height: 72 * o,
-                                      width: 72 * o,
-                                    ),
-                            ),
+                              child:   Container(
+
+                                decoration: BoxDecoration(
+
+                                  color: boy ? Colors.blue : Colors.grey,
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child:  SvgPicture.asset(
+                                  "assets/icons/boy.svg",
+                                  height: 72 * o,
+                                  width: 72 * o,
+                                )
+
+                              ),
                           ),
+
                           const Spacer(),
                           Text(
                             "Boy",
@@ -321,25 +322,30 @@ class _AddChildScreenState extends State<AddChildScreen> {
                           GestureDetector(
                             onTap: () {
                               setState(() {
-                                girl = true;
                                 boy = false;
+                                girl = true;
                               });
                             },
-                            child: girl
-                                ? SvgPicture.asset(
-                                    "assets/icons/girl_select.svg",
-                                    height: 72 * o,
-                                    width: 72 * o,
-                                  )
-                                : SvgPicture.asset(
-                                    "assets/icons/mask_group.svg",
-                                    height: 72 * o,
-                                    width: 72 * o,
-                                  ),
+                            child:   Container(
+height: 72*o,
+                                width: 72*o,
+                                decoration: BoxDecoration(
+
+                                  color: girl ? Colors.blue : Colors.grey,
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child:  SvgPicture.asset(
+                                  "assets/icons/girl.svg",
+                                  height: 72 * o,
+                                  width: 72 * o,
+                                )
+
+                            ),
                           ),
+
                           const Spacer(),
                           Text(
-                            "Girl",
+                            "Boy",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,

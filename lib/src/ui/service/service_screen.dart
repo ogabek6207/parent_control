@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
@@ -230,7 +228,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Instagram",
+                  "Youtube",
                   style: TextStyle(
                     color: AppTheme.black,
                     fontWeight: FontWeight.w500,
@@ -298,7 +296,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Instagram",
+                  "Twitter",
                   style: TextStyle(
                     color: AppTheme.black,
                     fontWeight: FontWeight.w500,
@@ -366,7 +364,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Instagram",
+                  "Steam",
                   style: TextStyle(
                     color: AppTheme.black,
                     fontWeight: FontWeight.w500,
@@ -414,72 +412,74 @@ class _ServiceScreenState extends State<ServiceScreen> {
           SizedBox(
             height: 8 * h,
           ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Image.asset(
-                  "assets/images/facebook.png",
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Text(
-                  "Instagram",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                six = !six;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      six = !six;
-                    });
-                  },
-                  child: six
-                      ?SizedBox(
-                    height: 24,
-                    width: 24,
-                    child: Stack(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/container.svg",
-                          color: AppTheme.blue,
-                        ),
-                        Center(
-                          child: SvgPicture.asset(
-                            "assets/icons/done.svg",
-                            color: AppTheme.white,
-                          ),
-                        ),
-                      ],
+                  Image.asset(
+                    "assets/images/facebook.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "Facebook",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
                     ),
-                  )
-                      : SvgPicture.asset(
-                    "assets/icons/unselect.svg",
                   ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
+                  const Spacer(),
+                  six
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
+                        ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 120*h,),
+          SizedBox(
+            height: 120 * h,
+          ),
           Container(
             height: 56,
             width: MediaQuery.of(context).size.width,
