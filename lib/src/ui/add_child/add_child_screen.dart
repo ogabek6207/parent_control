@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/dialog/bottom_dialog.dart';
+import 'package:parent_control/src/model/user_model.dart';
+import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -17,9 +19,9 @@ class AddChildScreen extends StatefulWidget {
 
 class _AddChildScreenState extends State<AddChildScreen> {
   final ImagePicker _picker = ImagePicker();
+  final Repository _repository = Repository();
   final TextEditingController _controller = TextEditingController();
   bool errorText = true;
-  bool isLoading = false;
   File? data;
   bool gender = true;
 
@@ -260,15 +262,24 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   height: 152 * h,
                 ),
                 GestureDetector(
-                  onTap: () {
-                    print(errorText);
+                  onTap: () async {
                     if (_controller.text.length >= 4) {
-                      isLoading = false;
+                      var image = data == null ? "" : data!.path;
+                      int userId = await _repository.saveProducts(
+                        UserModel(
+                          id: 0,
+                          name: _controller.text,
+                          image: image,
+                          gender: gender ? 1 : 0,
+                        ),
+                      );
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return const ServiceScreen();
+                            return ServiceScreen(
+                              userId: userId,
+                            );
                           },
                         ),
                       );

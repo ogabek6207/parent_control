@@ -4,7 +4,9 @@ import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceScreen extends StatefulWidget {
-  const ServiceScreen({Key? key}) : super(key: key);
+  final int userId;
+
+  const ServiceScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
   _ServiceScreenState createState() => _ServiceScreenState();
@@ -72,144 +74,139 @@ class _ServiceScreenState extends State<ServiceScreen> {
           SizedBox(
             height: 16 * h,
           ),
-
-      GestureDetector(
-        onTap: () {
-          setState(() {
-            one = !one;
-          });
-        },
-        child:        Container(
-          height: 56,
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 16 * w),
-          decoration: BoxDecoration(
-            color: AppTheme.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 16 * w,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                one = !one;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-              Image.asset(
-                "assets/images/instagram.png",
-              ),
-              SizedBox(
-                width: 16 * w,
-              ),
-              Text(
-                "Instagram",
-                style: TextStyle(
-                  color: AppTheme.black,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  fontSize: 16,
-                  height: 19 / 16 * h,
-                ),
-              ),
-              const Spacer(),
-              one
-                  ? SizedBox(
-                height: 24,
-                width: 24,
-                child: Stack(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/container.svg",
-                      color: AppTheme.blue,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Image.asset(
+                    "assets/images/instagram.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "Instagram",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
                     ),
-                    Center(
-                      child: SvgPicture.asset(
-                        "assets/icons/done.svg",
-                        color: AppTheme.white,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-                  : SvgPicture.asset(
-                "assets/icons/unselect.svg",
+                  ),
+                  const Spacer(),
+                  one
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
+                        ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                ],
               ),
-
-              SizedBox(
-                width: 16 * w,
-              ),
-            ],
+            ),
           ),
-        ), ),
-
           SizedBox(
             height: 8 * h,
           ),
-
-
-      GestureDetector(
-        onTap: () {
-          setState(() {
-            two = !two;
-          });
-        },
-        child:   Container(
-          height: 56,
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.symmetric(horizontal: 16 * w),
-          decoration: BoxDecoration(
-            color: AppTheme.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 16 * w,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                two = !two;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-              Image.asset(
-                "assets/images/tiktok.png",
-              ),
-              SizedBox(
-                width: 16 * w,
-              ),
-              Text(
-                "TikTok",
-                style: TextStyle(
-                  color: AppTheme.black,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                  fontSize: 16,
-                  height: 19 / 16 * h,
-                ),
-              ),
-              const Spacer(),
-              two
-                  ? SizedBox(
-                height: 24,
-                width: 24,
-                child: Stack(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/container.svg",
-                      color: AppTheme.blue,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Image.asset(
+                    "assets/images/tiktok.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "TikTok",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
                     ),
-                    Center(
-                      child: SvgPicture.asset(
-                        "assets/icons/done.svg",
-                        color: AppTheme.white,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-                  : SvgPicture.asset(
-                "assets/icons/unselect.svg",
+                  ),
+                  const Spacer(),
+                  two
+                      ? SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Stack(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/container.svg",
+                                color: AppTheme.blue,
+                              ),
+                              Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/done.svg",
+                                  color: AppTheme.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : SvgPicture.asset(
+                          "assets/icons/unselect.svg",
+                        ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                ],
               ),
-
-              SizedBox(
-                width: 16 * w,
-              ),
-            ],
+            ),
           ),
-        ),),
-
           SizedBox(
             height: 8 * h,
           ),
