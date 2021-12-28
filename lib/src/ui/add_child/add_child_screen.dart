@@ -73,203 +73,195 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 SizedBox(
                   height: 40 * h,
                 ),
-
                 data == null
                     ? GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return Column(
-                            children: [
-                              Container(
-                                height: 180,
-                                width: MediaQuery.of(context).size.width,
-                                color: Colors.transparent,
-                                child: Container(
-                                  height: 100,
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: EdgeInsets.only(
-                                    left: 16 * w,
-                                    right: 16 * w,
-                                    bottom: 16 * h,
-                                    top: 16 * h,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.white,
-                                    borderRadius: BorderRadius.circular(12 * o),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 15 * h,
-                                      ),
-                                      Text(
-                                        "photos",
-                                        style: TextStyle(
-                                          color: AppTheme.grey,
-                                          fontSize: 16,
+                        onTap: () {
+                          showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return Column(
+                                  children: [
+                                    Container(
+                                      height: 180,
+                                      width: MediaQuery.of(context).size.width,
+                                      color: Colors.transparent,
+                                      child: Container(
+                                        height: 100,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        margin: EdgeInsets.only(
+                                          left: 16 * w,
+                                          right: 16 * w,
+                                          bottom: 16 * h,
+                                          top: 16 * h,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 15 * h,
-                                      ),
-                                      Container(
-                                        height: 1,
-                                        width:
-                                        MediaQuery.of(context).size.width,
-                                        color: AppTheme.grey,
-                                      ),
-
-                                      GestureDetector(onTap: (){
-                                        getGalleryData();
-                                      },
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 15 * h,
-                                          ),
-                                          Text(
-                                            "From Photos",
-                                            style: TextStyle(
-                                              color: AppTheme.blue,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 15 * h,
-                                          ),
-                                        ],
-                                      ),
-                                      ),
-
-                                      Container(
-                                        height: 1,
-                                        width:
-                                        MediaQuery.of(context).size.width,
-                                        color: AppTheme.grey,
-                                      ),
-
-
-                                      GestureDetector(
-                                        onTap: (){
-                                       getCameraData();
-                                        },
+                                        decoration: BoxDecoration(
+                                          color: AppTheme.white,
+                                          borderRadius:
+                                              BorderRadius.circular(12 * o),
+                                        ),
                                         child: Column(
                                           children: [
                                             SizedBox(
                                               height: 15 * h,
                                             ),
-
-
-
                                             Text(
-                                              "Take Picture",
+                                              "photos",
                                               style: TextStyle(
-                                                color: AppTheme.blue,
+                                                color: AppTheme.grey,
                                                 fontSize: 16,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 15 * h,
+                                            ),
+                                            Container(
+                                              height: 1,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              color: AppTheme.grey,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                getGalleryData();
+                                              },
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 15 * h,
+                                                  ),
+                                                  Text(
+                                                    "From Photos",
+                                                    style: TextStyle(
+                                                      color: AppTheme.blue,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 15 * h,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 1,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              color: AppTheme.grey,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                getCameraData();
+                                              },
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 15 * h,
+                                                  ),
+                                                  Text(
+                                                    "Take Picture",
+                                                    style: TextStyle(
+                                                      color: AppTheme.blue,
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                              GestureDetector(
-                                onTap:  (){
-                                  Navigator.pop(context);
-                                },
-                                child:    Container(height: 56*h,
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.white,
-                                    borderRadius: BorderRadius.circular(10*o),
-
-                                  ),
-                                  margin: EdgeInsets.symmetric(horizontal: 16*w),
-                                  child:
-
-
-
-                                  Center(
-                                    child: Text(
-                                      "Cancel",
-                                      style: TextStyle(
-                                        color: AppTheme.blue,
-                                        fontSize: 16,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                        height: 56 * h,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                          color: AppTheme.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10 * o),
+                                        ),
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 16 * w),
+                                        child: Center(
+                                          child: Text(
+                                            "Cancel",
+                                            style: TextStyle(
+                                              color: AppTheme.blue,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-
-                                ),
-                              ),
-
-                            ],
-                          );
-                        });
-                  },
-                  child: Container(
-                    height: 128 * h,
-                    width: 128 * h,
-                    decoration: BoxDecoration(
-                      color: AppTheme.greyD2,
-                      borderRadius: BorderRadius.circular(
-                        11 * h,
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/gallery.svg",
-                        )
-                      ],
-                    ),
-                  ),
-                )
-                    : Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.file(
-                        data!,
-                        height: 128 * h,
-                        width: 128 * h,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 4 * h,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              data = null;
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(left: 90 * w),
-                            child: SvgPicture.asset(
-                              "assets/icons/close.svg",
-                              height: 24 * o,
-                              width: 24 * o,
+                                  ],
+                                );
+                              });
+                        },
+                        child: Container(
+                          height: 128 * h,
+                          width: 128 * h,
+                          decoration: BoxDecoration(
+                            color: AppTheme.greyD2,
+                            borderRadius: BorderRadius.circular(
+                              11 * h,
                             ),
                           ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/gallery.svg",
+                              )
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      )
+                    : Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.file(
+                              data!,
+                              height: 128 * h,
+                              width: 128 * h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 4 * h,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    data = null;
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 90 * w),
+                                  child: SvgPicture.asset(
+                                    "assets/icons/close.svg",
+                                    height: 24 * o,
+                                    width: 24 * o,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                 SizedBox(
                   height: 48 * h,
                 ),
@@ -396,10 +388,14 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     print(errorText);
                     if (_controller.text.length >= 4) {
                       isLoading = false;
-                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return const ServiceScreen();
-                      },),);
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const ServiceScreen();
+                          },
+                        ),
+                      );
                     }
                   },
                   child: Container(
