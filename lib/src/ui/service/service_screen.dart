@@ -72,43 +72,184 @@ class _ServiceScreenState extends State<ServiceScreen> {
           SizedBox(
             height: 16 * h,
           ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
+
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            one = !one;
+          });
+        },
+        child:        Container(
+          height: 56,
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.symmetric(horizontal: 16 * w),
+          decoration: BoxDecoration(
+            color: AppTheme.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 16 * w,
+              ),
+              Image.asset(
+                "assets/images/instagram.png",
+              ),
+              SizedBox(
+                width: 16 * w,
+              ),
+              Text(
+                "Instagram",
+                style: TextStyle(
+                  color: AppTheme.black,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 16,
+                  height: 19 / 16 * h,
                 ),
-                Image.asset(
-                  "assets/images/instagram.png",
+              ),
+              const Spacer(),
+              one
+                  ? SizedBox(
+                height: 24,
+                width: 24,
+                child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/container.svg",
+                      color: AppTheme.blue,
+                    ),
+                    Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/done.svg",
+                        color: AppTheme.white,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 16 * w,
+              )
+                  : SvgPicture.asset(
+                "assets/icons/unselect.svg",
+              ),
+
+              SizedBox(
+                width: 16 * w,
+              ),
+            ],
+          ),
+        ), ),
+
+          SizedBox(
+            height: 8 * h,
+          ),
+
+
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            two = !two;
+          });
+        },
+        child:   Container(
+          height: 56,
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.symmetric(horizontal: 16 * w),
+          decoration: BoxDecoration(
+            color: AppTheme.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 16 * w,
+              ),
+              Image.asset(
+                "assets/images/tiktok.png",
+              ),
+              SizedBox(
+                width: 16 * w,
+              ),
+              Text(
+                "TikTok",
+                style: TextStyle(
+                  color: AppTheme.black,
+                  fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 16,
+                  height: 19 / 16 * h,
                 ),
-                Text(
-                  "Instagram",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
+              ),
+              const Spacer(),
+              two
+                  ? SizedBox(
+                height: 24,
+                width: 24,
+                child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/container.svg",
+                      color: AppTheme.blue,
+                    ),
+                    Center(
+                      child: SvgPicture.asset(
+                        "assets/icons/done.svg",
+                        color: AppTheme.white,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+                  : SvgPicture.asset(
+                "assets/icons/unselect.svg",
+              ),
+
+              SizedBox(
+                width: 16 * w,
+              ),
+            ],
+          ),
+        ),),
+
+          SizedBox(
+            height: 8 * h,
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                three = !three;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      two = !two;
-                    });
-                  },
-                  child: two
+                  Image.asset(
+                    "assets/images/youtube.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "Youtube",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
+                    ),
+                  ),
+                  const Spacer(),
+                  three
                       ? SizedBox(
                           height: 24,
                           width: 24,
@@ -130,53 +271,53 @@ class _ServiceScreenState extends State<ServiceScreen> {
                       : SvgPicture.asset(
                           "assets/icons/unselect.svg",
                         ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(
             height: 8 * h,
           ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Image.asset(
-                  "assets/images/tiktok.png",
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Text(
-                  "Instagram",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                four = !four;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      one = !one;
-                    });
-                  },
-                  child: one
+                  Image.asset(
+                    "assets/images/twitter.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "Twitter",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
+                    ),
+                  ),
+                  const Spacer(),
+                  four
                       ? SizedBox(
                           height: 24,
                           width: 24,
@@ -198,53 +339,53 @@ class _ServiceScreenState extends State<ServiceScreen> {
                       : SvgPicture.asset(
                           "assets/icons/unselect.svg",
                         ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(
             height: 8 * h,
           ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Image.asset(
-                  "assets/images/youtube.png",
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Text(
-                  "Youtube",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                five = !five;
+              });
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 16 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 16 * w,
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      three = !three;
-                    });
-                  },
-                  child: three
+                  Image.asset(
+                    "assets/images/steam.png",
+                  ),
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  Text(
+                    "Steam",
+                    style: TextStyle(
+                      color: AppTheme.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      height: 19 / 16 * h,
+                    ),
+                  ),
+                  const Spacer(),
+                  five
                       ? SizedBox(
                           height: 24,
                           width: 24,
@@ -266,147 +407,11 @@ class _ServiceScreenState extends State<ServiceScreen> {
                       : SvgPicture.asset(
                           "assets/icons/unselect.svg",
                         ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 8 * h,
-          ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Image.asset(
-                  "assets/images/twitter.png",
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Text(
-                  "Twitter",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
+                  SizedBox(
+                    width: 16 * w,
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      four = !four;
-                    });
-                  },
-                  child: four
-                      ? SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Stack(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/container.svg",
-                                color: AppTheme.blue,
-                              ),
-                              Center(
-                                child: SvgPicture.asset(
-                                  "assets/icons/done.svg",
-                                  color: AppTheme.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      : SvgPicture.asset(
-                          "assets/icons/unselect.svg",
-                        ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 8 * h,
-          ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 16 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Image.asset(
-                  "assets/images/steam.png",
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-                Text(
-                  "Steam",
-                  style: TextStyle(
-                    color: AppTheme.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16,
-                    height: 19 / 16 * h,
-                  ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      five = !five;
-                    });
-                  },
-                  child: five
-                      ? SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Stack(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/container.svg",
-                                color: AppTheme.blue,
-                              ),
-                              Center(
-                                child: SvgPicture.asset(
-                                  "assets/icons/done.svg",
-                                  color: AppTheme.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      : SvgPicture.asset(
-                          "assets/icons/unselect.svg",
-                        ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(

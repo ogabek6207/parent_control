@@ -1,9 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
-import 'package:parent_control/src/ui/dialog/center_dialog.dart';
+import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -20,13 +21,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
   bool errorText = true;
   bool isLoading = false;
   File? data;
-  bool girl = false;
-  bool boy = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  bool gender = true;
 
   @override
   Widget build(BuildContext context) {
@@ -76,134 +71,23 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 data == null
                     ? GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return Column(
-                                  children: [
-                                    Container(
-                                      height: 180,
-                                      width: MediaQuery.of(context).size.width,
-                                      color: Colors.transparent,
-                                      child: Container(
-                                        height: 100,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        margin: EdgeInsets.only(
-                                          left: 16 * w,
-                                          right: 16 * w,
-                                          bottom: 16 * h,
-                                          top: 16 * h,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: AppTheme.white,
-                                          borderRadius:
-                                              BorderRadius.circular(12 * o),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            SizedBox(
-                                              height: 15 * h,
-                                            ),
-                                            Text(
-                                              "photos",
-                                              style: TextStyle(
-                                                color: AppTheme.grey,
-                                                fontSize: 16,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 15 * h,
-                                            ),
-                                            Container(
-                                              height: 1,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              color: AppTheme.grey,
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                getGalleryData();
-                                              },
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 15 * h,
-                                                  ),
-                                                  Text(
-                                                    "From Photos",
-                                                    style: TextStyle(
-                                                      color: AppTheme.blue,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 15 * h,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              height: 1,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              color: AppTheme.grey,
-                                            ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                getCameraData();
-                                              },
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 15 * h,
-                                                  ),
-                                                  Text(
-                                                    "Take Picture",
-                                                    style: TextStyle(
-                                                      color: AppTheme.blue,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Container(
-                                        height: 56 * h,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(
-                                          color: AppTheme.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10 * o),
-                                        ),
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 16 * w),
-                                        child: Center(
-                                          child: Text(
-                                            "Cancel",
-                                            style: TextStyle(
-                                              color: AppTheme.blue,
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
+                          BottomDialog.showGalleryDialog(
+                            context,
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.gallery);
+                              setState(() {
+                                data = File(image!.path);
                               });
+                            },
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.camera);
+                              setState(() {
+                                data = File(image!.path);
+                              });
+                            },
+                          );
                         },
                         child: Container(
                           height: 128 * h,
@@ -266,98 +150,84 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   height: 48 * h,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Spacer(),
-                    Container(
-                      height: 108 * h,
-                      width: 72 * w,
-                      color: Colors.transparent,
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  boy = true;
-                                  girl = false;
-                                });
-                              },
-                              child:   Container(
-
-                                decoration: BoxDecoration(
-
-                                  color: boy ? Colors.blue : Colors.grey,
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child:  SvgPicture.asset(
-                                  "assets/icons/boy.svg",
-                                  height: 72 * o,
-                                  width: 72 * o,
-                                )
-
-                              ),
-                          ),
-
-                          const Spacer(),
-                          Text(
-                            "Boy",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 16,
-                              height: 19 / 16 * h,
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              gender = true;
+                            });
+                          },
+                          child: Container(
+                            height: 72 * o,
+                            width: 72 * o,
+                            padding: EdgeInsets.only(top: 12 * h),
+                            decoration: BoxDecoration(
+                              color: gender ? Colors.blue : Colors.grey,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/boy.svg",
+                              height: 72 * o,
+                              width: 72 * o,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(height: 8 * h),
+                        Text(
+                          "Boy",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                            height: 19 / 16 * h,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       width: 38 * w,
                     ),
-                    SizedBox(
-                      height: 108 * h,
-                      width: 72 * w,
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                boy = false;
-                                girl = true;
-                              });
-                            },
-                            child:   Container(
-height: 72*o,
-                                width: 72*o,
-                                decoration: BoxDecoration(
-
-                                  color: girl ? Colors.blue : Colors.grey,
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child:  SvgPicture.asset(
-                                  "assets/icons/girl.svg",
-                                  height: 72 * o,
-                                  width: 72 * o,
-                                )
-
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              gender = false;
+                            });
+                          },
+                          child: Container(
+                            height: 72 * o,
+                            width: 72 * o,
+                            padding: EdgeInsets.only(top: 12 * h),
+                            decoration: BoxDecoration(
+                              color: !gender ? Colors.blue : Colors.grey,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/girl.svg",
+                              height: 72 * o,
+                              width: 72 * o,
                             ),
                           ),
-
-                          const Spacer(),
-                          Text(
-                            "Boy",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 16,
-                              height: 19 / 16 * h,
-                            ),
+                        ),
+                        SizedBox(height: 8 * h),
+                        Text(
+                          "Girl",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                            height: 19 / 16 * h,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    const Spacer(),
                   ],
                 ),
                 SizedBox(
@@ -431,19 +301,5 @@ height: 72*o,
         ],
       ),
     );
-  }
-
-  Future<void> getGalleryData() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      data = File(image!.path);
-    });
-  }
-
-  Future<void> getCameraData() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-    setState(() {
-      data = File(image!.path);
-    });
   }
 }
