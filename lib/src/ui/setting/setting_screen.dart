@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parent_control/src/app%20theme/app_thema.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -10,6 +11,11 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return  Scaffold(
+      backgroundColor: AppTheme.blue,
+      body: Column(
+
+      ),
+    );
   }
 }
