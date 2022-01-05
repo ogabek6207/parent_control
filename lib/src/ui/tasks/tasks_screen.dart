@@ -261,6 +261,25 @@ class _TasksScreenState extends State<TasksScreen> {
                     color: AppTheme.dark,
                   ),
                 ),
+                ListView(
+                  children: [
+                    Container(
+
+                      height: 56*h,
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 16*w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8*o),
+                        color: AppTheme.light_blue,
+                      ),
+                      child: Row(
+                        children: [
+                          
+                        ],
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
