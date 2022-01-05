@@ -469,6 +469,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       ),
                     ),
                   ),
+
                   SizedBox(
                     height: 36 * h,
                   ),

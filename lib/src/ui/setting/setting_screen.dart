@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -144,23 +146,33 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
           ),
           const Spacer(),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 40 * w),
-            decoration: BoxDecoration(
-              color: AppTheme.white,
-              borderRadius: BorderRadius.circular(32 * o),
-            ),
-            child: Center(
-              child: Text(
-                "Add child",
-                style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18 * o,
-                  fontWeight: FontWeight.w500,
-                  height: 21 / 18 * h,
-                  color: AppTheme.blue1,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                CupertinoPageRoute(builder: (context) {
+                  return const AddChildScreen();
+                }),
+              );
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 40 * w),
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(32 * o),
+              ),
+              child: Center(
+                child: Text(
+                  "Add child",
+                  style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18 * o,
+                    fontWeight: FontWeight.w500,
+                    height: 21 / 18 * h,
+                    color: AppTheme.blue1,
+                  ),
                 ),
               ),
             ),
@@ -173,12 +185,13 @@ class _SettingScreenState extends State<SettingScreen> {
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.symmetric(horizontal: 40 * w),
             decoration: BoxDecoration(
-              color: AppTheme.blue1,
+              color: Colors.transparent,
+              border: Border.all(color: AppTheme.white, width: 1),
               borderRadius: BorderRadius.circular(32 * o),
             ),
             child: Center(
               child: Text(
-                "+ Add task",
+                "Add services",
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
                   fontSize: 18 * o,
@@ -188,6 +201,9 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            height: 34 * h,
           ),
         ],
       ),
