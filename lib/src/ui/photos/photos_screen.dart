@@ -109,7 +109,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -119,7 +119,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 2 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -156,7 +156,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -166,7 +166,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 2 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -203,7 +203,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -213,7 +213,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 2 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -250,7 +250,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -260,7 +260,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 2 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -297,7 +297,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -307,7 +307,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 2 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -344,7 +344,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
@@ -354,7 +354,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
             margin: EdgeInsets.only(bottom: 1.5 * h),
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   height: 124 * o,
                   width: 124 * o,
@@ -391,7 +391,7 @@ class _PhotosScreenState extends State<PhotosScreen> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),

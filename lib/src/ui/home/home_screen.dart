@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/home_model.dart';
+import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -116,8 +118,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   height: 38 / 32 * h),
                                             ),
                                             const Spacer(),
-                                            SvgPicture.asset(
-                                                "assets/icons/vector.svg"),
+                       GestureDetector(onTap: (){
+                         Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context){
+                           return  const AddChildScreen();
+                         }),);
+                       },
+                       child:                   SvgPicture.asset(
+                           "assets/icons/vector.svg"),
+                       ),
+
                                             SizedBox(
                                               width: 24 * w,
                                             ),

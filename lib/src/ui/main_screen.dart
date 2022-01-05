@@ -10,7 +10,7 @@ class MainScreen extends StatefulWidget {
 
 
 
-  MainScreen({Key? key, }) : super(key: key);
+  const MainScreen({Key? key, }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> data = [
-          HomeScreen(),
+          const HomeScreen(),
     const TasksScreen(),
     const AlertScreen(),
     const SettingScreen(),

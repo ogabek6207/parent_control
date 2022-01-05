@@ -15,7 +15,7 @@ class BottomDialog {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) {
-        return Container(
+        return SizedBox(
           height: 212,
           child: Column(
             children: [

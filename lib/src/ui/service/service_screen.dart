@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
-import 'package:parent_control/src/ui/home/home_screen.dart';
 import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -560,7 +559,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                 context,
                 CupertinoPageRoute(
                   builder: (context) {
-                    return  MainScreen();
+                    return  const MainScreen();
                   },
                 ),
               );
