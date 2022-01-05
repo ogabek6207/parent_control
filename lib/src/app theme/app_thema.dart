@@ -9,11 +9,13 @@ class AppTheme {
   static Color milk = const Color(0xFFF5F5F5);
   static Color primary = const Color(0xFFF6F6F6);
   static Color red = const Color(0xFFFF4D00);
+  static Color greyE4 = const Color(0xFFE4E4E4);
 
   static Color dark = const Color(0xFF252525);
   static Color grey = const Color(0xFF818181);
   static Color greyD2 = const Color(0xFFD2D2D2);
   static Color purple = const Color(0xFFB8F2FF);
+  static Color border = const Color(0xFFE8E8E8);
 
   static String fontFamilyPoppins = "Poppins";
 }
