@@ -21,7 +21,7 @@ class _ColorScreenState extends State<ColorScreen> {
       body: Column(
         children: [
           SizedBox(
-            height: 36 * h,
+            height: 56 * h,
           ),
           Container(
             padding: EdgeInsets.only(
@@ -54,6 +54,9 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
+
+
+
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -71,6 +74,230 @@ class _ColorScreenState extends State<ColorScreen> {
               children: [
                 Text(
                   "Default color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.light_blue,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.light_green,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.light_yellow,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.peach,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.rose,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.lilac,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.lilacA2,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      color: AppTheme.black,
+                      height: 19 / 16 * h),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: EdgeInsets.only(
+              left: 16 * w,
+            ),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13 * o),
+              color: AppTheme.lilac6B,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Color",
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
