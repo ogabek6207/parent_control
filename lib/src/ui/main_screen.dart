@@ -7,10 +7,9 @@ import 'package:parent_control/src/ui/tasks/tasks_screen.dart';
 import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
-
-
-
-  const MainScreen({Key? key, }) : super(key: key);
+  const MainScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   List<Widget> data = [
-          const HomeScreen(),
+    const HomeScreen(),
     const TasksScreen(),
     const AlertScreen(),
     const SettingScreen(),
@@ -49,40 +48,40 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
-                ? SvgPicture.asset("assets/icons/home.svg")
-                : SvgPicture.asset("assets/icons/home.svg"),
+                ? SvgPicture.asset("assets/menu/home.svg")
+                : SvgPicture.asset("assets/menu/home.svg"),
             label: "home",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 1
                 ? SvgPicture.asset(
-                    "assets/icons/tasks.svg",
+                    "assets/menu/tasks.svg",
                     color: AppTheme.blue,
                   )
                 : SvgPicture.asset(
-                    "assets/icons/tasks.svg",
+                    "assets/menu/tasks.svg",
                   ),
             label: "Tasks",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
                 ? SvgPicture.asset(
-                    "assets/icons/bell.svg",
+                    "assets/menu/bell.svg",
                     color: AppTheme.blue,
                   )
                 : SvgPicture.asset(
-                    "assets/icons/bell.svg",
+                    "assets/menu/bell.svg",
                   ),
             label: "Alerts",
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
                 ? SvgPicture.asset(
-                    "assets/icons/setting.svg",
+                    "assets/menu/setting.svg",
                     color: AppTheme.blue,
                   )
                 : SvgPicture.asset(
-                    "assets/icons/setting.svg",
+                    "assets/menu/setting.svg",
                   ),
             label: "Settings",
           ),

@@ -12,7 +12,25 @@ class _AlertScreenState extends State<AlertScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.blue,
+  body: AnimatedContainer(
+    width: MediaQuery.of(context).size.width,
+    height: MediaQuery.of(context).size.height,
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          AppTheme.blue,
+          AppTheme.blueFF,
+        ],
+      ),
+    ),
+    curve: Curves.easeInOut,
+    duration: const Duration(
+      seconds: 3,
+    ),
+    child: Column(),
+  ),
     );
   }
 }
