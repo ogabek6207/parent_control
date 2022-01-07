@@ -5,6 +5,7 @@ import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/onboard_model.dart';
 import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class OnBoardScreen extends StatefulWidget {
 }
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
+  bool isFirst = false;
   int _selectedIndex = 0;
   List<OnboardModel> data = [
     OnboardModel(
@@ -129,6 +131,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               onTap: () {
                 _selectedIndex++;
                 if (_selectedIndex == 4) {
+                  _setData(isFirst = true);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -229,5 +232,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _setData(bool isFirst) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool("isFirst", true);
   }
 }

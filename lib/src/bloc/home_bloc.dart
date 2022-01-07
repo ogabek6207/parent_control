@@ -1,17 +1,15 @@
-import 'package:parent_control/src/model/home_model.dart';
+import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class HomeBloc {
   final _repository = Repository();
-  final notesFetch = PublishSubject<List<HomeModel>>();
+  final notesFetch = PublishSubject<List<UserModel>>();
 
-  Stream<List<HomeModel>> get fetchDrugs => notesFetch.stream;
+  Stream<List<UserModel>> get fetchDrugs => notesFetch.stream;
 
-
-  getNotes() async {
-
-    var results = await _repository.getNotes();
+  getProduct() async {
+    var results = await _repository.getProduct();
 
     notesFetch.sink.add(results);
   }
