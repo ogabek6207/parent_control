@@ -54,9 +54,7 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
-
-
+          
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
