@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/alert_model.dart';
+import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AlertScreen extends StatefulWidget {
-  const AlertScreen({Key? key}) : super(key: key);
+  final int id;
+
+  const AlertScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   _AlertScreenState createState() => _AlertScreenState();
@@ -13,19 +16,24 @@ class AlertScreen extends StatefulWidget {
 
 class _AlertScreenState extends State<AlertScreen> {
   List<AlertModel> data = [
-
     AlertModel(image: "assets/images/instagram.png"),
-
     AlertModel(image: "assets/images/youtube.png"),
-
-
   ];
+  bool one = false;
+  bool two = false;
+
+  @override
+  initState() {
+    _getSocial();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
+
     return Scaffold(
       body: AnimatedContainer(
         width: MediaQuery.of(context).size.width,
@@ -127,9 +135,12 @@ class _AlertScreenState extends State<AlertScreen> {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return Container(
-
                     height: 56 * h,
-                    margin: EdgeInsets.only(top: 8*h, left: 16*w, right: 16*w,),
+                    margin: EdgeInsets.only(
+                      top: 8 * h,
+                      left: 16 * w,
+                      right: 16 * w,
+                    ),
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12 * o),
@@ -164,15 +175,38 @@ class _AlertScreenState extends State<AlertScreen> {
                           color: AppTheme.black,
                         ),
                         const Spacer(),
-                        SvgPicture.asset(
-                          "assets/icons/dislike.svg",
+                        GestureDetector(
+                          onTap: () {
+                            setState(
+                              () {
+                                two = !two;
+                              },
+                            );
+                          },
+                          child: two
+                              ? SvgPicture.asset(
+                                  "assets/icons/dislike_.svg",
+                                )
+                              : SvgPicture.asset(
+                                  "assets/icons/dislike.svg",
+                                ),
                         ),
                         SizedBox(
                           width: 16 * w,
                         ),
-                        SvgPicture.asset(
-                          "assets/icons/like.svg",
-                        ),
+                        GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                one = !one;
+                              });
+                            },
+                            child: one
+                                ? SvgPicture.asset(
+                                    "assets/icons/like_.svg",
+                                  )
+                                : SvgPicture.asset(
+                                    "assets/icons/like.svg",
+                                  )),
                         SizedBox(
                           width: 16 * w,
                         ),
@@ -186,5 +220,11 @@ class _AlertScreenState extends State<AlertScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _getSocial() async {
+    Repository _repository = Repository();
+
+    _repository.getSocial(widget.id);
   }
 }
