@@ -10,6 +10,7 @@ class SocialBloc {
 
   getSocial() async {
     var results = await _repository.getSocial(0);
+
     socialFetch.sink.add(results);
   }
 

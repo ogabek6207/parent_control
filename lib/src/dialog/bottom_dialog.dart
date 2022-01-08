@@ -16,11 +16,11 @@ class BottomDialog {
       context: context,
       builder: (context) {
         return SizedBox(
-          height: 212,
+          height: 218 * h,
           child: Column(
             children: [
               Container(
-                height: 140,
+                height: 145 * h,
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.only(
                   left: 8 * w,
@@ -113,7 +113,9 @@ class BottomDialog {
                     color: AppTheme.white,
                     borderRadius: BorderRadius.circular(10 * o),
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 8 * w,),
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 8 * w,
+                  ),
                   child: Center(
                     child: Text(
                       "Cancel",
