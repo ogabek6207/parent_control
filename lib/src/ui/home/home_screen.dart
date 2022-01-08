@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController controller = PageController(viewportFraction: 0.85);
-File ? data;
+
   @override
   void initState() {
     homeBloc.getUsers();
@@ -43,7 +43,7 @@ File ? data;
                   return PageView.builder(
                     controller: controller,
                     onPageChanged: (_index) {},
-                    itemCount: snapshot.data!.length,
+                    itemCount: result.length,
                     itemBuilder: (context, index) {
                       return Container(
                         width: MediaQuery.of(context).size.width,
@@ -63,35 +63,47 @@ File ? data;
                               width: MediaQuery.of(context).size.width,
                               child: Stack(
                                 children: [
-                                  data! == null ?
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(12 * o),
-                                      topLeft: Radius.circular(12 * o),
-                                    ),
-                                    child: Image.file(
-                                      data!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ) : Container(height: 160*h,
-                                    width: MediaQuery.of(context).size.width,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12*o),
-                                        topRight: Radius.circular(12*o),
-                                      ),
-                                      color: AppTheme.white,
-                                    ),
-
-                                    child: Row(
-                                      children: [
-                                        const Spacer(),
-                                        result[index].gender == 1 ?
-                                        SvgPicture.asset("assets/icons/boy_.svg") : SvgPicture.asset("assets/icons/girl_.svg"),
-                                        SizedBox(width: 58*w,),
-                                      ],
-                                    ),
-                                  ) ,
+                                  result[index].image != ""
+                                      ? ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(8 * o),
+                                            topLeft: Radius.circular(8 * o),
+                                          ),
+                                          child: Image.file(
+                                            File(result[index].image),
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Container(
+                                          height: 160 * h,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(12 * o),
+                                              topRight: Radius.circular(12 * o),
+                                            ),
+                                            color: AppTheme.white,
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Spacer(),
+                                              result[index].gender == 1
+                                                  ? SvgPicture.asset(
+                                                      "assets/icons/boy_.svg",
+                                                    )
+                                                  : SvgPicture.asset(
+                                                      "assets/icons/girl_.svg",
+                                                    ),
+                                              SizedBox(
+                                                width: 58 * w,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                   Container(
                                     height: 160 * h,
                                     width: MediaQuery.of(context).size.width,
@@ -103,9 +115,7 @@ File ? data;
                                         ),
                                         Text(
                                           result[index].name,
-
                                           style: TextStyle(
-
                                             color: AppTheme.grey,
                                             fontSize: 32,
                                             fontStyle: FontStyle.normal,
@@ -127,9 +137,6 @@ File ? data;
                                 ],
                               ),
                             ),
-
-
-
                             SizedBox(
                               height: 21 * h,
                             ),
