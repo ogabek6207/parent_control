@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
@@ -113,20 +113,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                         SizedBox(
                                           width: 16 * w,
                                         ),
-                                        Text(
-                                          result[index].name,
-                                          style: TextStyle(
-                                            color: AppTheme.grey,
-                                            fontSize: 32,
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.w600,
-                                            height: 38 / 32 * h,
+                                        SizedBox(
+                                          width: 200,
+                                          child: Text(
+                                            result[index].name,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+
+                                              color:  result[index].image != "" ?    AppTheme.white :   AppTheme.black,
+                                              fontSize: 32,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w600,
+                                              height: 38 / 32 * h,
+                                            ),
                                           ),
                                         ),
                                         const Spacer(),
                                         SvgPicture.asset(
                                           "assets/icons/vector.svg",
-                                          color: AppTheme.grey,
+                                          color: result[index].image != "" ? AppTheme.white : AppTheme.black,
                                         ),
                                         SizedBox(
                                           width: 16 * w,

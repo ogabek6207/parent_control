@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
-import 'package:parent_control/src/model/alert_model.dart';
-import 'package:parent_control/src/repository/repository.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/bloc/social_bloc.dart';
+import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AlertScreen extends StatefulWidget {
@@ -16,15 +16,13 @@ class AlertScreen extends StatefulWidget {
 }
 
 class _AlertScreenState extends State<AlertScreen> {
-  List<AlertModel> data = [
-    AlertModel(image: "assets/images/instagram.png"),
-  ];
+
   bool one = false;
   bool two = false;
    int _currentIntValue = 0;
   @override
-  initState() {
-    _getSocial();
+  void initState() {
+    socialBloc.getSocial();
     super.initState();
   }
 
@@ -54,6 +52,12 @@ class _AlertScreenState extends State<AlertScreen> {
         ),
         child: Column(
           children: [
+
+
+
+
+
+
             Container(
               height: 48 * h,
               width: MediaQuery.of(context).size.width,
@@ -130,101 +134,111 @@ class _AlertScreenState extends State<AlertScreen> {
             SizedBox(
               height: 16 * h,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 56 * h,
-                    margin: EdgeInsets.only(
-                      top: 8 * h,
-                      left: 16 * w,
-                      right: 16 * w,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12 * o),
-                      color: AppTheme.white,
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 16 * w,
-                        ),
-                        Image.asset(
-                          data[index].image,
-                        ),
-                        SizedBox(
-                          width: 24 * w,
-                        ),
-                        NumberPicker(
-                          value: _currentIntValue,
-                          minValue: 0,
-                          maxValue: 24,
-                          step: 1,
-                          haptics: true,
-                          onChanged: (value) => setState(() => _currentIntValue = value),
-                        ),
-                        Text('$_currentIntValue hour '),
 
-                        SizedBox(
-                          width: 8 * w,
-                        ),
-                        SvgPicture.asset(
-                          "assets/icons/arrow_bottom.svg",
-                          color: AppTheme.black,
-                        ),
-                        const Spacer(),
-                        GestureDetector(
-                          onTap: () {
-                            setState(
-                              () {
-                                two = !two;
-                              },
-                            );
-                          },
-                          child: two
-                              ? SvgPicture.asset(
+
+
+
+
+            Expanded(
+              child:
+              StreamBuilder(
+                stream: socialBloc.fetchSocial,
+                builder: (context, AsyncSnapshot<List<SocialModel>> snapshot) {
+                  if (snapshot.hasData) {
+                    List<SocialModel> result = snapshot.data!;
+                    return  ListView.builder(
+                      itemCount: result.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 56 * h,
+                          margin: EdgeInsets.only(
+                            top: 8 * h,
+                            left: 16 * w,
+                            right: 16 * w,
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12 * o),
+                            color: AppTheme.white,
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                              Image.asset(
+                                "",
+                              ),
+                              SizedBox(
+                                width: 24 * w,
+                              ),
+                              NumberPicker(
+                                value: _currentIntValue,
+                                minValue: 0,
+                                maxValue: 24,
+                                step: 1,
+                                haptics: true,
+                                onChanged: (value) => setState(() => _currentIntValue = value),
+                              ),
+                              Text('$_currentIntValue hour '),
+
+                              SizedBox(
+                                width: 8 * w,
+                              ),
+                              SvgPicture.asset(
+                                "assets/icons/arrow_bottom.svg",
+                                color: AppTheme.black,
+                              ),
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(
+                                        () {
+                                      two = !two;
+                                    },
+                                  );
+                                },
+                                child: two
+                                    ? SvgPicture.asset(
                                   "assets/icons/dislike_.svg",
                                 )
-                              : SvgPicture.asset(
+                                    : SvgPicture.asset(
                                   "assets/icons/dislike.svg",
                                 ),
-                        ),
-                        SizedBox(
-                          width: 16 * w,
-                        ),
-                        GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                one = !one;
-                              });
-                            },
-                            child: one
-                                ? SvgPicture.asset(
+                              ),
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                              GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      one = !one;
+                                    });
+                                  },
+                                  child: one
+                                      ? SvgPicture.asset(
                                     "assets/icons/like_.svg",
                                   )
-                                : SvgPicture.asset(
+                                      : SvgPicture.asset(
                                     "assets/icons/like.svg",
                                   )),
-                        SizedBox(
-                          width: 16 * w,
-                        ),
-                      ],
-                    ),
-                  );
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }
+                  return Container();
                 },
               ),
+
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future<void> _getSocial() async {
-    Repository _repository = Repository();
-
-    _repository.getSocial(widget.id);
   }
 }

@@ -4,17 +4,17 @@ import 'package:rxdart/rxdart.dart';
 
 class HomeBloc {
   final _repository = Repository();
-  final notesFetch = PublishSubject<List<UserModel>>();
+  final userFetch = PublishSubject<List<UserModel>>();
 
-  Stream<List<UserModel>> get fetchUser => notesFetch.stream;
+  Stream<List<UserModel>> get fetchUser => userFetch.stream;
 
   getUsers() async {
     var results = await _repository.getUsers();
-    notesFetch.sink.add(results);
+    userFetch.sink.add(results);
   }
 
   dispose() {
-    notesFetch.close();
+    userFetch.close();
   }
 }
 

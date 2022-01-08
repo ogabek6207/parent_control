@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/main_screen.dart';

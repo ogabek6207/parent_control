@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';

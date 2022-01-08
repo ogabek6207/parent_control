@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ColorScreen extends StatefulWidget {
@@ -54,7 +53,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-          
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -82,7 +80,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -110,7 +107,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -138,7 +134,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -166,7 +161,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -194,7 +188,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -222,7 +215,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -250,7 +242,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,
@@ -278,7 +269,6 @@ class _ColorScreenState extends State<ColorScreen> {
               ],
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(
               left: 16 * w,

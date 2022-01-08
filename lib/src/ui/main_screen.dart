@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:parent_control/src/app%20theme/app_thema.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/ui/alert/alert_screen.dart';
 import 'package:parent_control/src/ui/setting/setting_screen.dart';
 import 'package:parent_control/src/ui/tasks/tasks_screen.dart';
