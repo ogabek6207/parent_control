@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/model/alert_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
@@ -17,11 +18,10 @@ class AlertScreen extends StatefulWidget {
 class _AlertScreenState extends State<AlertScreen> {
   List<AlertModel> data = [
     AlertModel(image: "assets/images/instagram.png"),
-    AlertModel(image: "assets/images/youtube.png"),
   ];
   bool one = false;
   bool two = false;
-
+   int _currentIntValue = 0;
   @override
   initState() {
     _getSocial();
@@ -157,16 +157,16 @@ class _AlertScreenState extends State<AlertScreen> {
                         SizedBox(
                           width: 24 * w,
                         ),
-                        Text(
-                          "1 hour",
-                          style: TextStyle(
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16 * o,
-                            fontWeight: FontWeight.normal,
-                            height: 19 / 16 * h,
-                            color: AppTheme.black,
-                          ),
+                        NumberPicker(
+                          value: _currentIntValue,
+                          minValue: 0,
+                          maxValue: 24,
+                          step: 1,
+                          haptics: true,
+                          onChanged: (value) => setState(() => _currentIntValue = value),
                         ),
+                        Text('$_currentIntValue hour '),
+
                         SizedBox(
                           width: 8 * w,
                         ),

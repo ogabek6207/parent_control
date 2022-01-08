@@ -118,7 +118,7 @@ class DatabaseHelper {
   }
 
   //user get
-  Future<List<UserModel>> getProduct() async {
+  Future<List<UserModel>> getUsers() async {
     var dbClient = await db;
     List<Map> list = await dbClient.rawQuery('SELECT * FROM $tableUser');
     List<UserModel> products = <UserModel>[];

@@ -9,7 +9,7 @@ class HomeBloc {
   Stream<List<UserModel>> get fetchDrugs => notesFetch.stream;
 
   getProduct() async {
-    var results = await _repository.getProduct();
+    var results = await _repository.getUsers();
 
     notesFetch.sink.add(results);
   }

@@ -17,7 +17,7 @@ class Repository {
   Future<int> saveNotes(NotesModel item) => databaseHelper.saveNotes(item);
 
   //user
-  Future<List<UserModel>> getProduct() => databaseHelper.getProduct();
+  Future<List<UserModel>> getUsers() => databaseHelper.getUsers();
 
   //social
   Future<List<SocialModel>> getSocial(int id) => databaseHelper.getSocial(id);

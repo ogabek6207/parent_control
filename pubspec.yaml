@@ -17,6 +17,7 @@ dependencies:
   sqflite: ^2.0.1
   cupertino_icons: ^1.0.2
   rxdart: ^0.27.3
+  numberpicker: ^2.1.1
 
 
 dev_dependencies:

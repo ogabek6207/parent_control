@@ -9,6 +9,7 @@ import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddChildScreen extends StatefulWidget {
   const AddChildScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
   bool errorText = true;
   File? data;
   bool gender = true;
-
+  bool child = false;
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -264,6 +265,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 GestureDetector(
                   onTap: () async {
                     if (_controller.text.length >= 4) {
+                      _setData(child = true);
                       var image = data == null ? "" : data!.path;
                       int userId = await _repository.saveProducts(
                         UserModel(
@@ -313,4 +315,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
       ),
     );
   }
+  Future<void> _setData(bool child) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setBool("child", true);
+  }
+
 }

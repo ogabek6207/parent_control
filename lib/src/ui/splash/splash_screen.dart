@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
+import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/ui/onboard/onboard_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +14,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
+  final Repository _repository = Repository();
+
   @override
   void initState() {
     _getData();
@@ -37,13 +40,15 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _getData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     bool isFirst = pref.getBool("isFirst") ?? false;
-    int k;
+    int k = (await _repository.getUsers()).length;
     Timer(const Duration(milliseconds: 1250), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) {
-            return !isFirst ? const OnBoardScreen() :   const AddChildScreen();
+            return !isFirst
+                ? const OnBoardScreen()
+                : (k != 0 ? const MainScreen() : const AddChildScreen());
           },
         ),
       );
