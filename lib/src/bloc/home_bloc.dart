@@ -6,7 +6,7 @@ class HomeBloc {
   final _repository = Repository();
   final notesFetch = PublishSubject<List<UserModel>>();
 
-  Stream<List<UserModel>> get fetchDrugs => notesFetch.stream;
+  Stream<List<UserModel>> get fetchUser => notesFetch.stream;
 
   getUsers() async {
     var results = await _repository.getUsers();

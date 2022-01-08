@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
 import 'package:parent_control/src/model/user_model.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController controller = PageController(viewportFraction: 0.85);
-
+File ? data;
   @override
   void initState() {
     homeBloc.getUsers();
@@ -35,9 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Expanded(
             child: StreamBuilder(
-              stream: homeBloc.fetchDrugs,
+              stream: homeBloc.fetchUser,
               builder: (context, AsyncSnapshot<List<UserModel>> snapshot) {
                 if (snapshot.hasData) {
+                  List<UserModel> result = snapshot.data!;
                   return PageView.builder(
                     controller: controller,
                     onPageChanged: (_index) {},
@@ -56,22 +58,78 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               height: 160 * h,
                               width: MediaQuery.of(context).size.width,
                               child: Stack(
                                 children: [
+                                  data! == null ?
                                   ClipRRect(
                                     borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(12 * o)),
-                                    child: Image.asset(
-                                      "assets/images/image.png",
+                                      topRight: Radius.circular(12 * o),
+                                      topLeft: Radius.circular(12 * o),
+                                    ),
+                                    child: Image.file(
+                                      data!,
                                       fit: BoxFit.cover,
+                                    ),
+                                  ) : Container(height: 160*h,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(12*o),
+                                        topRight: Radius.circular(12*o),
+                                      ),
+                                      color: AppTheme.white,
+                                    ),
+
+                                    child: Row(
+                                      children: [
+                                        const Spacer(),
+                                        result[index].gender == 1 ?
+                                        SvgPicture.asset("assets/icons/boy_.svg") : SvgPicture.asset("assets/icons/girl_.svg"),
+                                        SizedBox(width: 58*w,),
+                                      ],
+                                    ),
+                                  ) ,
+                                  Container(
+                                    height: 160 * h,
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: EdgeInsets.only(top: 106 * h),
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 16 * w,
+                                        ),
+                                        Text(
+                                          result[index].name,
+
+                                          style: TextStyle(
+
+                                            color: AppTheme.grey,
+                                            fontSize: 32,
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.w600,
+                                            height: 38 / 32 * h,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        SvgPicture.asset(
+                                          "assets/icons/vector.svg",
+                                          color: AppTheme.grey,
+                                        ),
+                                        SizedBox(
+                                          width: 16 * w,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
+
+
+
                             SizedBox(
                               height: 21 * h,
                             ),
@@ -97,12 +155,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Row(
                               children: [
-                                SizedBox(width: 16*w),
+                                SizedBox(width: 16 * w),
                                 Container(
                                   height: 28 * h,
                                   width: 156 * w,
                                   decoration: BoxDecoration(
-                                    color: AppTheme.blueFF,
+                                    color: AppTheme.purple,
                                     borderRadius: BorderRadius.circular(8 * o),
                                   ),
                                   child: Center(
