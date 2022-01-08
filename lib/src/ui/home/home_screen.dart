@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parent_control/src/app%20theme/app_thema.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
@@ -39,14 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
               stream: homeBloc.fetchDrugs,
               builder: (context, AsyncSnapshot<List<UserModel>> snapshot) {
                 if (snapshot.hasData) {
-
                   return PageView.builder(
                     controller: controller,
-                    onPageChanged: (_index) {
-                      // setState(() {
-                      //   _selectedIndex = _index;
-                      // });
-                    },
+                    onPageChanged: (_index) {},
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return Container(
@@ -63,103 +57,107 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Container(
-                              height: 160*h,
+                              height: 160 * h,
                               width: MediaQuery.of(context).size.width,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.only(topRight: Radius.circular(12*o)),
-                                child: Image.asset("assets/images/image.png",
-                                fit: BoxFit.cover,
-                                ),
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(12 * o)),
+                                    child: Image.asset(
+                                      "assets/images/image.png",
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                             SizedBox(
-                              height: 21*h,
+                              height: 21 * h,
                             ),
-                            Row(children: [
-                              SizedBox(width: 16*w,),
-                              Text("Current task",
-                                style: TextStyle(
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 16 * w,
+                                ),
+                                Text(
+                                  "Current task",
+                                  style: TextStyle(
                                     color: AppTheme.grey,
                                     fontSize: 12,
                                     fontStyle: FontStyle.normal,
                                     fontWeight: FontWeight.normal,
-                                    height: 14 / 12 * h),
-
-                              ),
-                            ],),
-                            SizedBox(height: 10*h,),
-
+                                    height: 14 / 12 * h,
+                                  ),
+                                ),
+                              ],
+                            ),
                             SizedBox(
-                              height: 96*h,
+                              height: 10 * h,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: 16*w),
+                                Container(
+                                  height: 28 * h,
+                                  width: 156 * w,
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.blueFF,
+                                    borderRadius: BorderRadius.circular(8 * o),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "School 8am - 14pm",
+                                      style: TextStyle(
+                                        color: AppTheme.dark,
+                                        fontSize: 16,
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.normal,
+                                        height: 19 / 16 * h,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 24 * h,
+                            ),
+                            SizedBox(
+                              height: 96 * h,
                               width: MediaQuery.of(context).size.width,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                   Container(
-                                     height: 72*h,
-
-                                     width: MediaQuery.of(context).size.width/3-47*w,
-                                     decoration: BoxDecoration(
-                                       color: AppTheme.grey7,
-borderRadius: BorderRadius.circular(8*o),
-
-                                     ),
-                                     child: Column(
-                                       children: [
-                                         Center(
-                                           child: Text(
-                                             "2",
-                                             style: TextStyle(
-                                                 color: AppTheme.blue1,
-                                                 fontSize: 24,
-                                                 fontStyle: FontStyle.normal,
-                                                 fontWeight: FontWeight.w500,
-                                                 height: 29 / 24 * h),
-
-                                           ),
-                                         ),
-
-                                         SizedBox(height: 3*h,),
-                                         Text("Left to  complete",
-                                           style: TextStyle(
-                                               color: AppTheme.grey,
-                                               fontSize: 12,
-                                               fontStyle: FontStyle.normal,
-                                               fontWeight: FontWeight.normal,
-                                               height: 14 / 12 * h),
-textAlign: TextAlign.center,
-                                         ),
-                                       ],
-                                     ),
-                                   ),
-                                  SizedBox(width: 15*w,),
                                   Container(
-                                    height: 72*h,
-
-                                    width: MediaQuery.of(context).size.width/3-47*w,
+                                    height: 72 * h,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3 -
+                                            47 * w,
                                     decoration: BoxDecoration(
                                       color: AppTheme.grey7,
-                                      borderRadius: BorderRadius.circular(8*o),
-
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
                                     ),
                                     child: Column(
                                       children: [
                                         Center(
                                           child: Text(
-                                            "2",
+                                            "3",
                                             style: TextStyle(
                                                 color: AppTheme.blue1,
                                                 fontSize: 24,
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w500,
                                                 height: 29 / 24 * h),
-
                                           ),
                                         ),
-
-                                        SizedBox(height: 3*h,),
-                                        Text("Left to  complete",
+                                        SizedBox(
+                                          height: 3 * h,
+                                        ),
+                                        Text(
+                                          "Left to  complete",
                                           style: TextStyle(
                                               color: AppTheme.grey,
                                               fontSize: 12,
@@ -171,14 +169,18 @@ textAlign: TextAlign.center,
                                       ],
                                     ),
                                   ),
-                                  SizedBox(width: 15*w,),
+                                  SizedBox(
+                                    width: 15 * w,
+                                  ),
                                   Container(
-                                    height: 72*h,
-                                    width: MediaQuery.of(context).size.width/3-47*w,
+                                    height: 72 * h,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3 -
+                                            47 * w,
                                     decoration: BoxDecoration(
                                       color: AppTheme.grey7,
-                                      borderRadius: BorderRadius.circular(8*o),
-
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
                                     ),
                                     child: Column(
                                       children: [
@@ -186,17 +188,60 @@ textAlign: TextAlign.center,
                                           child: Text(
                                             "2",
                                             style: TextStyle(
-                                                color: AppTheme.blue1,
+                                                color: AppTheme.red,
                                                 fontSize: 24,
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w500,
                                                 height: 29 / 24 * h),
-
                                           ),
                                         ),
-
-                                        SizedBox(height: 3*h,),
-                                        Text("Left to  complete",
+                                        SizedBox(
+                                          height: 3 * h,
+                                        ),
+                                        Text(
+                                          "Alerts need review",
+                                          style: TextStyle(
+                                              color: AppTheme.grey,
+                                              fontSize: 12,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.normal,
+                                              height: 14 / 12 * h),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 15 * w,
+                                  ),
+                                  Container(
+                                    height: 72 * h,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3 -
+                                            47 * w,
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.grey7,
+                                      borderRadius:
+                                          BorderRadius.circular(8 * o),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            "12",
+                                            style: TextStyle(
+                                                color: AppTheme.black,
+                                                fontSize: 24,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w500,
+                                                height: 29 / 24 * h),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 3 * h,
+                                        ),
+                                        Text(
+                                          "Tasks for the week",
                                           style: TextStyle(
                                               color: AppTheme.grey,
                                               fontSize: 12,
