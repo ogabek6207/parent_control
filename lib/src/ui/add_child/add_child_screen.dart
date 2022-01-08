@@ -9,7 +9,6 @@ import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AddChildScreen extends StatefulWidget {
   const AddChildScreen({Key? key}) : super(key: key);
@@ -22,10 +21,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
   final ImagePicker _picker = ImagePicker();
   final Repository _repository = Repository();
   final TextEditingController _controller = TextEditingController();
-  bool errorText = true;
   File? data;
   bool gender = true;
-  bool child = false;
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -244,9 +242,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   decoration: BoxDecoration(
                     color: AppTheme.milk,
                     borderRadius: BorderRadius.circular(8),
-                    border: !errorText
-                        ? Border.all(color: Colors.red)
-                        : Border.all(color: Colors.white),
+                    border: Border.all(color: Colors.white),
                   ),
                   child: TextField(
                     controller: _controller,
@@ -265,7 +261,6 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 GestureDetector(
                   onTap: () async {
                     if (_controller.text.length >= 4) {
-                      _setData(child = true);
                       var image = data == null ? "" : data!.path;
                       int userId = await _repository.saveProducts(
                         UserModel(
@@ -299,11 +294,12 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       child: Text(
                         "Add child",
                         style: TextStyle(
-                            color: AppTheme.dark.withOpacity(0.3),
-                            fontSize: 18,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w500,
-                            height: 21 / 18 * h),
+                          color: AppTheme.dark.withOpacity(0.3),
+                          fontSize: 18,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
+                          height: 21 / 18 * h,
+                        ),
                       ),
                     ),
                   ),
@@ -315,9 +311,4 @@ class _AddChildScreenState extends State<AddChildScreen> {
       ),
     );
   }
-  Future<void> _setData(bool child) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool("child", true);
-  }
-
 }

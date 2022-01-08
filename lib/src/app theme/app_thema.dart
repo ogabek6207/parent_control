@@ -8,6 +8,7 @@ class AppTheme {
   static Color black = const Color(0xFF000000);
   static Color milk = const Color(0xFFF5F5F5);
   static Color primary = const Color(0xFFF6F6F6);
+  static Color grey7 = const Color(0xFFF7F7F7);
   static Color red = const Color(0xFFFF4D00);
   static Color greyE4 = const Color(0xFFE4E4E4);
   static Color light_blue = const Color(0xFF9BEDFF);

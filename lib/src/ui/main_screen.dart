@@ -23,7 +23,9 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> data = [
     const HomeScreen(),
     const TasksScreen(),
-     const AlertScreen(id: 0,),
+    const AlertScreen(
+      id: 0,
+    ),
     const SettingScreen(),
   ];
 
