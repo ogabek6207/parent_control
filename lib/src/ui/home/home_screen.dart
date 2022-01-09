@@ -7,7 +7,7 @@ import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  final Function(int id, String name, String image) userChanged;
+  final Function(int id, String name, String image, int gender,) userChanged;
 
   const HomeScreen({
     Key? key,
@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       result[0].id,
                       result[0].name,
                       result[0].image,
+                      result[0].gender
                     );
                     isFirst = false;
                   }
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         result[_index].id,
                         result[_index].name,
                         result[_index].image,
+                        result[_index].gender,
                       );
                     },
                     itemCount: result.length,

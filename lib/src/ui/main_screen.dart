@@ -20,6 +20,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   int userId = 0;
+  int userGender = 0;
   String userName = "", userImage = "";
 
   @override
@@ -27,10 +28,11 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: [
         HomeScreen(
-          userChanged: (_id, _userName, _userImage) {
+          userChanged: (_id, _userName, _userImage, _userGender) {
             userId = _id;
             userName = _userName;
             userImage = _userImage;
+            userGender = _userGender;
           },
         ),
         const TasksScreen(),
@@ -43,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
           id: userId,
           name: userName,
           image: userImage,
+          gender: userGender,
         ),
         SettingScreen(id: userId),
       ][_selectedIndex],

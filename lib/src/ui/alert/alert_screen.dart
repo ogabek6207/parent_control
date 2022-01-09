@@ -11,6 +11,7 @@ class AlertScreen extends StatefulWidget {
   final int id;
   final String name;
   final String image;
+  final int gender;
 
   const AlertScreen({
     Key? key,
@@ -18,6 +19,7 @@ class AlertScreen extends StatefulWidget {
     required this.name,
     required this.onBack,
     required this.image,
+    required this.gender,
   }) : super(key: key);
 
   @override
