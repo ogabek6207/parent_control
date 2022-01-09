@@ -105,7 +105,12 @@ class _AlertScreenState extends State<AlertScreen> {
                         File(widget.image),
                         fit: BoxFit.cover,
                       )
-                          :  Container(),
+                          :  widget.gender == 1 ? SvgPicture.asset(
+                        "assets/icons/boy_.svg",
+                      )
+                          : SvgPicture.asset(
+                        "assets/icons/girl_.svg",
+                      ),
                     ),
                   ),
                   SizedBox(

@@ -38,7 +38,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.blue,
-      body: ListView(
+      body: Column(
         children: [
           SizedBox(
             height: 60 * h,
@@ -551,8 +551,55 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 );
               }
+
+
+              if (one) {
+                await _repository.updateSocial(
+                  SocialModel(
+                    id: 0,
+                    typeId: 1,
+                    userId: widget.userId,
+                  ),
+                );
+              }
+              if (two) {
+                await _repository.updateSocial(
+                  SocialModel(
+                    id: 0,
+                    typeId: 2,
+                    userId: widget.userId,
+                  ),
+                );
+              }
+              if (three) {
+                await _repository.updateSocial(
+                  SocialModel(
+                    id: 0,
+                    typeId: 3,
+                    userId: widget.userId,
+                  ),
+                );
+              }
+              if (four) {
+                await _repository.updateSocial(
+                  SocialModel(
+                    id: 0,
+                    typeId: 4,
+                    userId: widget.userId,
+                  ),
+                );
+              }
+              if (five) {
+                await _repository.updateSocial(
+                  SocialModel(
+                    id: 0,
+                    typeId: 5,
+                    userId: widget.userId,
+                  ),
+                );
+              }
               if (six) {
-                await _repository.saveSocial(
+                await _repository.updateSocial(
                   SocialModel(
                     id: 0,
                     typeId: 6,
@@ -560,6 +607,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 );
               }
+
               Navigator.popUntil(context, (route) => route.isFirst);
               Navigator.pushReplacement(
                 context,
