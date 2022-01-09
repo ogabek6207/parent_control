@@ -8,8 +8,8 @@ class SocialBloc {
 
   Stream<List<SocialModel>> get fetchSocial => socialFetch.stream;
 
-  getSocial() async {
-    var results = await _repository.getSocial(0);
+  getSocial(int id) async {
+    var results = await _repository.getSocial(id);
 
     socialFetch.sink.add(results);
   }

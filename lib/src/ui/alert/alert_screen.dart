@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:numberpicker/numberpicker.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/social_bloc.dart';
 import 'package:parent_control/src/model/social_model.dart';
@@ -16,13 +15,9 @@ class AlertScreen extends StatefulWidget {
 }
 
 class _AlertScreenState extends State<AlertScreen> {
-
-  bool one = false;
-  bool two = false;
-   int _currentIntValue = 0;
   @override
   void initState() {
-    socialBloc.getSocial();
+    socialBloc.getSocial(widget.id);
     super.initState();
   }
 
@@ -52,12 +47,6 @@ class _AlertScreenState extends State<AlertScreen> {
         ),
         child: Column(
           children: [
-
-
-
-
-
-
             Container(
               height: 48 * h,
               width: MediaQuery.of(context).size.width,
@@ -134,19 +123,14 @@ class _AlertScreenState extends State<AlertScreen> {
             SizedBox(
               height: 16 * h,
             ),
-
-
-
-
-
             Expanded(
-              child:
-              StreamBuilder(
+              child: StreamBuilder(
                 stream: socialBloc.fetchSocial,
                 builder: (context, AsyncSnapshot<List<SocialModel>> snapshot) {
                   if (snapshot.hasData) {
                     List<SocialModel> result = snapshot.data!;
-                    return  ListView.builder(
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
                       itemCount: result.length,
                       itemBuilder: (context, index) {
                         return Container(
@@ -167,21 +151,13 @@ class _AlertScreenState extends State<AlertScreen> {
                                 width: 16 * w,
                               ),
                               Image.asset(
-                                "",
+                                Utils.socialImage(
+                                  result[index].typeId,
+                                ),
                               ),
                               SizedBox(
                                 width: 24 * w,
                               ),
-                              NumberPicker(
-                                value: _currentIntValue,
-                                minValue: 0,
-                                maxValue: 24,
-                                step: 1,
-                                haptics: true,
-                                onChanged: (value) => setState(() => _currentIntValue = value),
-                              ),
-                              Text('$_currentIntValue hour '),
-
                               SizedBox(
                                 width: 8 * w,
                               ),
@@ -190,38 +166,15 @@ class _AlertScreenState extends State<AlertScreen> {
                                 color: AppTheme.black,
                               ),
                               const Spacer(),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(
-                                        () {
-                                      two = !two;
-                                    },
-                                  );
-                                },
-                                child: two
-                                    ? SvgPicture.asset(
-                                  "assets/icons/dislike_.svg",
-                                )
-                                    : SvgPicture.asset(
-                                  "assets/icons/dislike.svg",
-                                ),
+                              SvgPicture.asset(
+                                "assets/icons/dislike_.svg",
                               ),
                               SizedBox(
                                 width: 16 * w,
                               ),
-                              GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      one = !one;
-                                    });
-                                  },
-                                  child: one
-                                      ? SvgPicture.asset(
-                                    "assets/icons/like_.svg",
-                                  )
-                                      : SvgPicture.asset(
-                                    "assets/icons/like.svg",
-                                  )),
+                              SvgPicture.asset(
+                                "assets/icons/like_.svg",
+                              ),
                               SizedBox(
                                 width: 16 * w,
                               ),
@@ -234,7 +187,6 @@ class _AlertScreenState extends State<AlertScreen> {
                   return Container();
                 },
               ),
-
             ),
           ],
         ),

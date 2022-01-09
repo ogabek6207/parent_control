@@ -7,8 +7,11 @@ import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
+  final Function(int id) userChanged;
+
   const HomeScreen({
     Key? key,
+    required this.userChanged,
   }) : super(key: key);
 
   @override
@@ -17,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController controller = PageController(viewportFraction: 0.85);
+  bool isFirst = true;
 
   @override
   void initState() {
@@ -40,9 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
               builder: (context, AsyncSnapshot<List<UserModel>> snapshot) {
                 if (snapshot.hasData) {
                   List<UserModel> result = snapshot.data!;
+                  if (isFirst) {
+                    widget.userChanged(result[0].id);
+                    isFirst = false;
+                  }
                   return PageView.builder(
                     controller: controller,
-                    onPageChanged: (_index) {},
+                    onPageChanged: (_index) {
+                      widget.userChanged(result[_index].id);
+                    },
                     itemCount: result.length,
                     itemBuilder: (context, index) {
                       return Container(
@@ -119,8 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             result[index].name,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-
-                                              color:  result[index].image != "" ?    AppTheme.white :   AppTheme.black,
+                                              color: result[index].image != ""
+                                                  ? AppTheme.white
+                                                  : AppTheme.black,
                                               fontSize: 32,
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w600,
@@ -131,7 +142,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         const Spacer(),
                                         SvgPicture.asset(
                                           "assets/icons/vector.svg",
-                                          color: result[index].image != "" ? AppTheme.white : AppTheme.black,
+                                          color: result[index].image != ""
+                                              ? AppTheme.white
+                                              : AppTheme.black,
                                         ),
                                         SizedBox(
                                           width: 16 * w,
