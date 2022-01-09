@@ -29,32 +29,35 @@ class _ServiceScreenState extends State<ServiceScreen> {
   bool four = false;
   bool five = false;
   bool six = false;
+    int  _selectIndex = 0;
   final Repository _repository = Repository();
   List<ServiceModel> data = [
+
     ServiceModel(
         image: "assets/images/instagram.png",
-
+selectIndex: 1,
         name: "Instagram"),
     ServiceModel(
         image: "assets/images/tiktok.png",
-
+selectIndex: 2,
         name: "TikTok"),
     ServiceModel(
         image: "assets/images/youtube.png",
-
+selectIndex: 3,
         name: "Youtube"),
     ServiceModel(
         image: "assets/images/twitter.png",
-
+selectIndex: 4,
         name: "Twitter"),
     ServiceModel(
         image: "assets/images/steam.png",
-
+selectIndex: 5,
         name: "Steam"),
     ServiceModel(
         image: "assets/images/facebook.png",
-
+selectIndex: 6,
         name: "Facebook"),
+
   ];
 
   @override
@@ -150,24 +153,38 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                   const Spacer(),
 
-                       SizedBox(
+                       GestureDetector(
+                         onTap: (){
+                           setState(() {
+                             one = !one;
+                             data[index].selectIndex;
+                             for(int i = 0; i <= data.length-1; i++){
+if(data[index].selectIndex ==1 ){
+  _selectIndex += 1;
+};
+                             };
+
+                           });
+                         },
+                         child: one ? SizedBox(
                     height: 24,
                     width: 24,
                     child: Stack(
                       children: [
-                        SvgPicture.asset(
-                          "assets/icons/container.svg",
-                          color: AppTheme.blue,
-                        ),
-                        Center(
-                          child: SvgPicture.asset(
-                            "assets/icons/done.svg",
-                            color: AppTheme.white,
+                          SvgPicture.asset(
+                            "assets/icons/container.svg",
+                            color: AppTheme.blue,
                           ),
-                        ),
+                          Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/done.svg",
+                              color: AppTheme.white,
+                            ),
+                          ),
                       ],
                     ),
-                  ),
+                  ) : SvgPicture.asset("assets/icons/unselect.svg",),
+                       ),
 
                   SizedBox(
                     width: 16 * w,
@@ -181,7 +198,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
 
 
-        
+
           GestureDetector(
             onTap: () async {
               if (one) {
@@ -238,7 +255,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   ),
                 );
               }
-
               if (one) {
                 await _repository.updateSocial(
                   SocialModel(
