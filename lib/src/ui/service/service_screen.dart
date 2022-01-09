@@ -48,7 +48,13 @@ class _ServiceScreenState extends State<ServiceScreen> {
               SizedBox(
                 width: 24 * w,
               ),
-              SvgPicture.asset("assets/icons/arrow.svg"),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+
+
+                  child: SvgPicture.asset("assets/icons/arrow.svg")),
               SizedBox(
                 width: 18 * w,
               ),

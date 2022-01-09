@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
@@ -97,10 +98,12 @@ class _AlertScreenState extends State<AlertScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8 * o),
-                      child: Image.asset(
-                        widget.image,
+                      child: widget.image != ""
+                          ? Image.file(
+                        File(widget.image),
                         fit: BoxFit.cover,
-                      ),
+                      )
+                          :  Container(),
                     ),
                   ),
                   SizedBox(
