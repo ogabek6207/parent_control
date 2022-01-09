@@ -35,14 +35,16 @@ class _MainScreenState extends State<MainScreen> {
         ),
         const TasksScreen(),
         AlertScreen(
+          onBack: () {
+            setState(() {
+              _selectedIndex = 0;
+            });
+          },
           id: userId,
           name: userName,
           image: userImage,
-
         ),
-         SettingScreen(
-           id: userId
-         ),
+        SettingScreen(id: userId),
       ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -58,12 +60,17 @@ class _MainScreenState extends State<MainScreen> {
           fontWeight: FontWeight.normal,
         ),
         selectedItemColor: AppTheme.blue,
+        elevation: 10,
+        iconSize: 100,
+        selectedFontSize: 20,
+        showSelectedLabels: true,
         items: [
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
                 ? SvgPicture.asset("assets/menu/home.svg")
                 : SvgPicture.asset("assets/menu/home.svg"),
             label: "home",
+            backgroundColor: AppTheme.white,
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 1
@@ -75,6 +82,7 @@ class _MainScreenState extends State<MainScreen> {
                     "assets/menu/tasks.svg",
                   ),
             label: "Tasks",
+            backgroundColor: AppTheme.red,
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
@@ -86,6 +94,7 @@ class _MainScreenState extends State<MainScreen> {
                     "assets/menu/bell.svg",
                   ),
             label: "Alerts",
+            backgroundColor: AppTheme.rose,
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
@@ -97,6 +106,7 @@ class _MainScreenState extends State<MainScreen> {
                     "assets/menu/setting.svg",
                   ),
             label: "Settings",
+            backgroundColor: AppTheme.purple,
           ),
         ],
       ),

@@ -6,11 +6,18 @@ import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AlertScreen extends StatefulWidget {
+  final Function() onBack;
   final int id;
   final String name;
   final String image;
 
-  const AlertScreen({Key? key, required this.id, required this.name, required this.image}) : super(key: key);
+  const AlertScreen({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.onBack,
+    required this.image,
+  }) : super(key: key);
 
   @override
   _AlertScreenState createState() => _AlertScreenState();
@@ -58,25 +65,30 @@ class _AlertScreenState extends State<AlertScreen> {
                   SizedBox(
                     width: 24 * w,
                   ),
-                  Icon(
-                    Icons.arrow_back_ios,
-                    size: 24,
-                    color: AppTheme.white,
-                  ),
-                  SizedBox(
-                    width: 40 * w,
-                  ),
-                  Text(
-                    "Alerts " + widget.name,
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontSize: 22 * o,
-                      fontWeight: FontWeight.w500,
-                      height: 26 / 22 * h,
+                  GestureDetector(
+                    onTap: () {
+                      widget.onBack();
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      size: 24,
                       color: AppTheme.white,
                     ),
                   ),
-                  const Spacer(),
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        "Alerts " + widget.name,
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 22 * o,
+                          fontWeight: FontWeight.w500,
+                          height: 26 / 22 * h,
+                          color: AppTheme.white,
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     height: 48 * o,
                     width: 48 * o,
@@ -160,7 +172,8 @@ class _AlertScreenState extends State<AlertScreen> {
                               SizedBox(
                                 width: 24 * w,
                               ),
-                              Text("1 hour",
+                              Text(
+                                "1 hour",
                                 style: TextStyle(
                                   fontStyle: FontStyle.normal,
                                   fontSize: 16 * o,
@@ -168,7 +181,6 @@ class _AlertScreenState extends State<AlertScreen> {
                                   height: 19 / 16 * h,
                                   color: AppTheme.black,
                                 ),
-
                               ),
                               SizedBox(
                                 width: 8 * w,
