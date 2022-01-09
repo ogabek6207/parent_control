@@ -1,12 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
-import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
+import 'package:parent_control/src/ui/add_child/add_child_two.dart';
+import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key? key}) : super(key: key);
+  final int id;
+
+  const SettingScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   _SettingScreenState createState() => _SettingScreenState();
@@ -31,7 +33,7 @@ class _SettingScreenState extends State<SettingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Tasks Victoria",
+                  "Settings",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 22 * o,
@@ -148,11 +150,13 @@ class _SettingScreenState extends State<SettingScreen> {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
-                CupertinoPageRoute(builder: (context) {
-                  return const AddChildScreen();
-                }),
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const AddChildTwoScreen();
+                  },
+                ),
               );
             },
             child: Container(
@@ -180,24 +184,36 @@ class _SettingScreenState extends State<SettingScreen> {
           SizedBox(
             height: 16 * h,
           ),
-          Container(
-            height: 56,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 40 * w),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(color: AppTheme.white, width: 1),
-              borderRadius: BorderRadius.circular(32 * o),
-            ),
-            child: Center(
-              child: Text(
-                "Add services",
-                style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18 * o,
-                  fontWeight: FontWeight.w500,
-                  height: 21 / 18 * h,
-                  color: AppTheme.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ServiceScreen(userId: widget.id);
+                  },
+                ),
+              );
+            },
+            child: Container(
+              height: 56,
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 40 * w),
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                border: Border.all(color: AppTheme.white, width: 1),
+                borderRadius: BorderRadius.circular(32 * o),
+              ),
+              child: Center(
+                child: Text(
+                  "Add services",
+                  style: TextStyle(
+                    fontStyle: FontStyle.normal,
+                    fontSize: 18 * o,
+                    fontWeight: FontWeight.w500,
+                    height: 21 / 18 * h,
+                    color: AppTheme.white,
+                  ),
                 ),
               ),
             ),

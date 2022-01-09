@@ -22,22 +22,22 @@ class Utils {
         }
       case 3:
         {
-          return "assets/images/twitter.png";
+          return "assets/images/youtube.png";
           break;
         }
       case 4:
         {
-          return "assets/images/youtube.png";
+          return "assets/images/twitter.png";
           break;
         }
       case 5:
         {
-          return "assets/images/twitter.png";
+          return "assets/images/steam.png";
           break;
         }
       case 6:
         {
-          return "assets/images/steam.png";
+          return "assets/images/facebook.png";
           break;
         }
       default:

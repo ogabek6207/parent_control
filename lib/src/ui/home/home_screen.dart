@@ -7,7 +7,7 @@ import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  final Function(int id) userChanged;
+  final Function(int id, String name, String image) userChanged;
 
   const HomeScreen({
     Key? key,
@@ -45,13 +45,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   List<UserModel> result = snapshot.data!;
                   if (isFirst) {
-                    widget.userChanged(result[0].id);
+                    widget.userChanged(
+                      result[0].id,
+                      result[0].name,
+                      result[0].image,
+                    );
                     isFirst = false;
                   }
                   return PageView.builder(
                     controller: controller,
                     onPageChanged: (_index) {
-                      widget.userChanged(result[_index].id);
+                      widget.userChanged(
+                        result[_index].id,
+                        result[_index].name,
+                        result[_index].image,
+                      );
                     },
                     itemCount: result.length,
                     itemBuilder: (context, index) {

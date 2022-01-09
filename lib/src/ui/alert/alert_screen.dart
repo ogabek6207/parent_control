@@ -7,8 +7,10 @@ import 'package:parent_control/src/utils/utils.dart';
 
 class AlertScreen extends StatefulWidget {
   final int id;
+  final String name;
+  final String image;
 
-  const AlertScreen({Key? key, required this.id}) : super(key: key);
+  const AlertScreen({Key? key, required this.id, required this.name, required this.image}) : super(key: key);
 
   @override
   _AlertScreenState createState() => _AlertScreenState();
@@ -65,7 +67,7 @@ class _AlertScreenState extends State<AlertScreen> {
                     width: 40 * w,
                   ),
                   Text(
-                    "Tasks Victoria",
+                    "Alerts " + widget.name,
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
                       fontSize: 22 * o,
@@ -84,7 +86,7 @@ class _AlertScreenState extends State<AlertScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8 * o),
                       child: Image.asset(
-                        "assets/images/schoolgirl.png",
+                        widget.image,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -158,6 +160,16 @@ class _AlertScreenState extends State<AlertScreen> {
                               SizedBox(
                                 width: 24 * w,
                               ),
+                              Text("1 hour",
+                                style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16 * o,
+                                  fontWeight: FontWeight.w500,
+                                  height: 19 / 16 * h,
+                                  color: AppTheme.black,
+                                ),
+
+                              ),
                               SizedBox(
                                 width: 8 * w,
                               ),
@@ -167,13 +179,13 @@ class _AlertScreenState extends State<AlertScreen> {
                               ),
                               const Spacer(),
                               SvgPicture.asset(
-                                "assets/icons/dislike_.svg",
+                                "assets/icons/dislike.svg",
                               ),
                               SizedBox(
                                 width: 16 * w,
                               ),
                               SvgPicture.asset(
-                                "assets/icons/like_.svg",
+                                "assets/icons/like.svg",
                               ),
                               SizedBox(
                                 width: 16 * w,

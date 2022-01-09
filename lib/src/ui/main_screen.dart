@@ -20,21 +20,29 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   int userId = 0;
+  String userName = "", userImage = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: [
         HomeScreen(
-          userChanged: (_id) {
+          userChanged: (_id, _userName, _userImage) {
             userId = _id;
+            userName = _userName;
+            userImage = _userImage;
           },
         ),
         const TasksScreen(),
         AlertScreen(
           id: userId,
+          name: userName,
+          image: userImage,
+
         ),
-        const SettingScreen(),
+         SettingScreen(
+           id: userId
+         ),
       ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
