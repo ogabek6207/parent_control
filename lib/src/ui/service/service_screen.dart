@@ -23,7 +23,7 @@ class ServiceScreen extends StatefulWidget {
 
 class _ServiceScreenState extends State<ServiceScreen> {
   final Repository _repository = Repository();
-  bool _selectIndex = false;
+  final bool _selectIndex = false;
   List<ServiceModel> data = [
     ServiceModel(
       image: "assets/images/instagram.png",
@@ -191,18 +191,17 @@ class _ServiceScreenState extends State<ServiceScreen> {
               },
             ),
           ),
-          Expanded(
-            child: ListView.builder(
+ ListView.builder(
+   shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 1,
-              itemBuilder: (
-                  context, index
-                  ) {
+              itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () async {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 1,
                           userId: widget.userId,
                         ),
@@ -211,7 +210,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 2,
                           userId: widget.userId,
                         ),
@@ -220,7 +219,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 3,
                           userId: widget.userId,
                         ),
@@ -229,7 +228,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 4,
                           userId: widget.userId,
                         ),
@@ -238,7 +237,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 5,
                           userId: widget.userId,
                         ),
@@ -247,15 +246,12 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     if (data[index].onClick) {
                       await _repository.saveSocial(
                         SocialModel(
-                          id: 0,
+                          id: data[index].onClick ? 1 : 0,
                           typeId: 6,
                           userId: widget.userId,
                         ),
                       );
                     }
-
-
-
 
                     Navigator.popUntil(context, (route) => route.isFirst);
                     Navigator.pushReplacement(
@@ -290,7 +286,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
                 );
               },
             ),
-          ),
           SizedBox(
             height: 32 * h,
           ),
