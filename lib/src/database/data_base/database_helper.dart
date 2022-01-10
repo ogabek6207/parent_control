@@ -162,7 +162,7 @@ class DatabaseHelper {
   Future<List<SocialModel>> getSocial(int id) async {
     var dbClient = await db;
     List<Map> list = await dbClient
-        .rawQuery('SELECT * FROM $tableSocial WHERE $columnSocialUserId = $id');
+        .rawQuery('SELECT * FROM $tableSocial WHERE $columnSocialUserId = $id AND $columnSocialId');
     List<SocialModel> social = <SocialModel>[];
     for (int i = 0; i < list.length; i++) {
       var items = SocialModel(

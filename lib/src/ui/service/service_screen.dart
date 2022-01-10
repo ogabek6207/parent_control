@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/model/service_model.dart';
+import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/utils/utils.dart';
+
+import '../main_screen.dart';
 
 class ServiceScreen extends StatefulWidget {
   final int userId;
@@ -187,6 +191,106 @@ class _ServiceScreenState extends State<ServiceScreen> {
               },
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 1,
+              itemBuilder: (
+                  context, index
+                  ) {
+                return GestureDetector(
+                  onTap: () async {
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 1,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 2,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 3,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 4,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 5,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+                    if (data[index].onClick) {
+                      await _repository.saveSocial(
+                        SocialModel(
+                          id: 0,
+                          typeId: 6,
+                          userId: widget.userId,
+                        ),
+                      );
+                    }
+
+
+
+
+                    Navigator.popUntil(context, (route) => route.isFirst);
+                    Navigator.pushReplacement(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) {
+                          return const MainScreen();
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 56,
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(32 * o),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                            color: AppTheme.blue,
+                            fontSize: 18,
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500,
+                            height: 21 / 18 * h),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           SizedBox(
             height: 32 * h,
           ),
@@ -194,5 +298,4 @@ class _ServiceScreenState extends State<ServiceScreen> {
       ),
     );
   }
-
 }
