@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/model/service_model.dart';
-import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
-import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceScreen extends StatefulWidget {
@@ -21,43 +18,39 @@ class ServiceScreen extends StatefulWidget {
 }
 
 class _ServiceScreenState extends State<ServiceScreen> {
-  bool errorText = true;
-  bool isLoading = false;
-  bool one = false;
-  bool two = false;
-  bool three = false;
-  bool four = false;
-  bool five = false;
-  bool six = false;
-    int  _selectIndex = 0;
   final Repository _repository = Repository();
+  bool _selectIndex = false;
   List<ServiceModel> data = [
-
     ServiceModel(
-        image: "assets/images/instagram.png",
-selectIndex: 1,
-        name: "Instagram"),
+      image: "assets/images/instagram.png",
+      name: "Instagram",
+      onClick: false,
+    ),
     ServiceModel(
-        image: "assets/images/tiktok.png",
-selectIndex: 2,
-        name: "TikTok"),
+      image: "assets/images/tiktok.png",
+      name: "TikTok",
+      onClick: false,
+    ),
     ServiceModel(
-        image: "assets/images/youtube.png",
-selectIndex: 3,
-        name: "Youtube"),
+      image: "assets/images/youtube.png",
+      name: "Youtube",
+      onClick: false,
+    ),
     ServiceModel(
-        image: "assets/images/twitter.png",
-selectIndex: 4,
-        name: "Twitter"),
+      image: "assets/images/twitter.png",
+      name: "Twitter",
+      onClick: false,
+    ),
     ServiceModel(
-        image: "assets/images/steam.png",
-selectIndex: 5,
-        name: "Steam"),
+      image: "assets/images/steam.png",
+      name: "Steam",
+      onClick: false,
+    ),
     ServiceModel(
-        image: "assets/images/facebook.png",
-selectIndex: 6,
-        name: "Facebook"),
-
+      image: "assets/images/facebook.png",
+      name: "Facebook",
+      onClick: false,
+    ),
   ];
 
   @override
@@ -116,229 +109,82 @@ selectIndex: 6,
           SizedBox(
             height: 16 * h,
           ),
-
-
-        Expanded(
-          child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index){
-            return Container(
-              height: 56,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(left: 16*w, right: 16*w, top: 8*h,),
-              decoration: BoxDecoration(
-                color: AppTheme.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 16 * w,
+          Expanded(
+            child: ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 56,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(
+                    left: 16 * w,
+                    right: 16 * w,
+                    top: 8 * h,
                   ),
-                  Image.asset(
-                    data[index].image,
+                  decoration: BoxDecoration(
+                    color: AppTheme.white,
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  Text(
-                    data[index].name,
-                    style: TextStyle(
-                      color: AppTheme.black,
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 16,
-                      height: 19 / 16 * h,
-                    ),
-                  ),
-                  const Spacer(),
-
-                       GestureDetector(
-                         onTap: (){
-                           setState(() {
-                             one = !one;
-                             data[index].selectIndex;
-                             for(int i = 0; i <= data.length-1; i++){
-if(data[index].selectIndex ==1 ){
-  _selectIndex += 1;
-};
-                             };
-
-                           });
-                         },
-                         child: one ? SizedBox(
-                    height: 24,
-                    width: 24,
-                    child: Stack(
-                      children: [
-                          SvgPicture.asset(
-                            "assets/icons/container.svg",
-                            color: AppTheme.blue,
-                          ),
-                          Center(
-                            child: SvgPicture.asset(
-                              "assets/icons/done.svg",
-                              color: AppTheme.white,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ) : SvgPicture.asset("assets/icons/unselect.svg",),
-                       ),
-
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                ],
-              ),
-            );
-
-          },),
-        ),
-
-
-
-
-          GestureDetector(
-            onTap: () async {
-              if (one) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 1,
-                    userId: widget.userId,
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      Image.asset(
+                        data[index].image,
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      Text(
+                        data[index].name,
+                        style: TextStyle(
+                          color: AppTheme.black,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16,
+                          height: 19 / 16 * h,
+                        ),
+                      ),
+                      const Spacer(),
+                      GestureDetector(
+                        onTap: () {
+                          setState(
+                            () {
+                              data[index].onClick = !data[index].onClick;
+                            },
+                          );
+                        },
+                        child: (data[index].onClick)
+                            ? SizedBox(
+                                height: 24,
+                                width: 24,
+                                child: Stack(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/icons/container.svg",
+                                      color: AppTheme.blue,
+                                    ),
+                                    Center(
+                                      child: SvgPicture.asset(
+                                        "assets/icons/done.svg",
+                                        color: AppTheme.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : SvgPicture.asset(
+                                "assets/icons/unselect.svg",
+                              ),
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                    ],
                   ),
                 );
-              }
-              if (two) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 2,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (three) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 3,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (four) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 4,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (five) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 5,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (six) {
-                await _repository.saveSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 6,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (one) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 1,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (two) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 2,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (three) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 3,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (four) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 4,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (five) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 5,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-              if (six) {
-                await _repository.updateSocial(
-                  SocialModel(
-                    id: 0,
-                    typeId: 6,
-                    userId: widget.userId,
-                  ),
-                );
-              }
-
-              Navigator.popUntil(context, (route) => route.isFirst);
-              Navigator.pushReplacement(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) {
-                    return const MainScreen();
-                  },
-                ),
-              );
-            },
-            child: Container(
-              height: 56,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 40 * w),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(32 * o),
-              ),
-              child: Center(
-                child: Text(
-                  "Save",
-                  style: TextStyle(
-                      color: AppTheme.blue,
-                      fontSize: 18,
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w500,
-                      height: 21 / 18 * h),
-                ),
-              ),
+              },
             ),
           ),
           SizedBox(
@@ -348,4 +194,5 @@ if(data[index].selectIndex ==1 ){
       ),
     );
   }
+
 }
