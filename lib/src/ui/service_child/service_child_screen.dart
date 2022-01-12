@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,11 +10,11 @@ import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceChildScreen extends StatefulWidget {
-  String image;
-  String name;
-  int gender;
+ final String image;
+ final String name;
+ final int gender;
 
-  ServiceChildScreen({
+  const ServiceChildScreen({
     Key? key,
     required this.image,
     required this.name,

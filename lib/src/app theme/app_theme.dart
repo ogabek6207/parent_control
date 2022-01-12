@@ -24,9 +24,6 @@ class AppTheme {
   static Color lilacA2 = const Color(0xFFA2A0FF);
   static Color lilac6B = const Color(0xFF6B7AFF);
   static Color greyDE = const Color(0xFFC0D0DE);
-
-
-
   static Color dark = const Color(0xFF252525);
   static Color grey = const Color(0xFF818181);
   static Color greyD2 = const Color(0xFFD2D2D2);
