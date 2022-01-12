@@ -10,9 +10,9 @@ import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceChildScreen extends StatefulWidget {
- final String image;
- final String name;
- final int gender;
+  final String image;
+  final String name;
+  final int gender;
 
   const ServiceChildScreen({
     Key? key,
@@ -32,6 +32,13 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
   File? data;
   bool gender = true;
   bool errorText = true;
+
+  @override
+  void initState() {
+    _controller.text = widget.name;
+    setState(() {});
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,16 +204,16 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-
-                            });
+                            setState(() {});
                           },
                           child: Container(
                             height: 72 * o,
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: widget.gender == 1 ? Colors.blue : AppTheme.greyDE,
+                              color: widget.gender == 1
+                                  ? Colors.blue
+                                  : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -236,15 +243,16 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                            });
+                            setState(() {});
                           },
                           child: Container(
                             height: 72 * o,
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: widget.gender ==0 ? Colors.blue : AppTheme.greyDE,
+                              color: widget.gender == 0
+                                  ? Colors.blue
+                                  : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -344,7 +352,9 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                     ),
                   ),
                 ),
-SizedBox(height: 31*h,),
+                SizedBox(
+                  height: 31 * h,
+                ),
                 Text(
                   "Delete profile",
                   style: TextStyle(
