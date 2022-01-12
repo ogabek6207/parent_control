@@ -198,7 +198,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              gender = true;
+
                             });
                           },
                           child: Container(
@@ -206,7 +206,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: gender ? Colors.blue : AppTheme.greyDE,
+                              color: widget.gender == 1 ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -237,7 +237,6 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              gender = false;
                             });
                           },
                           child: Container(
@@ -245,7 +244,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: !gender ? Colors.blue : AppTheme.greyDE,
+                              color: widget.gender ==0 ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -295,7 +294,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 152 * h,
+                  height: 100 * h,
                 ),
                 GestureDetector(
                   onTap: () async {
@@ -343,6 +342,17 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+SizedBox(height: 31*h,),
+                Text(
+                  "Delete profile",
+                  style: TextStyle(
+                    color: AppTheme.red4C,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    height: 21 / 18 * h,
                   ),
                 ),
               ],
