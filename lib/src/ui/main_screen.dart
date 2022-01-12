@@ -47,7 +47,9 @@ class _MainScreenState extends State<MainScreen> {
           image: userImage,
           gender: userGender,
         ),
-        SettingScreen(id: userId,),
+        SettingScreen(
+          id: userId,
+        ),
       ][_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

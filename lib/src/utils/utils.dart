@@ -47,4 +47,42 @@ class Utils {
     }
   }
 
+  static String socialName(int id) {
+    switch (id) {
+      case 1:
+        {
+          return "instagram";
+        }
+      case 2:
+        {
+          return "assets/images/tiktok.png";
+          break;
+        }
+      case 3:
+        {
+          return "assets/images/youtube.png";
+          break;
+        }
+      case 4:
+        {
+          return "assets/images/twitter.png";
+          break;
+        }
+      case 5:
+        {
+          return "assets/images/steam.png";
+          break;
+        }
+      case 6:
+        {
+          return "assets/images/facebook.png";
+          break;
+        }
+      default:
+        {
+          return "";
+        }
+    }
+  }
+
 }

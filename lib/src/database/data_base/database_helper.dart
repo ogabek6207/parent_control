@@ -190,7 +190,7 @@ class DatabaseHelper {
     var dbClient = await db;
     return await dbClient.delete(
       tableSocial,
-      where: '$columnSocialUserId = ?',
+      where: '$columnSocialId = ?',
       whereArgs: [id],
     );
   }
