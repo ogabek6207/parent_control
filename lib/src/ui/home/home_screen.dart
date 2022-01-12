@@ -35,6 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
     double o = (h + w) / 2;
     return Scaffold(
       backgroundColor: AppTheme.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text("Home",
+          style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 22 * o,
+            fontWeight: FontWeight.w500,
+            height: 26 / 22 * h,
+            color: AppTheme.white,
+          ),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -68,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.only(
-                          top: 96 * h,
+                          top: 16 * h,
                           left: 16 * w,
                           right: 16 * w,
                         ),

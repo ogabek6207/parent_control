@@ -102,15 +102,19 @@ class _AlertScreenState extends State<AlertScreen> {
                       borderRadius: BorderRadius.circular(8 * o),
                       child: widget.image != ""
                           ? Image.file(
-                        File(widget.image),
-                        fit: BoxFit.cover,
-                      )
-                          :  widget.gender == 1 ? SvgPicture.asset(
-                        "assets/icons/boy_.svg",
-                      )
-                          : SvgPicture.asset(
-                        "assets/icons/girl_.svg",
-                      ),
+                              File(widget.image),
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              color: AppTheme.white,
+                              child: widget.gender == 1
+                                  ? SvgPicture.asset(
+                                      "assets/icons/boy_.svg",
+                                    )
+                                  : SvgPicture.asset(
+                                      "assets/icons/girl_.svg",
+                                    ),
+                            ),
                     ),
                   ),
                   SizedBox(

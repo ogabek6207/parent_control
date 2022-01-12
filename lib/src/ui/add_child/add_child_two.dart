@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
@@ -108,7 +107,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                           height: 128 * h,
                           width: 128 * h,
                           decoration: BoxDecoration(
-                            color: AppTheme.greyD2,
+                            color: AppTheme.greyF5,
                             borderRadius: BorderRadius.circular(
                               11 * h,
                             ),
@@ -119,7 +118,21 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                             children: [
                               SvgPicture.asset(
                                 "assets/icons/gallery.svg",
-                              )
+                              ),
+                              SizedBox(height: 18*h,),
+                              Container(
+                                margin: EdgeInsets.only(left: 13.5*w, right: 13.5*w),
+                                child: Text("Click here to upload a photo",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: AppTheme.grey,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 13.5*o,
+                                  fontWeight: FontWeight.normal,
+
+                                ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -181,7 +194,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: gender ? Colors.blue : Colors.grey,
+                              color: gender ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -220,7 +233,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: !gender ? Colors.blue : Colors.grey,
+                              color: !gender ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
