@@ -329,16 +329,14 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: errorText ? AppTheme.blue : AppTheme.milk,
+                      color: AppTheme.blue,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(
                       child: Text(
-                        "Add child",
+                        "Save",
                         style: TextStyle(
-                          color: errorText
-                              ? AppTheme.white
-                              : AppTheme.dark.withOpacity(0.3),
+                          color: AppTheme.white,
                           fontSize: 18,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,
