@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
@@ -39,19 +40,20 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
           ),
           Row(
             children: [
-              SizedBox(width: 16*w,),
+              SizedBox(
+                width: 16 * w,
+              ),
               GestureDetector(
-
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.arrow_back_ios,
-          size: 24*o,
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  size: 24 * o,
                   color: AppTheme.white,
-          ),
+                ),
               ),
               const Spacer(),
-
               Text(
                 "Profile setting",
                 style: TextStyle(
@@ -83,82 +85,82 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                 ),
                 data == null
                     ? GestureDetector(
-                  onTap: () {
-                    BottomDialog.showGalleryDialog(
-                      context,
-                          () async {
-                        final XFile? image = await _picker.pickImage(
-                            source: ImageSource.gallery);
-                        setState(() {
-                          data = File(image!.path);
-                        });
-                      },
-                          () async {
-                        final XFile? image = await _picker.pickImage(
-                            source: ImageSource.camera);
-                        setState(() {
-                          data = File(image!.path);
-                        });
-                      },
-                    );
-                  },
-                  child: Container(
-                    height: 128 * h,
-                    width: 128 * h,
-                    decoration: BoxDecoration(
-                      color: AppTheme.greyD2,
-                      borderRadius: BorderRadius.circular(
-                        11 * h,
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/gallery.svg",
-                        )
-                      ],
-                    ),
-                  ),
-                )
-                    : Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.file(
-                        data!,
-                        height: 128 * h,
-                        width: 128 * h,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 4 * h,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              data = null;
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(left: 90 * w),
-                            child: SvgPicture.asset(
-                              "assets/icons/close.svg",
-                              height: 24 * o,
-                              width: 24 * o,
+                        onTap: () {
+                          BottomDialog.showGalleryDialog(
+                            context,
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.gallery);
+                              setState(() {
+                                data = File(image!.path);
+                              });
+                            },
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.camera);
+                              setState(() {
+                                data = File(image!.path);
+                              });
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: 128 * h,
+                          width: 128 * h,
+                          decoration: BoxDecoration(
+                            color: AppTheme.greyD2,
+                            borderRadius: BorderRadius.circular(
+                              11 * h,
                             ),
                           ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/gallery.svg",
+                              )
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      )
+                    : Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.file(
+                              data!,
+                              height: 128 * h,
+                              width: 128 * h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 4 * h,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    data = null;
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 90 * w),
+                                  child: SvgPicture.asset(
+                                    "assets/icons/close.svg",
+                                    height: 24 * o,
+                                    width: 24 * o,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                 SizedBox(
                   height: 48 * h,
                 ),
@@ -250,13 +252,13 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                   height: 56 * h,
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                  padding: EdgeInsets.only(left: 16 * w),
+                  padding: EdgeInsets.only(left: 16 * w, top: 3*h),
                   decoration: BoxDecoration(
                     color: AppTheme.milk,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: TextField(
+                  child:   TextField(
                     controller: _controller,
                     decoration: InputDecoration(
                       border: InputBorder.none,

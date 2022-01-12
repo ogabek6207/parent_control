@@ -244,15 +244,22 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Name",
-                      hintStyle: TextStyle(
-                        color: AppTheme.black.withOpacity(0.3),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+
+                        child: TextField(
+                          controller: _controller,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Name",
+                            hintStyle: TextStyle(
+                              color: AppTheme.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 SizedBox(
