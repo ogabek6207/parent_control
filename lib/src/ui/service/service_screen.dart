@@ -6,7 +6,6 @@ import 'package:parent_control/src/model/service_model.dart';
 import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/utils/utils.dart';
-
 import '../main_screen.dart';
 
 class ServiceScreen extends StatefulWidget {

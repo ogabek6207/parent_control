@@ -18,6 +18,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   rxdart: ^0.27.3
   numberpicker: ^2.1.1
+  flutter_translate: ^3.0.1
+  flutter_translate_annotations: ^1.0.0
 
 
 dev_dependencies:
@@ -26,7 +28,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-
+  flutter_translate_gen: ^1.2.1
+  build_runner: ^1.7.0
 flutter:
 
   uses-material-design: true
@@ -34,4 +37,5 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/menu/
+    - assets/i18n/
 
