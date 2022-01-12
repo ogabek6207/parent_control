@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
 import 'package:parent_control/src/model/user_model.dart';
+import 'package:parent_control/src/ui/service_child/service_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -163,11 +164,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         const Spacer(),
-                                        SvgPicture.asset(
-                                          "assets/icons/vector.svg",
-                                          color: result[index].image != ""
-                                              ? AppTheme.white
-                                              : AppTheme.black,
+                                        GestureDetector(
+                                          onTap: (){
+                                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                                              return ServiceChildScreen(
+                                                image: result[index].image, name: result[index].name, gender: result[index].gender,
+                                              );
+
+                                            },),);
+                                          },
+                                          child: SvgPicture.asset(
+                                            "assets/icons/vector.svg",
+                                            color: result[index].image != ""
+                                                ? AppTheme.white
+                                                : AppTheme.black,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 16 * w,

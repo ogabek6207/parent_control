@@ -23,7 +23,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
   final TextEditingController _controller = TextEditingController();
   File? data;
   bool gender = true;
-
+  bool errorText = true;
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -289,6 +289,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                   onTap: () async {
                     if (_controller.text.length >= 4) {
                       var image = data == null ? "" : data!.path;
+                      errorText = true;
                       int userId = await _repository.saveProducts(
                         UserModel(
                           id: 0,
@@ -315,14 +316,14 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: AppTheme.milk,
+                      color: errorText ?  AppTheme.blue :AppTheme.milk,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(
                       child: Text(
                         "Add child",
                         style: TextStyle(
-                          color: AppTheme.dark.withOpacity(0.3),
+                          color:  errorText ? AppTheme.white :AppTheme.dark.withOpacity(0.3),
                           fontSize: 18,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,

@@ -10,20 +10,30 @@ import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
-class AddChildScreen extends StatefulWidget {
-  const AddChildScreen({Key? key}) : super(key: key);
+class ServiceChildScreen extends StatefulWidget {
+  String image;
+  String name;
+  int gender;
+
+  ServiceChildScreen({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.gender,
+  }) : super(key: key);
 
   @override
-  _AddChildScreenState createState() => _AddChildScreenState();
+  _AddChildScreenTwoState createState() => _AddChildScreenTwoState();
 }
 
-class _AddChildScreenState extends State<AddChildScreen> {
+class _AddChildScreenTwoState extends State<ServiceChildScreen> {
   final ImagePicker _picker = ImagePicker();
   final Repository _repository = Repository();
   final TextEditingController _controller = TextEditingController();
   File? data;
   bool gender = true;
-  bool errorText = false;
+  bool errorText = true;
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -39,9 +49,22 @@ class _AddChildScreenState extends State<AddChildScreen> {
           ),
           Row(
             children: [
+              SizedBox(
+                width: 16 * w,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  size: 24 * o,
+                  color: AppTheme.white,
+                ),
+              ),
               const Spacer(),
               Text(
-                "Create your child profile",
+                "Profile setting",
                 style: TextStyle(
                     color: AppTheme.white,
                     fontSize: 22 * o,
@@ -106,17 +129,20 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               SvgPicture.asset(
                                 "assets/icons/gallery.svg",
                               ),
-                              SizedBox(height: 18*h,),
+                              SizedBox(
+                                height: 18 * h,
+                              ),
                               Container(
-                                margin: EdgeInsets.only(left: 13.5*w, right: 13.5*w),
-                                child: Text("Click here to upload a photo",
+                                margin: EdgeInsets.only(
+                                    left: 13.5 * w, right: 13.5 * w),
+                                child: Text(
+                                  "Click here to upload a photo",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: AppTheme.grey,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 13.5*o,
+                                    fontSize: 13.5 * o,
                                     fontWeight: FontWeight.normal,
-
                                   ),
                                 ),
                               ),
@@ -181,7 +207,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: gender ? Colors.blue : Colors.grey,
+                              color: gender ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -220,7 +246,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: !gender ? Colors.blue : Colors.grey,
+                              color: !gender ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -252,28 +278,21 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   height: 56 * h,
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                  padding: EdgeInsets.only(left: 16 * w),
+                  padding: EdgeInsets.only(left: 16 * w, top: 3 * h),
                   decoration: BoxDecoration(
                     color: AppTheme.milk,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-
-                        child: TextField(
-                          controller: _controller,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Name",
-                            hintStyle: TextStyle(
-                              color: AppTheme.black.withOpacity(0.3),
-                            ),
-                          ),
-                        ),
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Name",
+                      hintStyle: TextStyle(
+                        color: AppTheme.black.withOpacity(0.3),
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -281,9 +300,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    if (_controller.text.length >= 3) {
-                      errorText = true;
+                    if (_controller.text.length >= 4) {
                       var image = data == null ? "" : data!.path;
+                      errorText = true;
                       int userId = await _repository.saveProducts(
                         UserModel(
                           id: 0,
@@ -298,7 +317,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                           builder: (context) {
                             return ServiceScreen(
                               userId: userId,
-                              addUser: true,
+                              addUser: false,
                             );
                           },
                         ),
@@ -310,14 +329,16 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: errorText ?  AppTheme.blue :AppTheme.milk,
+                      color: errorText ? AppTheme.blue : AppTheme.milk,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(
                       child: Text(
                         "Add child",
                         style: TextStyle(
-                          color: AppTheme.dark.withOpacity(0.3),
+                          color: errorText
+                              ? AppTheme.white
+                              : AppTheme.dark.withOpacity(0.3),
                           fontSize: 18,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,
