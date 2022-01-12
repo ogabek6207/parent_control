@@ -7,7 +7,11 @@ import 'package:parent_control/src/utils/utils.dart';
 
 class SettingScreen extends StatefulWidget {
   final int id;
-  const SettingScreen({Key? key, required this.id,}) : super(key: key);
+
+  const SettingScreen({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
   @override
   _SettingScreenState createState() => _SettingScreenState();
@@ -189,7 +193,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ServiceScreen(userId: widget.id,);
+                    return ServiceScreen(
+                      userId: widget.id,
+                      addUser: false,
+                    );
                   },
                 ),
               );

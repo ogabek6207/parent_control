@@ -3,14 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/social_bloc.dart';
 import 'package:parent_control/src/model/social_model.dart';
+import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceScreen extends StatefulWidget {
   final int userId;
+  final bool addUser;
 
   const ServiceScreen({
     Key? key,
     required this.userId,
+    required this.addUser,
   }) : super(key: key);
 
   @override
@@ -169,6 +172,16 @@ class _ServiceScreenState extends State<ServiceScreen> {
                         onTap: () async {
                           socialBloc.saveSocial(data);
                           Navigator.popUntil(context, (route) => route.isFirst);
+                          if (widget.addUser) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return const MainScreen();
+                                },
+                              ),
+                            );
+                          }
                         },
                         child: Container(
                           height: 56,

@@ -276,6 +276,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                           builder: (context) {
                             return ServiceScreen(
                               userId: userId,
+                              addUser: true,
                             );
                           },
                         ),
