@@ -38,7 +38,8 @@ class _AlertScreenState extends State<AlertScreen> {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-
+    bool one = false;
+    bool two = false;
     return Scaffold(
       body: AnimatedContainer(
         width: MediaQuery.of(context).size.width,
@@ -204,14 +205,36 @@ class _AlertScreenState extends State<AlertScreen> {
                                 color: AppTheme.black,
                               ),
                               const Spacer(),
-                              SvgPicture.asset(
-                                "assets/icons/dislike.svg",
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    one = !one;
+                                  });
+                                },
+                                child: one
+                                    ? SvgPicture.asset(
+                                        "assets/icons/dislike.svg",
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/icons/dislike_.svg",
+                                      ),
                               ),
                               SizedBox(
                                 width: 16 * w,
                               ),
-                              SvgPicture.asset(
-                                "assets/icons/like.svg",
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    two = !two;
+                                  });
+                                },
+                                child: one
+                                    ? SvgPicture.asset(
+                                        "assets/icons/like.svg",
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/icons/like_.svg",
+                                      ),
                               ),
                               SizedBox(
                                 width: 16 * w,

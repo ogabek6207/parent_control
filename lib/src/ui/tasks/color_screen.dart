@@ -32,7 +32,7 @@ class _ColorScreenState extends State<ColorScreen> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13 * o),
               border: Border.all(
-                color: AppTheme.light_greey,
+                color: AppTheme.light_grey,
                 width: 1,
               ),
               color: AppTheme.white,
@@ -62,7 +62,7 @@ class _ColorScreenState extends State<ColorScreen> {
             margin: EdgeInsets.only(left: 24 * w, right: 24 * w, top: 8 * h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13 * o),
-              color: AppTheme.light_greey,
+              color: AppTheme.light_grey,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

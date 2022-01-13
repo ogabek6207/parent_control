@@ -403,7 +403,7 @@ class _TasksScreenState extends State<TasksScreen> {
                           margin: EdgeInsets.symmetric(horizontal: 16 * w),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8 * o),
-                            color: AppTheme.light_greey,
+                            color: AppTheme.light_grey,
                           ),
                           child: Row(
                             children: [
