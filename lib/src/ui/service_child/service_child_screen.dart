@@ -6,6 +6,8 @@ import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
+import 'package:parent_control/src/ui/home/home_screen.dart';
+import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -430,10 +432,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return ServiceScreen(
-                              userId: userId,
-                              addUser: false,
-                            );
+                            return const MainScreen();
                           },
                         ),
                       );
