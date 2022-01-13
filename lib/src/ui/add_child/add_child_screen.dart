@@ -94,7 +94,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                           height: 128 * h,
                           width: 128 * h,
                           decoration: BoxDecoration(
-                            color: AppTheme.greyF5,
+                            color: AppTheme.milk,
                             borderRadius: BorderRadius.circular(
                               11 * h,
                             ),

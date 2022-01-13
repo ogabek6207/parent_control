@@ -154,7 +154,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                                 height: 128 * h,
                                 width: 128 * h,
                                 decoration: BoxDecoration(
-                                  color: AppTheme.greyF5,
+                                  color: AppTheme.milk,
                                   borderRadius: BorderRadius.circular(
                                     11 * h,
                                   ),
@@ -415,7 +415,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         child: Text(
                           "Delete profile",
                           style: TextStyle(
-                            color: AppTheme.red4C,
+                            color: AppTheme.red,
                             fontSize: 18,
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w500,

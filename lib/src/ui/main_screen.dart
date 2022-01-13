@@ -35,10 +35,12 @@ class _MainScreenState extends State<MainScreen> {
             userGender = _userGender;
           },
         ),
-         TasksScreen(  id: userId,
-           name: userName,
-           image: userImage,
-           gender: userGender,),
+        TasksScreen(
+          id: userId,
+          name: userName,
+          image: userImage,
+          gender: userGender,
+        ),
         AlertScreen(
           onBack: () {
             setState(() {

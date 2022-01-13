@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -25,12 +24,14 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+  DateTime now = DateTime.now();
+  DateTime selectedDay = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-    DateTime now = DateTime.now();
     return Scaffold(
       backgroundColor: AppTheme.blue,
       body: AnimatedContainer(
@@ -129,17 +130,27 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     height: 24 * h,
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 16 * w,
-                      ),
-                      Container(
+                  Row(children: [
+                    SizedBox(
+                      width: 16 * w,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedDay = now;
+                        });
+                      },
+                      child: Container(
                         height: 32 * o,
                         width: 32 * o,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(32 * o),
-                          color: AppTheme.blue1,
+                          border: selectedDay == now
+                              ? null
+                              : Border.all(color: AppTheme.border, width: 1),
+                          color: selectedDay == now
+                              ? AppTheme.blue1
+                              : AppTheme.white,
                         ),
                         child: Center(
                           child: Text(
@@ -149,154 +160,148 @@ class _TasksScreenState extends State<TasksScreen> {
                               fontSize: 12 * o,
                               fontWeight: FontWeight.w600,
                               height: 14 / 12 * h,
-                              color: AppTheme.white,
+                              color: selectedDay == now
+                                  ? AppTheme.white
+                                  : AppTheme.black,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32 * o),
+                        border: Border.all(color: AppTheme.border, width: 1),
                       ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(
-                                now.add(const Duration(days: 1)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 1)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
-                      ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(
-                                now.add(const Duration(days: 2)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32 * o),
+                          border: Border.all(color: AppTheme.border, width: 1)),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 2)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
-                      ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(
-                                now.add(const Duration(days: 3)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32 * o),
+                          border: Border.all(color: AppTheme.border, width: 1)),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 3)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
-                      ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(now.add(const Duration(days: 4)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32 * o),
+                          border: Border.all(color: AppTheme.border, width: 1)),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 4)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
-                      ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(now.add(const Duration(days: 5)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32 * o),
+                          border: Border.all(color: AppTheme.border, width: 1)),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 5)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 14 * w,
-                      ),
-                      Container(
-                        height: 32 * o,
-                        width: 32 * o,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(32 * o),
-                            border:
-                                Border.all(color: AppTheme.border, width: 1)),
-                        child: Center(
-                          child: Text(
-                            getWeek(now.add(const Duration(days: 6)).weekday % 7),
-                            style: TextStyle(
-                              fontStyle: FontStyle.normal,
-                              fontSize: 12 * o,
-                              fontWeight: FontWeight.normal,
-                              height: 14 / 12 * h,
-                              color: AppTheme.black,
-                            ),
+                    ),
+                    SizedBox(
+                      width: 14 * w,
+                    ),
+                    Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(32 * o),
+                          border: Border.all(color: AppTheme.border, width: 1)),
+                      child: Center(
+                        child: Text(
+                          getWeek(now.add(const Duration(days: 6)).weekday % 7),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: AppTheme.black,
                           ),
                         ),
                       ),
-                    ]
-                  ),
+                    ),
+                  ]),
                   SizedBox(
                     height: 24 * h,
                   ),
