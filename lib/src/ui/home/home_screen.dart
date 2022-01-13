@@ -8,7 +8,12 @@ import 'package:parent_control/src/ui/service_child/service_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
-  final Function(int id, String name, String image, int gender,) userChanged;
+  final Function(
+    int id,
+    String name,
+    String image,
+    int gender,
+  ) userChanged;
 
   const HomeScreen({
     Key? key,
@@ -39,7 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Home",
+        title: Text(
+          "Home",
           style: TextStyle(
             fontStyle: FontStyle.normal,
             fontSize: 22 * o,
@@ -59,12 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   List<UserModel> result = snapshot.data!;
                   if (isFirst) {
-                    widget.userChanged(
-                      result[0].id,
-                      result[0].name,
-                      result[0].image,
-                      result[0].gender
-                    );
+                    widget.userChanged(result[0].id, result[0].name,
+                        result[0].image, result[0].gender);
                     isFirst = false;
                   }
                   return PageView.builder(
@@ -165,13 +167,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         const Spacer(),
                                         GestureDetector(
-                                          onTap: (){
-                                            Navigator.push(context, MaterialPageRoute(builder: (context){
-                                              return ServiceChildScreen(
-                                                image: result[index].image, name: result[index].name, gender: result[index].gender,
-                                              );
-
-                                            },),);
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) {
+                                                  return ServiceChildScreen(
+                                                    userCount: result.length,
+                                                    userId: result[index].id,
+                                                    image: result[index].image,
+                                                    name: result[index].name,
+                                                    gender:
+                                                        result[index].gender,
+                                                  );
+                                                },
+                                              ),
+                                            );
                                           },
                                           child: SvgPicture.asset(
                                             "assets/icons/vector.svg",

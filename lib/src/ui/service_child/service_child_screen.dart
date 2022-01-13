@@ -3,24 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/bloc/home_bloc.dart';
 import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/repository/repository.dart';
-import 'package:parent_control/src/ui/home/home_screen.dart';
-import 'package:parent_control/src/ui/main_screen.dart';
-import 'package:parent_control/src/ui/service/service_screen.dart';
+import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceChildScreen extends StatefulWidget {
   final String image;
   final String name;
   final int gender;
+  final int userId;
+  final int userCount;
 
   const ServiceChildScreen({
     Key? key,
     required this.image,
     required this.name,
+    required this.userId,
     required this.gender,
+    required this.userCount,
   }) : super(key: key);
 
   @override
@@ -32,11 +35,14 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
   final Repository _repository = Repository();
   final TextEditingController _controller = TextEditingController();
   File? data;
-  bool gender = true;
-  bool errorText = true;
+  int gender = 1;
 
   @override
   void initState() {
+    if (widget.image != "") {
+      data = File(widget.image);
+    }
+    gender = widget.gender;
     _controller.text = widget.name;
     setState(() {});
     super.initState();
@@ -102,171 +108,63 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                   height: 40 * h,
                 ),
                 data == null
-                    ? widget.image == ""
-                        ? GestureDetector(
-                            onTap: () {
-                              BottomDialog.showGalleryDialog(
-                                context,
-                                () async {
-                                  final XFile? image = await _picker.pickImage(
-                                      source: ImageSource.gallery);
-                                  setState(() {
-                                    data = File(image!.path);
-                                  });
-                                },
-                                () async {
-                                  final XFile? image = await _picker.pickImage(
-                                      source: ImageSource.camera);
-                                  setState(() {
-                                    data = File(image!.path);
-                                  });
-                                },
-                              );
+                    ? GestureDetector(
+                        onTap: () {
+                          BottomDialog.showGalleryDialog(
+                            context,
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.gallery);
+                              setState(() {
+                                data = File(image!.path);
+                              });
                             },
-                            child: Container(
-                              height: 128 * h,
-                              width: 128 * h,
-                              decoration: BoxDecoration(
-                                color: AppTheme.greyF5,
-                                borderRadius: BorderRadius.circular(
-                                  11 * h,
+                            () async {
+                              final XFile? image = await _picker.pickImage(
+                                  source: ImageSource.camera);
+                              setState(() {
+                                data = File(image!.path);
+                              });
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: 128 * h,
+                          width: 128 * h,
+                          decoration: BoxDecoration(
+                            color: AppTheme.greyF5,
+                            borderRadius: BorderRadius.circular(
+                              11 * h,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/gallery.svg",
+                              ),
+                              SizedBox(
+                                height: 18 * h,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: 13.5 * w, right: 13.5 * w),
+                                child: Text(
+                                  "Click here to upload a photo",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: AppTheme.grey,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 13.5 * o,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/gallery.svg",
-                                  ),
-                                  SizedBox(
-                                    height: 18 * h,
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left: 13.5 * w, right: 13.5 * w),
-                                    child: Text(
-                                      "Click here to upload a photo",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: AppTheme.grey,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 13.5 * o,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )
-                        : Stack(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: k == 0
-                                      ? Image.file(
-                                          File(widget.image),
-                                          height: 128 * h,
-                                          width: 128 * h,
-                                          fit: BoxFit.cover,
-                                        )
-                                      : GestureDetector(
-                                          onTap: () {
-                                            BottomDialog.showGalleryDialog(
-                                              context,
-                                              () async {
-                                                final XFile? image =
-                                                    await _picker.pickImage(
-                                                        source: ImageSource
-                                                            .gallery);
-                                                setState(() {
-                                                  data = File(image!.path);
-                                                });
-                                              },
-                                              () async {
-                                                final XFile? image =
-                                                    await _picker.pickImage(
-                                                        source:
-                                                            ImageSource.camera);
-                                                setState(() {
-                                                  data = File(image!.path);
-                                                });
-                                              },
-                                            );
-                                          },
-                                          child: Container(
-                                            height: 128 * h,
-                                            width: 128 * h,
-                                            decoration: BoxDecoration(
-                                              color: AppTheme.greyF5,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                11 * h,
-                                              ),
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  "assets/icons/gallery.svg",
-                                                ),
-                                                SizedBox(
-                                                  height: 18 * h,
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      left: 13.5 * w,
-                                                      right: 13.5 * w),
-                                                  child: Text(
-                                                    "Click here to upload a photo",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      color: AppTheme.grey,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      fontSize: 13.5 * o,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 4 * h,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        k = 1;
-                                      });
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(left: 90 * w),
-                                      child: SvgPicture.asset(
-                                        "assets/icons/close.svg",
-                                        color: k == 1
-                                            ? Colors.transparent
-                                            : AppTheme.black,
-                                        height: 24 * o,
-                                        width: 24 * o,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
                             ],
-                          )
+                          ),
+                        ),
+                      )
                     : Stack(
                         children: [
                           ClipRRect(
@@ -315,16 +213,17 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {});
+                            setState(() {
+                              gender = 1;
+                            });
                           },
                           child: Container(
                             height: 72 * o,
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: widget.gender == 1
-                                  ? Colors.blue
-                                  : AppTheme.greyDE,
+                              color:
+                                  gender == 1 ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -354,16 +253,17 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            setState(() {});
+                            setState(() {
+                              gender = 0;
+                            });
                           },
                           child: Container(
                             height: 72 * o,
                             width: 72 * o,
                             padding: EdgeInsets.only(top: 12 * h),
                             decoration: BoxDecoration(
-                              color: widget.gender == 0
-                                  ? Colors.blue
-                                  : AppTheme.greyDE,
+                              color:
+                                  gender == 0 ? Colors.blue : AppTheme.greyDE,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: SvgPicture.asset(
@@ -419,23 +319,18 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                   onTap: () async {
                     if (_controller.text.length >= 4) {
                       var image = data == null ? "" : data!.path;
-                      errorText = true;
-                      int userId = await _repository.saveProducts(
+                      int userId = await _repository.updateProduct(
                         UserModel(
-                          id: 0,
+                          id: widget.userId,
                           name: _controller.text,
                           image: image,
-                          gender: gender ? 1 : 0,
+                          gender: gender,
                         ),
                       );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const MainScreen();
-                          },
-                        ),
-                      );
+                      if (userId >= 0) {
+                        Navigator.pop(context);
+                        homeBloc.getUsers();
+                      }
                     }
                   },
                   child: Container(
@@ -460,17 +355,48 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 31 * h,
-                ),
-                Text(
-                  "Delete profile",
-                  style: TextStyle(
-                    color: AppTheme.red4C,
-                    fontSize: 18,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    height: 21 / 18 * h,
+                SizedBox(height: 12 * h),
+                GestureDetector(
+                  onTap: () async {
+                    var user = await _repository.deleteProducts(widget.userId);
+                    await _repository.deleteSocialUser(widget.userId);
+                    if (user >= 0) {
+                      if (widget.userCount == 1) {
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return const AddChildScreen();
+                            },
+                          ),
+                        );
+                      } else {
+                        Navigator.pop(context);
+                        homeBloc.getUsers();
+                      }
+                    }
+                  },
+                  child: Container(
+                    height: 56,
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                    decoration: BoxDecoration(
+                      color: AppTheme.white,
+                      borderRadius: BorderRadius.circular(32 * o),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Delete profile",
+                        style: TextStyle(
+                          color: AppTheme.red4C,
+                          fontSize: 18,
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
+                          height: 21 / 18 * h,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],

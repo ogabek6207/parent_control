@@ -31,6 +31,8 @@ class Repository {
   //social
   Future<int> deleteSocial(int id) => databaseHelper.deleteSocial(id);
 
+  Future<int> deleteSocialUser(int id) => databaseHelper.deleteSocialUser(id);
+
   //notes
   Future<int> deleteNotes(int id) => databaseHelper.deleteNotes(id);
 
