@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -483,23 +484,35 @@ class _TasksScreenState extends State<TasksScreen> {
                       ],
                     ),
                   ),
-                  Container(
-                    height: 56,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 40 * w),
-                    decoration: BoxDecoration(
-                      color: AppTheme.blue1,
-                      borderRadius: BorderRadius.circular(32 * o),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "+ Add task",
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 18 * o,
-                          fontWeight: FontWeight.w500,
-                          height: 21 / 18 * h,
-                          color: AppTheme.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return NewTasksScreen(name: widget.name, image: widget.image, gender: widget.gender, id: widget.id);
+                          },
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 56,
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                      decoration: BoxDecoration(
+                        color: AppTheme.blue1,
+                        borderRadius: BorderRadius.circular(32 * o),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "+ Add task",
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 18 * o,
+                            fontWeight: FontWeight.w500,
+                            height: 21 / 18 * h,
+                            color: AppTheme.white,
+                          ),
                         ),
                       ),
                     ),
