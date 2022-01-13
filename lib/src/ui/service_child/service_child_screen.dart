@@ -161,21 +161,81 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                         : Stack(
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: k == 0
-                                    ? Image.file(
-                                        File(widget.image),
-                                        height: 128 * h,
-                                        width: 128 * h,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Image.asset(
-                                        'assets/images/image.png',
-                                        height: 128 * h,
-                                        width: 128 * h,
-                                        fit: BoxFit.cover,
-                                      ),
-                              ),
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: k == 0
+                                      ? Image.file(
+                                          File(widget.image),
+                                          height: 128 * h,
+                                          width: 128 * h,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : GestureDetector(
+                                          onTap: () {
+                                            BottomDialog.showGalleryDialog(
+                                              context,
+                                              () async {
+                                                final XFile? image =
+                                                    await _picker.pickImage(
+                                                        source: ImageSource
+                                                            .gallery);
+                                                setState(() {
+                                                  data = File(image!.path);
+                                                });
+                                              },
+                                              () async {
+                                                final XFile? image =
+                                                    await _picker.pickImage(
+                                                        source:
+                                                            ImageSource.camera);
+                                                setState(() {
+                                                  data = File(image!.path);
+                                                });
+                                              },
+                                            );
+                                          },
+                                          child: Container(
+                                            height: 128 * h,
+                                            width: 128 * h,
+                                            decoration: BoxDecoration(
+                                              color: AppTheme.greyF5,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                11 * h,
+                                              ),
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                  "assets/icons/gallery.svg",
+                                                ),
+                                                SizedBox(
+                                                  height: 18 * h,
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 13.5 * w,
+                                                      right: 13.5 * w),
+                                                  child: Text(
+                                                    "Click here to upload a photo",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      color: AppTheme.grey,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontSize: 13.5 * o,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -193,6 +253,9 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                                       margin: EdgeInsets.only(left: 90 * w),
                                       child: SvgPicture.asset(
                                         "assets/icons/close.svg",
+                                        color: k == 1
+                                            ? Colors.transparent
+                                            : AppTheme.black,
                                         height: 24 * o,
                                         width: 24 * o,
                                       ),
