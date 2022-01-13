@@ -1,10 +1,24 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+  final String name;
+  final String image;
+  final int gender;
+  final int id;
+
+  const TasksScreen(
+      {Key? key,
+      required this.name,
+      required this.image,
+      required this.gender,
+      required this.id})
+      : super(key: key);
 
   @override
   _TasksScreenState createState() => _TasksScreenState();
@@ -16,6 +30,7 @@ class _TasksScreenState extends State<TasksScreen> {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
+    DateTime now = DateTime.now();
     return Scaffold(
       backgroundColor: AppTheme.blue,
       body: AnimatedContainer(
@@ -55,7 +70,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     width: 40 * w,
                   ),
                   Text(
-                    "Tasks Victoria",
+                    "Tasks " + widget.name,
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
                       fontSize: 22 * o,
@@ -73,10 +88,21 @@ class _TasksScreenState extends State<TasksScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8 * o),
-                      child: Image.asset(
-                        "assets/images/schoolgirl.png",
-                        fit: BoxFit.cover,
-                      ),
+                      child: widget.image != ""
+                          ? Image.file(
+                              File(widget.image),
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              color: AppTheme.white,
+                              child: widget.gender == 1
+                                  ? SvgPicture.asset(
+                                      "assets/icons/boy_.svg",
+                                    )
+                                  : SvgPicture.asset(
+                                      "assets/icons/girl_.svg",
+                                    ),
+                            ),
                     ),
                   ),
                   SizedBox(
@@ -86,12 +112,13 @@ class _TasksScreenState extends State<TasksScreen> {
               ),
             ),
             Container(
-              height: 630 * h,
+              height: 610 * h,
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(
                 top: 16 * h,
                 left: 16 * w,
                 right: 16 * w,
+                bottom: 18 * h,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8 * o),
@@ -116,7 +143,7 @@ class _TasksScreenState extends State<TasksScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            "Mon",
+                            getWeek(now.weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -139,7 +166,8 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Tue",
+                            getWeek(
+                                now.add(const Duration(days: 1)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -162,7 +190,8 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Wed",
+                            getWeek(
+                                now.add(const Duration(days: 2)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -185,7 +214,8 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Thu",
+                            getWeek(
+                                now.add(const Duration(days: 3)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -208,7 +238,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Fri",
+                            getWeek(now.add(const Duration(days: 4)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -231,7 +261,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Sat",
+                            getWeek(now.add(const Duration(days: 5)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -254,7 +284,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                 Border.all(color: AppTheme.border, width: 1)),
                         child: Center(
                           child: Text(
-                            "Sun",
+                            getWeek(now.add(const Duration(days: 6)).weekday % 7),
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
                               fontSize: 12 * o,
@@ -265,7 +295,7 @@ class _TasksScreenState extends State<TasksScreen> {
                           ),
                         ),
                       ),
-                    ],
+                    ]
                   ),
                   SizedBox(
                     height: 24 * h,
@@ -469,7 +499,6 @@ class _TasksScreenState extends State<TasksScreen> {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 36 * h,
                   ),
@@ -480,5 +509,23 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
       ),
     );
+  }
+
+  String getWeek(int now) {
+    if (now == 1) {
+      return "Mon";
+    } else if (now == 2) {
+      return "Tue";
+    } else if (now == 3) {
+      return "Wed";
+    } else if (now == 4) {
+      return "Thu";
+    } else if (now == 5) {
+      return "Fri";
+    } else if (now == 6) {
+      return "Sat";
+    } else {
+      return "Sun";
+    }
   }
 }

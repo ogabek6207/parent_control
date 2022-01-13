@@ -18,6 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   rxdart: ^0.27.3
   numberpicker: ^2.1.1
+  intl: ^0.17.0
 
 
 dev_dependencies:

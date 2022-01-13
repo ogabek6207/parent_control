@@ -114,12 +114,14 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                 top: 26 * h,
                 left: 16 * w,
                 right: 16 * w,
+                bottom: 24 * h
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8 * o),
                 color: AppTheme.white,
               ),
               child: ListView(
+                padding: EdgeInsets.zero,
                 children: [
                   SizedBox(
                     height: 40 * h,
