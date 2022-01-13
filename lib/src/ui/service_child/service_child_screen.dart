@@ -40,12 +40,13 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
     super.initState();
   }
 
+  int k = 0;
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-
     return Scaffold(
       backgroundColor: AppTheme.blue,
       body: ListView(
@@ -99,63 +100,108 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                   height: 40 * h,
                 ),
                 data == null
-                    ? GestureDetector(
-                        onTap: () {
-                          BottomDialog.showGalleryDialog(
-                            context,
-                            () async {
-                              final XFile? image = await _picker.pickImage(
-                                  source: ImageSource.gallery);
-                              setState(() {
-                                data = File(image!.path);
-                              });
+                    ? widget.image == ""
+                        ? GestureDetector(
+                            onTap: () {
+                              BottomDialog.showGalleryDialog(
+                                context,
+                                () async {
+                                  final XFile? image = await _picker.pickImage(
+                                      source: ImageSource.gallery);
+                                  setState(() {
+                                    data = File(image!.path);
+                                  });
+                                },
+                                () async {
+                                  final XFile? image = await _picker.pickImage(
+                                      source: ImageSource.camera);
+                                  setState(() {
+                                    data = File(image!.path);
+                                  });
+                                },
+                              );
                             },
-                            () async {
-                              final XFile? image = await _picker.pickImage(
-                                  source: ImageSource.camera);
-                              setState(() {
-                                data = File(image!.path);
-                              });
-                            },
-                          );
-                        },
-                        child: Container(
-                          height: 128 * h,
-                          width: 128 * h,
-                          decoration: BoxDecoration(
-                            color: AppTheme.greyF5,
-                            borderRadius: BorderRadius.circular(
-                              11 * h,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/gallery.svg",
-                              ),
-                              SizedBox(
-                                height: 18 * h,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 13.5 * w, right: 13.5 * w),
-                                child: Text(
-                                  "Click here to upload a photo",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppTheme.grey,
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 13.5 * o,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                            child: Container(
+                              height: 128 * h,
+                              width: 128 * h,
+                              decoration: BoxDecoration(
+                                color: AppTheme.greyF5,
+                                borderRadius: BorderRadius.circular(
+                                  11 * h,
                                 ),
                               ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/icons/gallery.svg",
+                                  ),
+                                  SizedBox(
+                                    height: 18 * h,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: 13.5 * w, right: 13.5 * w),
+                                    child: Text(
+                                      "Click here to upload a photo",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppTheme.grey,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 13.5 * o,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: k == 0
+                                    ? Image.file(
+                                        File(widget.image),
+                                        height: 128 * h,
+                                        width: 128 * h,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.asset(
+                                        'assets/images/image.png',
+                                        height: 128 * h,
+                                        width: 128 * h,
+                                        fit: BoxFit.cover,
+                                      ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 4 * h,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        k = 1;
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(left: 90 * w),
+                                      child: SvgPicture.asset(
+                                        "assets/icons/close.svg",
+                                        height: 24 * o,
+                                        width: 24 * o,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
-                          ),
-                        ),
-                      )
+                          )
                     : Stack(
                         children: [
                           ClipRRect(
