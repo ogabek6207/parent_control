@@ -38,8 +38,8 @@ class _AlertScreenState extends State<AlertScreen> {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-    bool one = false;
-    bool two = false;
+    bool one = true;
+    bool two = true;
     return Scaffold(
       body: AnimatedContainer(
         width: MediaQuery.of(context).size.width,
