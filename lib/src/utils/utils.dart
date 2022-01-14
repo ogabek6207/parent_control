@@ -55,27 +55,27 @@ class Utils {
         }
       case 2:
         {
-          return "assets/images/tiktok.png";
+          return "Tiktok";
           break;
         }
       case 3:
         {
-          return "assets/images/youtube.png";
+          return "Youtube";
           break;
         }
       case 4:
         {
-          return "assets/images/twitter.png";
+          return "Twitter";
           break;
         }
       case 5:
         {
-          return "assets/images/steam.png";
+          return "Steam";
           break;
         }
       case 6:
         {
-          return "assets/images/facebook.png";
+          return "Facebook";
           break;
         }
       default:
@@ -93,32 +93,32 @@ class Utils {
         }
       case 2:
         {
-          return "assets/images/tiktok.png";
+          return "Tue";
           break;
         }
       case 3:
         {
-          return "assets/images/youtube.png";
+          return "Wed";
           break;
         }
       case 4:
         {
-          return "assets/images/twitter.png";
+          return "Thu";
           break;
         }
       case 5:
         {
-          return "assets/images/steam.png";
+          return "Fri";
           break;
         }
       case 6:
         {
-          return "assets/images/facebook.png";
+          return "Sat";
           break;
         }
       default:
         {
-          return "";
+          return "Sun";
         }
     }
   }
