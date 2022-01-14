@@ -7,8 +7,7 @@ import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class AlertScreen extends StatefulWidget {
-  final Function()
-  onBack;
+  final Function() onBack;
   final int id;
   final String name;
   final String image;
@@ -42,11 +41,11 @@ class _AlertScreenState extends State<AlertScreen> {
     bool one = true;
     bool two = true;
     return Scaffold(
-backgroundColor: AppTheme.blue,
+      backgroundColor: AppTheme.blue,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading:      GestureDetector(
+        leading: GestureDetector(
           onTap: () {
             widget.onBack();
           },
@@ -68,36 +67,39 @@ backgroundColor: AppTheme.blue,
             ),
           ),
         ),
-        actions: [      Container(
-          height: 48 * o,
-          width: 48 * o,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8 * o),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8 * o),
-            child: widget.image != ""
-                ? Image.file(
-              File(widget.image),
-              fit: BoxFit.cover,
-            )
-                : Container(
-              color: AppTheme.white,
-              child: widget.gender == 1
-                  ? SvgPicture.asset(
-                "assets/icons/boy_.svg",
-              )
-                  : SvgPicture.asset(
-                "assets/icons/girl_.svg",
+        actions: [
+          Center(
+            child: Container(
+              height: 48 * o,
+              width: 48 * o,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8 * o),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8 * o),
+                child: widget.image != ""
+                    ? Image.file(
+                        File(widget.image),
+                        fit: BoxFit.cover,
+                      )
+                    : Container(
+                        color: AppTheme.white,
+                        child: widget.gender == 1
+                            ? SvgPicture.asset(
+                                "assets/icons/boy_.svg",
+                              )
+                            : SvgPicture.asset(
+                                "assets/icons/girl_.svg",
+                              ),
+                      ),
               ),
             ),
           ),
-        ),
-          SizedBox(width : 16*w)],
+          SizedBox(width: 16 * w)
+        ],
       ),
       body: Column(
         children: [
-
           SizedBox(
             height: 16 * h,
           ),
@@ -187,11 +189,11 @@ backgroundColor: AppTheme.blue,
                               },
                               child: one
                                   ? SvgPicture.asset(
-                                "assets/icons/dislike.svg",
-                              )
+                                      "assets/icons/dislike.svg",
+                                    )
                                   : SvgPicture.asset(
-                                "assets/icons/dislike_.svg",
-                              ),
+                                      "assets/icons/dislike_.svg",
+                                    ),
                             ),
                             SizedBox(
                               width: 16 * w,
@@ -204,11 +206,11 @@ backgroundColor: AppTheme.blue,
                               },
                               child: one
                                   ? SvgPicture.asset(
-                                "assets/icons/like.svg",
-                              )
+                                      "assets/icons/like.svg",
+                                    )
                                   : SvgPicture.asset(
-                                "assets/icons/like_.svg",
-                              ),
+                                      "assets/icons/like_.svg",
+                                    ),
                             ),
                             SizedBox(
                               width: 16 * w,

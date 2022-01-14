@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
     String name,
     String image,
     int gender,
-  ) userChanged;
+  )   userChanged;
 
   const HomeScreen({
     Key? key,

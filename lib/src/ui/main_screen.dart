@@ -36,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
           },
         ),
         TasksScreen(
+
           id: userId,
           name: userName,
           image: userImage,

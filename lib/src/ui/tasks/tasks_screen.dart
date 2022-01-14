@@ -7,18 +7,21 @@ import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
+
   final Function() onBack;
   final String name;
   final String image;
   final int gender;
   final int id;
 
-  const TasksScreen(
+   TasksScreen(
       {Key? key,
       required this.name,
       required this.image,
       required this.gender,
       required this.id,
+
+
       required this.onBack})
       : super(key: key);
 
@@ -42,7 +45,7 @@ class _TasksScreenState extends State<TasksScreen> {
         elevation: 0,
         backgroundColor: AppTheme.blue,
         leading: GestureDetector(
-          onTap:  (){
+          onTap: () {
             widget.onBack();
           },
           child: SizedBox(
@@ -66,38 +69,42 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
         ),
         actions: [
-          Container(
-            margin: EdgeInsets.only(
-              right: 16 * w,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8 * o),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8 * o),
-              child: widget.image != ""
-                  ? Image.file(
-                      File(widget.image),
-                      fit: BoxFit.cover,
-                    )
-                  : Container(
-                      color: AppTheme.white,
-                      child: widget.gender == 1
-                          ? SizedBox(
-                              height: 48 * o,
-                              width: 48 * o,
-                              child: SvgPicture.asset(
-                                "assets/icons/boy_.svg",
+          Center(
+            child: Container(
+              height: 48,
+              width: 48,
+              margin: EdgeInsets.only(
+                right: 16 * w,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8 * o),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8 * o),
+                child: widget.image != ""
+                    ? Image.file(
+                        File(widget.image),
+                        fit: BoxFit.cover,
+                      )
+                    : Container(
+                        color: AppTheme.white,
+                        child: widget.gender == 1
+                            ? SizedBox(
+                                height: 48 * o,
+                                width: 48 * o,
+                                child: SvgPicture.asset(
+                                  "assets/icons/boy_.svg",
+                                ),
+                              )
+                            : SizedBox(
+                                height: 48 * o,
+                                width: 48 * o,
+                                child: SvgPicture.asset(
+                                  "assets/icons/girl_.svg",
+                                ),
                               ),
-                            )
-                          : SizedBox(
-                              height: 48 * o,
-                              width: 48 * o,
-                              child: SvgPicture.asset(
-                                "assets/icons/girl_.svg",
-                              ),
-                            ),
-                    ),
+                      ),
+              ),
             ),
           ),
         ],
@@ -489,7 +496,7 @@ class _TasksScreenState extends State<TasksScreen> {
                               name: widget.name,
                               image: widget.image,
                               gender: widget.gender,
-                              id: widget.id);
+                              id: widget.id, taskChanged: (String startTime, String finishTime, String name, String image) {  },);
                         },
                       ),
                     );

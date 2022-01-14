@@ -135,7 +135,12 @@ class BottomDialog {
     );
   }
 
-  static void showDatePicker(BuildContext context) {
+  static void showDatePicker(
+    BuildContext context,
+    int start,
+    int end,
+    Function(int _start, int _end) change,
+  ) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
@@ -209,9 +214,10 @@ class BottomDialog {
                           fontWeight: FontWeight.w600,
                         ),
                         onTimeChanged: (int value) {
-                          print(value);
+                          start = value;
+                          change(start, end);
                         },
-                        initialTime: 8,
+                        initialTime: start,
                         size: MediaQuery.of(context).size.width / 2 - 24,
                       ),
                     ),
@@ -223,9 +229,10 @@ class BottomDialog {
                           fontWeight: FontWeight.w600,
                         ),
                         onTimeChanged: (int value) {
-                          print(value);
+                          end = value;
+                          change(start, end);
                         },
-                        initialTime: 8,
+                        initialTime: end,
                         size: MediaQuery.of(context).size.width / 2 - 24,
                       ),
                     ),
@@ -239,7 +246,11 @@ class BottomDialog {
     );
   }
 
-  static void showDefaultColor(BuildContext context) {
+  static void showDefaultColor(
+    BuildContext context,
+    int id,
+      Function(int _id) change,
+  ) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
@@ -254,8 +265,11 @@ class BottomDialog {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 27*h,),
-              Text("Color for task background",
+              SizedBox(
+                height: 27 * h,
+              ),
+              Text(
+                "Color for task background",
                 style: TextStyle(
                   color: AppTheme.dark,
                   fontWeight: FontWeight.w500,
@@ -263,156 +277,221 @@ class BottomDialog {
                   height: 24 / 20 * h,
                   fontStyle: FontStyle.normal,
                 ),
-
               ),
-              SizedBox(height: 43*h,),
+              SizedBox(
+                height: 43 * h,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.white,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
-                        width: 1,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 1;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.white,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.light_grey,
-                      border: Border.all(
-                        color: AppTheme.greyE4,width: 1
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 2;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.light_grey,
+                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.light_blue,
-                      border: Border.all(
-                        color: AppTheme.blue1,width: 2
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 3;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.light_blue,
+                        border: Border.all(color: AppTheme.blue1, width: 2),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.light_green,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 4;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.light_green,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.light_yellow,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 5;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.light_yellow,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-
-
                 ],
               ),
-              SizedBox(height: 16*h,),
+              SizedBox(
+                height: 16 * h,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.peach,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
-                        width: 1,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 6;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.peach,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.rose,
-                      border: Border.all(
-                          color: AppTheme.greyE4,width: 1
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 7;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.rose,
+                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.lilac,
-                      border: Border.all(
-                          color: AppTheme.greyE4,width: 1
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 8;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.lilac,
+                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.lilacA2,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 9;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.lilacA2,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-                  SizedBox(width: 16*w,),
-                  Container(
-                    height: 56 * o,
-                    width: 56 * o,
-                    decoration: BoxDecoration(
-                      color: AppTheme.lilac6B,
-                      border: Border.all(
-                        color: AppTheme.greyE4,
+                  SizedBox(
+                    width: 16 * w,
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                      id = 10;
+                      change(id);
+                    },
+                    child: Container(
+                      height: 56 * o,
+                      width: 56 * o,
+                      decoration: BoxDecoration(
+                        color: AppTheme.lilac6B,
+                        border: Border.all(
+                          color: AppTheme.greyE4,
+                        ),
+                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                      borderRadius: BorderRadius.circular(100*o),
-
                     ),
                   ),
-
-
                 ],
               ),
             ],
