@@ -36,36 +36,24 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.blue,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+
+        title:    Text(
+          "What apps does Victoria use",
+          style: TextStyle(
+              color: AppTheme.white,
+              fontSize: 22 * o,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w500,
+              height: 26 / 22 * h),
+        ),
+      ),
       body: Column(
         children: [
-          SizedBox(
-            height: 60 * h,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 24 * w,
-              ),
-              GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: SvgPicture.asset("assets/icons/arrow.svg")),
-              SizedBox(
-                width: 18 * w,
-              ),
-              Text(
-                "What apps does Victoria use",
-                style: TextStyle(
-                    color: AppTheme.white,
-                    fontSize: 22 * o,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    height: 26 / 22 * h),
-              ),
-              const Spacer(),
-            ],
-          ),
+
+
           SizedBox(
             height: 27 * h,
           ),
