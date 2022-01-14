@@ -384,7 +384,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                   GestureDetector(
                     onTap: () async {
                       var user =
-                          await _repository.deleteProducts(widget.userId);
+                          await _repository.deleteUser(widget.userId);
                       await _repository.deleteSocialUser(widget.userId);
                       if (user >= 0) {
                         if (widget.userCount == 1) {

@@ -176,7 +176,7 @@ class DatabaseHelper {
   }
 
   //user delete
-  Future<int> deleteProducts(int id) async {
+  Future<int> deleteUser(int id) async {
     var dbClient = await db;
     return await dbClient.delete(
       tableUser,

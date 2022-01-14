@@ -7,6 +7,7 @@ import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
+  final Function() onBack;
   final String name;
   final String image;
   final int gender;
@@ -17,7 +18,8 @@ class TasksScreen extends StatefulWidget {
       required this.name,
       required this.image,
       required this.gender,
-      required this.id})
+      required this.id,
+      required this.onBack})
       : super(key: key);
 
   @override
@@ -35,18 +37,22 @@ class _TasksScreenState extends State<TasksScreen> {
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
     return Scaffold(
-
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppTheme.blue,
-        leading: SizedBox(
-          height: 24,
-          width: 24,
-          child: Icon(
-            Icons.arrow_back_ios,
-            size: 24,
-            color: AppTheme.white,
+        leading: GestureDetector(
+          onTap:  (){
+            widget.onBack();
+          },
+          child: SizedBox(
+            height: 24,
+            width: 24,
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 24,
+              color: AppTheme.white,
+            ),
           ),
         ),
         title: Text(
@@ -64,7 +70,6 @@ class _TasksScreenState extends State<TasksScreen> {
             margin: EdgeInsets.only(
               right: 16 * w,
             ),
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8 * o),
             ),

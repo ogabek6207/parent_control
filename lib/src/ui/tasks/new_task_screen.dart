@@ -97,7 +97,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
         children: [
 
           Container(
-            height: 610 * h,
+            height: 660 * h,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
               top: 16 * h,

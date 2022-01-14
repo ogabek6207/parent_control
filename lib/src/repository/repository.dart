@@ -26,7 +26,7 @@ class Repository {
   Future<List<NotesModel>> getNotes() => databaseHelper.getNotes();
 
   //user
-  Future<int> deleteProducts(int id) => databaseHelper.deleteProducts(id);
+  Future<int> deleteUser(int id) => databaseHelper.deleteUser(id);
 
   //social
   Future<int> deleteSocial(int id) => databaseHelper.deleteSocial(id);

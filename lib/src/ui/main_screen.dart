@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
           id: userId,
           name: userName,
           image: userImage,
-          gender: userGender,
+          gender: userGender, onBack: () {_selectedIndex = 0;  },
         ),
         AlertScreen(
           onBack: () {
