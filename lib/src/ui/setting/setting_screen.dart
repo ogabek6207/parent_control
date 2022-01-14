@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
-import 'package:parent_control/src/ui/add_child/add_child_two.dart';
+import 'package:parent_control/src/ui/add_child/add_child_two_screen.dart';
 import 'package:parent_control/src/ui/service/service_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 

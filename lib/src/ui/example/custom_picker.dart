@@ -2,17 +2,17 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class CustomTimerPicker extends StatefulWidget {
-  CustomTimerPicker({
+  const CustomTimerPicker({Key? key,
     required this.onTimeChanged,
     required this.initialTime,
     required this.minimumTime,
     required this.maximumTime,
     required this.style,
     required this.size,
-  });
+  }) : super(key: key);
 
   final int initialTime;
   final double size;

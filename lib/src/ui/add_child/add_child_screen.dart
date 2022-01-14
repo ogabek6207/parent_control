@@ -32,31 +32,31 @@ class _AddChildScreenState extends State<AddChildScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+       leading: Container(),
+       title: Text(
+          "Create your child profile",
+          style: TextStyle(
+              color: AppTheme.white,
+              fontSize: 22 * o,
+              fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w500,
+              height: 26 / 22 * h),
+        ),
+      ),
       body: ListView(
         children: [
           SizedBox(
-            height: 60 * h,
+            height: 24 * h,
           ),
-          Row(
-            children: [
-              const Spacer(),
-              Text(
-                "Create your child profile",
-                style: TextStyle(
-                    color: AppTheme.white,
-                    fontSize: 22 * o,
-                    fontStyle: FontStyle.normal,
-                    fontWeight: FontWeight.w500,
-                    height: 26 / 22 * h),
-              ),
-              const Spacer(),
-            ],
-          ),
+
           Container(
             height: 648 * h,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
-              top: 26 * h,
+
               left: 16 * w,
               right: 16 * w,
             ),
