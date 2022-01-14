@@ -38,7 +38,7 @@ class Repository {
 
   //user
   Future<int> updateProduct(UserModel products) =>
-      databaseHelper.updateProduct(products);
+      databaseHelper.updateUser(products);
 
 //social
   Future<int> updateSocial(SocialModel social) =>

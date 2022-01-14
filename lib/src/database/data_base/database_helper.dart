@@ -216,7 +216,7 @@ class DatabaseHelper {
 
   //user update
 
-  Future<int> updateProduct(UserModel products) async {
+  Future<int> updateUser(UserModel products) async {
     var dbClient = await db;
     return await dbClient.update(
       tableUser,
