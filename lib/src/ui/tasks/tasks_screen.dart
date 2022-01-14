@@ -39,8 +39,14 @@ class _TasksScreenState extends State<TasksScreen> {
 
         elevation: 0,
         backgroundColor: AppTheme.blue,
-        leading: SvgPicture.asset("assets/icons/arrow.svg",
-          color: AppTheme.white,
+        leading: Container(
+          height: 14,
+          width: 14,
+          child:   Icon(
+            Icons.arrow_back_ios,
+            size: 24,
+            color: AppTheme.white,
+          ),
         ),
         title:                 Text(
           "Tasks " + widget.name,
@@ -94,7 +100,7 @@ class _TasksScreenState extends State<TasksScreen> {
       body: Column(
         children: [
           Container(
-            height: 610 * h,
+            height: 600 * h,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
               top: 16 * h,

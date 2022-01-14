@@ -25,21 +25,14 @@ class NewTasksScreen extends StatefulWidget {
 }
 
 class _NewTasksScreenState extends State<NewTasksScreen> {
-
-
-
   final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-
-
   }
 
   @override
-
-
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -139,140 +132,202 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                 SizedBox(
                   height: 20 * h,
                 ),
-                Container(
-                  height: 56 * h,
-                  padding: EdgeInsets.only(left: 16 * w),
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                  decoration: BoxDecoration(
-                    color: AppTheme.milk,
-                    borderRadius: BorderRadius.circular(8 * o),
-                  ),
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                        hintText: "Title name",
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(
-                          color: AppTheme.black.withOpacity(0.3),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16 * o,
-                          fontStyle: FontStyle.normal,
-                          height: 19 / 16 * h,
-                        )),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    BottomDialog.showDatePicker(context);
-                  },
-                  child:    Container(
-                    height: 56 * h,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 56,
-                          width: 156 * w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8 * o),
-                              bottomLeft: Radius.circular(8 * o),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      Container(
+                        height: 56 * h,
+                        padding: EdgeInsets.only(left: 16 * w),
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                        decoration: BoxDecoration(
+                          color: AppTheme.milk,
+                          borderRadius: BorderRadius.circular(8 * o),
+                        ),
+                        child: TextField(
+                          controller: _controller,
+                          decoration: InputDecoration(
+                            hintText: "Title name",
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(
+                              color: AppTheme.black.withOpacity(0.3),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16 * o,
+                              fontStyle: FontStyle.normal,
+                              height: 19 / 16 * h,
                             ),
-                            border: Border.all(
-                              color: AppTheme.greyE4,
-                              width: 1 * o,
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 16 * w,
-                              ),
-                              SvgPicture.asset(
-                                "assets/icons/hour.svg",
-                              ),
-                              SizedBox(
-                                width: 8 * w,
-                              ),
-                              SizedBox(
-                                width: 12 * w,
-                              ),
-                              SvgPicture.asset(
-                                "assets/icons/more.svg",
-                              ),
-                            ],
                           ),
                         ),
-                        Container(
-                          height: 56,
-                          width: 155 * w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(8 * o),
-                              bottomRight: Radius.circular(8 * o),
-                            ),
-                            border: Border.all(
-                              color: AppTheme.greyE4,
-                              width: 1,
-                            ),
-                          ),
+                      ),
+                      SizedBox(
+                        height: 16 * h,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          BottomDialog.showDatePicker(context);
+                        },
+                        child: Container(
+                          height: 56 * h,
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 16 * w),
                           child: Row(
                             children: [
-                              SizedBox(
-                                width: 16 * w,
-                              ),
-                              SvgPicture.asset(
-                                "assets/icons/hour.svg",
-                              ),
-                              SizedBox(
-                                width: 8 * w,
-                              ),
-                              Text(
-                                "16 pm",
-                                style: TextStyle(
-                                  color: AppTheme.black,
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16 * o,
-                                  height: 19 / 16 * h,
-                                  fontWeight: FontWeight.w500,
+                              Container(
+                                height: 56,
+                                width: 156 * w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8 * o),
+                                    bottomLeft: Radius.circular(8 * o),
+                                  ),
+                                  border: Border.all(
+                                    color: AppTheme.greyE4,
+                                    width: 1 * o,
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 16 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/hour.svg",
+                                    ),
+                                    SizedBox(
+                                      width: 8 * w,
+                                    ),
+                                    Text(
+                                      "16 pm",
+                                      style: TextStyle(
+                                        color: AppTheme.black,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16 * o,
+                                        height: 19 / 16 * h,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 12 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/more.svg",
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: 12 * w,
-                              ),
-                              SvgPicture.asset(
-                                "assets/icons/more.svg",
+                              Container(
+                                height: 56,
+                                width: 155 * w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(8 * o),
+                                    bottomRight: Radius.circular(8 * o),
+                                  ),
+                                  border: Border.all(
+                                    color: AppTheme.greyE4,
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 16 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/hour.svg",
+                                    ),
+                                    SizedBox(
+                                      width: 8 * w,
+                                    ),
+                                    Text(
+                                      "16 pm",
+                                      style: TextStyle(
+                                        color: AppTheme.black,
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16 * o,
+                                        height: 19 / 16 * h,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 12 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/more.svg",
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 16 * h,
+                      ),
+                      Container(
+                        height: 56 * h,
+                        padding: EdgeInsets.only(left: 16 * w),
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppTheme.greyE4, width: 1),
+                          color: AppTheme.white,
+                          borderRadius: BorderRadius.circular(8 * o),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 24 * o,
+                              width: 24 * o,
+                              color: AppTheme.milk,
+                            ),
+                            SizedBox(
+                              width: 16 * w,
+                            ),
+                            Text(
+                              "Default color",
+                              style: TextStyle(
+                                color: AppTheme.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16 * o,
+                                fontStyle: FontStyle.normal,
+                                height: 19 / 16 * h,
+                              ),
+                            ),
+                            const Spacer(),
+                            SvgPicture.asset(
+                              "assets/icons/more.svg",
+                            ),
+                            SizedBox(width: 24*w,),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 16 * h,
+                      ),
+
+                    ],
                   ),
                 ),
-                SizedBox(
-                  height: 16 * h,
-                ),
-
                 Container(
                   height: 56,
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 40 * w),
                   decoration: BoxDecoration(
-                    color: AppTheme.blue1,
+                    color: AppTheme.milk,
                     borderRadius: BorderRadius.circular(32 * o),
                   ),
                   child: Center(
                     child: Text(
-                      "+ Add task",
+                      "Save",
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
                         fontSize: 18 * o,
                         fontWeight: FontWeight.w500,
                         height: 21 / 18 * h,
-                        color: AppTheme.white,
+                        color: AppTheme.dark.withOpacity(0.3),
                       ),
                     ),
                   ),
@@ -286,23 +341,5 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
         ],
       ),
     );
-  }
-
-  String getWeek(int now) {
-    if (now == 1) {
-      return "Mon";
-    } else if (now == 2) {
-      return "Tue";
-    } else if (now == 3) {
-      return "Wed";
-    } else if (now == 4) {
-      return "Thu";
-    } else if (now == 5) {
-      return "Fri";
-    } else if (now == 6) {
-      return "Sat";
-    } else {
-      return "Sun";
-    }
   }
 }
