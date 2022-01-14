@@ -26,6 +26,7 @@ class NewTasksScreen extends StatefulWidget {
 
 class _NewTasksScreenState extends State<NewTasksScreen> {
   final TextEditingController _controller = TextEditingController();
+  DateTime date = DateTime.now();
 
   @override
   void initState() {
@@ -40,67 +41,61 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
     double o = (h + w) / 2;
     return Scaffold(
       backgroundColor: AppTheme.blue,
-      body: Column(
-        children: [
-          Container(
-            height: 48 * h,
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.only(top: 48 * h),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 24 * w,
-                ),
-                Icon(
-                  Icons.arrow_back_ios,
-                  size: 24,
-                  color: AppTheme.white,
-                ),
-                SizedBox(
-                  width: 40 * w,
-                ),
-                Text(
-                  "Tasks " + widget.name,
-                  style: TextStyle(
-                    fontStyle: FontStyle.normal,
-                    fontSize: 22 * o,
-                    fontWeight: FontWeight.w500,
-                    height: 26 / 22 * h,
-                    color: AppTheme.white,
-                  ),
-                ),
-                const Spacer(),
-                Container(
-                  height: 48 * o,
-                  width: 48 * o,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8 * o),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8 * o),
-                    child: widget.image != ""
-                        ? Image.file(
-                            File(widget.image),
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            color: AppTheme.white,
-                            child: widget.gender == 1
-                                ? SvgPicture.asset(
-                                    "assets/icons/boy_.svg",
-                                  )
-                                : SvgPicture.asset(
-                                    "assets/icons/girl_.svg",
-                                  ),
-                          ),
-                  ),
-                ),
-                SizedBox(
-                  width: 16 * w,
-                ),
-              ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading:  GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: SizedBox(
+            height: 24,
+            width: 24,
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 24,
+              color: AppTheme.white,
             ),
           ),
+        ),
+        title:       Text(
+          "Tasks " + widget.name,
+          style: TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 22 * o,
+            fontWeight: FontWeight.w500,
+            height: 26 / 22 * h,
+            color: AppTheme.white,
+          ),
+        ),
+        actions: [   Container(
+    width: 56,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8 * o),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8 * o),
+            child: widget.image != ""
+                ? Image.file(
+              File(widget.image),
+              fit: BoxFit.cover,
+            )
+                : Container(
+              color: AppTheme.white,
+              child: widget.gender == 1
+                  ? SvgPicture.asset(
+                "assets/icons/boy_.svg",
+              )
+                  : SvgPicture.asset(
+                "assets/icons/girl_.svg",
+              ),
+            ),
+          ),
+        ), SizedBox(width: 16*w,)],
+      ),
+      body: ListView(
+        children: [
+
           Container(
             height: 610 * h,
             width: MediaQuery.of(context).size.width,
@@ -120,7 +115,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                   height: 25 * h,
                 ),
                 Text(
-                  "November 1, 2021",
+                  getMonth(date.month)  + " " + date.day.toString() + ", " + date.year.toString(),
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,
@@ -265,49 +260,60 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                       SizedBox(
                         height: 16 * h,
                       ),
-                      Container(
-                        height: 56 * h,
-                        padding: EdgeInsets.only(left: 16 * w),
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppTheme.greyE4, width: 1),
-                          color: AppTheme.white,
-                          borderRadius: BorderRadius.circular(8 * o),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 24 * o,
-                              width: 24 * o,
-                              color: AppTheme.milk,
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            Text(
-                              "Default color",
-                              style: TextStyle(
-                                color: AppTheme.black,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16 * o,
-                                fontStyle: FontStyle.normal,
-                                height: 19 / 16 * h,
+
+
+
+                      GestureDetector(
+                        onTap: (){
+                          BottomDialog.showDefaultColor(context);
+                        },
+                        child: Container(
+                          height: 56 * h,
+                          padding: EdgeInsets.only(left: 16 * w),
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppTheme.greyE4, width: 1),
+                            color: AppTheme.white,
+                            borderRadius: BorderRadius.circular(8 * o),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 24 * o,
+                                width: 24 * o,
+                                color: AppTheme.milk,
                               ),
-                            ),
-                            const Spacer(),
-                            SvgPicture.asset(
-                              "assets/icons/more.svg",
-                            ),
-                            SizedBox(width: 24*w,),
-                          ],
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                              Text(
+                                "Default color",
+                                style: TextStyle(
+                                  color: AppTheme.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16 * o,
+                                  fontStyle: FontStyle.normal,
+                                  height: 19 / 16 * h,
+                                ),
+                              ),
+                              const Spacer(),
+                              SvgPicture.asset(
+                                "assets/icons/more.svg",
+                              ),
+                              SizedBox(
+                                width: 24 * w,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
+
+
 
                       SizedBox(
                         height: 16 * h,
                       ),
-
                     ],
                   ),
                 ),
@@ -341,5 +347,32 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
         ],
       ),
     );
+  }
+  String getMonth(int now) {
+    if (date.month == 1) {
+      return "January";
+    } else if (date == 2) {
+      return "February";
+    } else if (date == 3) {
+      return "March";
+    } else if (date == 4) {
+      return "April";
+    } else if (date == 5) {
+      return "May";
+    } else if (date == 6) {
+      return "June";
+    } else if (date == 7) {
+      return "July";
+    } else if (date == 8) {
+      return "August";
+    } else if (date == 9) {
+      return "September";
+    } else if (date == 10) {
+      return "October";
+    } else if (date == 11) {
+      return "November";
+    } else {
+      return "December";
+    }
   }
 }

@@ -238,4 +238,187 @@ class BottomDialog {
       },
     );
   }
+
+  static void showDefaultColor(BuildContext context) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 290 * h,
+          width: MediaQuery.of(context).size.width,
+          color: AppTheme.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 27*h,),
+              Text("Color for task background",
+                style: TextStyle(
+                  color: AppTheme.dark,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20 * o,
+                  height: 24 / 20 * h,
+                  fontStyle: FontStyle.normal,
+                ),
+
+              ),
+              SizedBox(height: 43*h,),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.white,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.light_grey,
+                      border: Border.all(
+                        color: AppTheme.greyE4,width: 1
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.light_blue,
+                      border: Border.all(
+                        color: AppTheme.blue1,width: 2
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.light_green,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.light_yellow,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+
+
+                ],
+              ),
+              SizedBox(height: 16*h,),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.peach,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.rose,
+                      border: Border.all(
+                          color: AppTheme.greyE4,width: 1
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.lilac,
+                      border: Border.all(
+                          color: AppTheme.greyE4,width: 1
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.lilacA2,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+                  SizedBox(width: 16*w,),
+                  Container(
+                    height: 56 * o,
+                    width: 56 * o,
+                    decoration: BoxDecoration(
+                      color: AppTheme.lilac6B,
+                      border: Border.all(
+                        color: AppTheme.greyE4,
+                      ),
+                      borderRadius: BorderRadius.circular(100*o),
+
+                    ),
+                  ),
+
+
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
