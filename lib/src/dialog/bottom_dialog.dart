@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/ui/example/custom_picker.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class BottomDialog {
@@ -125,6 +126,54 @@ class BottomDialog {
                       ),
                     ),
                   ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  static void showDatePicker(BuildContext context) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 324 * h,
+          width: MediaQuery.of(context).size.width,
+          color: AppTheme.white,
+          child: Row(
+            children: [
+              Expanded(
+                child: CustomTimerPicker(
+                  maximumTime: 23,
+                  minimumTime: 0,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                  onTimeChanged: (int value) {
+                    print(value);
+                  },
+                  initialTime: 8,
+                  size: MediaQuery.of(context).size.width / 2 - 24,
+                ),
+              ),
+              Expanded(
+                child: CustomTimerPicker(
+                  maximumTime: 23,
+                  minimumTime: 0,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                  onTimeChanged: (int value) {
+                    print(value);
+                  },
+                  initialTime: 8,
+                  size: MediaQuery.of(context).size.width / 2 - 24,
                 ),
               ),
             ],

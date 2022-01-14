@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:parent_control/src/ui/example/example.dart';
+import 'package:parent_control/src/ui/example/sdfgfcdfgh.dart';
 import 'package:parent_control/src/ui/splash/splash_screen.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home:   const SplashScreen(),
     );
   }
 }
