@@ -35,6 +35,7 @@ class _TasksScreenState extends State<TasksScreen> {
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
     return Scaffold(
+
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
         elevation: 0,

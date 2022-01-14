@@ -39,8 +39,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-
-        title:    Text(
+        title: Text(
           "What apps does Victoria use",
           style: TextStyle(
               color: AppTheme.white,
@@ -52,8 +51,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
       ),
       body: Column(
         children: [
-
-
           SizedBox(
             height: 27 * h,
           ),
