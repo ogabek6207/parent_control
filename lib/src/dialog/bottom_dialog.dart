@@ -146,34 +146,90 @@ class BottomDialog {
           height: 324 * h,
           width: MediaQuery.of(context).size.width,
           color: AppTheme.white,
-          child: Row(
+          child: Column(
             children: [
-              Expanded(
-                child: CustomTimerPicker(
-                  maximumTime: 23,
-                  minimumTime: 0,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                  onTimeChanged: (int value) {
-                    print(value);
-                  },
-                  initialTime: 8,
-                  size: MediaQuery.of(context).size.width / 2 - 24,
+              SizedBox(
+                height: 30 * h,
+              ),
+              Text(
+                "Time for the task",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500,
+                  height: 24 / 20 * h,
+                ),
+              ),
+              SizedBox(
+                height: 12 * h,
+              ),
+              SizedBox(
+                height: 20,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 72 * w,
+                    ),
+                    Text(
+                      "Start",
+                      style: TextStyle(
+                        color: AppTheme.black75,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16 * o,
+                        height: 19 / 16 * h,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      "Finish",
+                      style: TextStyle(
+                        color: AppTheme.black75,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16 * o,
+                        height: 19 / 16 * h,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 76 * w,
+                    ),
+                  ],
                 ),
               ),
               Expanded(
-                child: CustomTimerPicker(
-                  maximumTime: 23,
-                  minimumTime: 0,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                  onTimeChanged: (int value) {
-                    print(value);
-                  },
-                  initialTime: 8,
-                  size: MediaQuery.of(context).size.width / 2 - 24,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: CustomTimerPicker(
+                        maximumTime: 23,
+                        minimumTime: 0,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                        onTimeChanged: (int value) {
+                          print(value);
+                        },
+                        initialTime: 8,
+                        size: MediaQuery.of(context).size.width / 2 - 24,
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTimerPicker(
+                        maximumTime: 23,
+                        minimumTime: 0,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                        onTimeChanged: (int value) {
+                          print(value);
+                        },
+                        initialTime: 8,
+                        size: MediaQuery.of(context).size.width / 2 - 24,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
