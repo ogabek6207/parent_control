@@ -133,7 +133,36 @@ class DatabaseHelper {
   //notes get
   Future<List<NotesModel>> getNotes() async {
     var dbClient = await db;
-    List<Map> list = await dbClient.rawQuery('SELECT * FROM $tableUser');
+    List<Map> list = await dbClient.rawQuery('SELECT * FROM $tableNotes');
+    List<NotesModel> products = <NotesModel>[];
+    for (int i = 0; i < list.length; i++) {
+      var items = NotesModel(
+        id: list[i][columnUserId],
+        userId: list[i][columnNotesUserId],
+        year: list[i][columnNotesYear],
+        day: list[i][columnNotesDay],
+        month: list[i][columnNotesMonth],
+        startHour: list[i][columnNotesStartHour],
+        endHour: list[i][columnNotesEndHour],
+        title: list[i][columnNotesTitle],
+        color: list[i][columnNotesColor],
+      );
+      products.add(items);
+    }
+    return products;
+  }
+
+  //notes get
+  Future<List<NotesModel>> getUserDayNotes(
+    int userId,
+    DateTime dateTime,
+  ) async {
+    var dbClient = await db;
+    List<Map> list = await dbClient.rawQuery('SELECT * FROM $tableNotes  WHERE '
+        '$columnNotesUserId = $userId AND '
+        '$columnNotesYear = ${dateTime.year} AND '
+        '$columnNotesMonth = ${dateTime.month} AND '
+        '$columnNotesDay = ${dateTime.day}');
     List<NotesModel> products = <NotesModel>[];
     for (int i = 0; i < list.length; i++) {
       var items = NotesModel(
@@ -155,8 +184,8 @@ class DatabaseHelper {
   //social get
   Future<List<SocialModel>> getSocial(int id) async {
     var dbClient = await db;
-    List<Map> list = await dbClient.rawQuery(
-        'SELECT * FROM $tableSocial WHERE $columnSocialUserId = $id AND $columnSocialId');
+    List<Map> list = await dbClient
+        .rawQuery('SELECT * FROM $tableSocial WHERE $columnSocialUserId = $id');
     List<SocialModel> social = <SocialModel>[];
     for (int i = 0; i < list.length; i++) {
       var items = SocialModel(

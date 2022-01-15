@@ -25,6 +25,15 @@ class Repository {
   //notes
   Future<List<NotesModel>> getNotes() => databaseHelper.getNotes();
 
+  Future<List<NotesModel>> getUserDayNotes(
+    int userId,
+    DateTime dateTime,
+  ) =>
+      databaseHelper.getUserDayNotes(
+        userId,
+        dateTime,
+      );
+
   //user
   Future<int> deleteUser(int id) => databaseHelper.deleteUser(id);
 

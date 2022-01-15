@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/bloc/task_bloc.dart';
+import 'package:parent_control/src/model/notes_model.dart';
 import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -34,6 +36,7 @@ class _TasksScreenState extends State<TasksScreen> {
   void initState() {
     setState(() {
       selectedDay = now;
+      taskBloc.getOneTask(widget.id, selectedDay);
     });
     super.initState();
   }
@@ -415,159 +418,75 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 16 * h,
                 ),
                 Expanded(
-                  child: ListView(
-                    children: [
-                      Container(
-                        height: 56 * h,
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8 * o),
-                          color: AppTheme.light_blue,
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            Text(
-                              "School",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
+                  child: StreamBuilder(
+                    stream: taskBloc.allTask,
+                    builder:
+                        (context, AsyncSnapshot<List<NotesModel>> snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 56 * h,
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.only(
+                                  left: 16 * w, right: 16 * w, bottom: 16 * h),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8 * o),
+                                border: snapshot.data![index].color == 1
+                                    ? Border.all(color: Colors.black)
+                                    : null,
+                                color:
+                                    Utils.getColor(snapshot.data![index].color),
                               ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              "8 am - 14 pm",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 16 * w,
+                                  ),
+                                  Text(
+                                    snapshot.data![index].title,
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 16 * o,
+                                      fontWeight: FontWeight.w500,
+                                      height: 19 / 16 * h,
+                                      color: AppTheme.black,
+                                    ),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    snapshot.data![index].startHour.toString() +
+                                        " - " +
+                                        snapshot.data![index].endHour
+                                            .toString(),
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontSize: 16 * o,
+                                      fontWeight: FontWeight.w500,
+                                      height: 19 / 16 * h,
+                                      color: AppTheme.black,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 16 * w,
+                                  ),
+                                  SvgPicture.asset(
+                                    "assets/icons/arrow_left.svg",
+                                    height: 10 * h,
+                                    width: 5 * w,
+                                  ),
+                                  SizedBox(
+                                    width: 16 * w,
+                                  ),
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            SvgPicture.asset(
-                              "assets/icons/arrow_left.svg",
-                              height: 10 * h,
-                              width: 5 * w,
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8 * h,
-                      ),
-                      Container(
-                        height: 56 * h,
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8 * o),
-                          color: AppTheme.light_green,
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            Text(
-                              "Free time",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
-                              ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              "14 pm - 16 pm",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            SvgPicture.asset(
-                              "assets/icons/arrow_left.svg",
-                              height: 10 * h,
-                              width: 5 * w,
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8 * h,
-                      ),
-                      Container(
-                        height: 56 * h,
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8 * o),
-                          color: AppTheme.light_grey,
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            Text(
-                              "Default",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
-                              ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              "16 pm - 18 pm",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
-                                color: AppTheme.black,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            SvgPicture.asset(
-                              "assets/icons/arrow_left.svg",
-                              height: 10 * h,
-                              width: 5 * w,
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                            );
+                          },
+                        );
+                      }
+                      return Container();
+                    },
                   ),
                 ),
                 GestureDetector(
@@ -631,6 +550,7 @@ class _TasksScreenState extends State<TasksScreen> {
       selectedDay = now.add(
         Duration(days: i),
       );
+      taskBloc.getOneTask(widget.id, selectedDay);
     });
   }
 

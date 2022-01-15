@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
+import 'package:parent_control/src/bloc/task_bloc.dart';
 import 'package:parent_control/src/dialog/bottom_dialog.dart';
+import 'package:parent_control/src/model/notes_model.dart';
+import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class NewTasksScreen extends StatefulWidget {
@@ -34,6 +37,7 @@ class NewTasksScreen extends StatefulWidget {
 
 class _NewTasksScreenState extends State<NewTasksScreen> {
   final TextEditingController _controller = TextEditingController();
+  final Repository _repository = Repository();
   int start = 8, end = 9;
   int color = 1;
   bool isNext = false;
@@ -375,7 +379,27 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    if (isNext) {
+                      var id = await _repository.saveNotes(
+                        NotesModel(
+                          id: 0,
+                          color: color,
+                          year: widget.dateTime.year,
+                          month: widget.dateTime.month,
+                          day: widget.dateTime.day,
+                          startHour: start,
+                          endHour: end,
+                          userId: widget.id,
+                          title: _controller.text,
+                        ),
+                      );
+                      if(id>=0){
+                        taskBloc.getOneTask(widget.id,  widget.dateTime);
+                      }
+                      Navigator.pop(context);
+                    }
+                  },
                   child: Container(
                     height: 56,
                     width: MediaQuery.of(context).size.width,
