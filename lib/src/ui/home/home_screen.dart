@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
+import 'package:parent_control/src/bloc/task_bloc.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/ui/service_child/service_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
     String name,
     String image,
     int gender,
-  )   userChanged;
+  ) userChanged;
 
   const HomeScreen({
     Key? key,
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    taskBloc.getOneTask(0, DateTime.now());
     homeBloc.getUsers();
     super.initState();
   }

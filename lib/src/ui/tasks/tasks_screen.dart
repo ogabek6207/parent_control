@@ -456,15 +456,15 @@ class _TasksScreenState extends State<TasksScreen> {
                                   const Spacer(),
                                   Text(
                                     snapshot.data![index].startHour.toString() +
-                                        (snapshot.data![index].startHour >= 12
-                                            ? " am "
-                                            : " pm ") +
+                                        (snapshot.data![index].startHour >= 13
+                                            ? " pm "
+                                            : " am ") +
                                         " - " +
                                         snapshot.data![index].endHour
                                             .toString() +
-                                        (snapshot.data![index].endHour >= 12
-                                            ? " am "
-                                            : " pm "),
+                                        (snapshot.data![index].endHour >= 13
+                                            ? " pm "
+                                            : " am "),
                                     style: TextStyle(
                                       fontStyle: FontStyle.normal,
                                       fontSize: 16 * o,
