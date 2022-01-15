@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
@@ -457,9 +456,15 @@ class _TasksScreenState extends State<TasksScreen> {
                                   const Spacer(),
                                   Text(
                                     snapshot.data![index].startHour.toString() +
+                                        (snapshot.data![index].startHour >= 12
+                                            ? " am "
+                                            : " pm ") +
                                         " - " +
                                         snapshot.data![index].endHour
-                                            .toString(),
+                                            .toString() +
+                                        (snapshot.data![index].endHour >= 12
+                                            ? " am "
+                                            : " pm "),
                                     style: TextStyle(
                                       fontStyle: FontStyle.normal,
                                       fontSize: 16 * o,
