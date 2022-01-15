@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/home_bloc.dart';
 import 'package:parent_control/src/bloc/task_bloc.dart';
+import 'package:parent_control/src/model/notes_model.dart';
 import 'package:parent_control/src/model/user_model.dart';
 import 'package:parent_control/src/ui/service_child/service_child_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    taskBloc.getOneTask(0, DateTime.now());
+    taskBloc.getUserTask(0, DateTime.now());
     homeBloc.getUsers();
     super.initState();
   }
@@ -225,31 +226,47 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 10 * h,
                             ),
-                            Row(
-                              children: [
-                                SizedBox(width: 16 * w),
-                                Container(
-                                  height: 28 * h,
-                                  width: 156 * w,
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.purple,
-                                    borderRadius: BorderRadius.circular(8 * o),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "School 8am - 14pm",
-                                      style: TextStyle(
-                                        color: AppTheme.dark,
-                                        fontSize: 16,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.normal,
-                                        height: 19 / 16 * h,
+
+
+
+                            StreamBuilder(
+                              stream: taskBloc.allUserTask,
+                              builder: (context, AsyncSnapshot<List<NotesModel>> snapshot) {
+                                if (snapshot.hasData) {
+                                  List<NotesModel> result = snapshot.data!;
+                                  print(snapshot.data!.length);
+                                  return  Row(
+                                    children: [
+                                      SizedBox(width: 16 * w),
+                                      Container(
+                                        height: 28 * h,
+                                        width: 156 * w,
+                                        decoration: BoxDecoration(
+                                          color: AppTheme.purple,
+                                          borderRadius: BorderRadius.circular(8 * o),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "trdyh",
+                                            style: TextStyle(
+                                              color: AppTheme.dark,
+                                              fontSize: 16,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.normal,
+                                              height: 19 / 16 * h,
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                    ],
+                                  );
+
+
+                                }
+                                return Container();
+                              },
                             ),
+
                             SizedBox(
                               height: 24 * h,
                             ),
