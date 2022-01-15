@@ -35,9 +35,25 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
   DateTime date = DateTime.now();
   int start = 8, end = 9;
   int color = 1;
+  bool isNext = false;
 
   @override
   void initState() {
+    _controller.addListener(() {
+      if (_controller.text.length >= 4) {
+        if (!isNext) {
+          setState(() {
+            isNext = true;
+          });
+        }
+      } else {
+        if (isNext) {
+          setState(() {
+            isNext = false;
+          });
+        }
+      }
+    });
     super.initState();
   }
 
@@ -51,6 +67,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
         elevation: 0,
+        centerTitle: true,
         backgroundColor: Colors.transparent,
         leading: GestureDetector(
           onTap: () {
@@ -77,28 +94,31 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
           ),
         ),
         actions: [
-          Container(
-            width: 56,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8 * o),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8 * o),
-              child: widget.image != ""
-                  ? Image.file(
-                      File(widget.image),
-                      fit: BoxFit.cover,
-                    )
-                  : Container(
-                      color: AppTheme.white,
-                      child: widget.gender == 1
-                          ? SvgPicture.asset(
-                              "assets/icons/boy_.svg",
-                            )
-                          : SvgPicture.asset(
-                              "assets/icons/girl_.svg",
-                            ),
-                    ),
+          Center(
+            child: Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8 * o),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8 * o),
+                child: widget.image != ""
+                    ? Image.file(
+                        File(widget.image),
+                        fit: BoxFit.cover,
+                      )
+                    : Container(
+                        color: AppTheme.white,
+                        child: widget.gender == 1
+                            ? SvgPicture.asset(
+                                "assets/icons/boy_.svg",
+                              )
+                            : SvgPicture.asset(
+                                "assets/icons/girl_.svg",
+                              ),
+                      ),
+              ),
             ),
           ),
           SizedBox(
@@ -353,23 +373,28 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                     ],
                   ),
                 ),
-                Container(
-                  height: 56,
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.symmetric(horizontal: 40 * w),
-                  decoration: BoxDecoration(
-                    color: AppTheme.milk,
-                    borderRadius: BorderRadius.circular(32 * o),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Save",
-                      style: TextStyle(
-                        fontStyle: FontStyle.normal,
-                        fontSize: 18 * o,
-                        fontWeight: FontWeight.w500,
-                        height: 21 / 18 * h,
-                        color: AppTheme.dark.withOpacity(0.3),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    height: 56,
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                    decoration: BoxDecoration(
+                      color: isNext ? AppTheme.blue : AppTheme.milk,
+                      borderRadius: BorderRadius.circular(32 * o),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 18 * o,
+                          fontWeight: FontWeight.w500,
+                          height: 21 / 18 * h,
+                          color: isNext
+                              ? AppTheme.white
+                              : AppTheme.dark.withOpacity(0.3),
+                        ),
                       ),
                     ),
                   ),

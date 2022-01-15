@@ -477,7 +477,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.lilacA2,
+                        color: Utils.getColor(9),
                         border: Border.all(
                           color: id == 9 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,
@@ -499,7 +499,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.lilac6B,
+                        color: Utils.getColor(10),
                         border: Border.all(
                           color: id == 10 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,

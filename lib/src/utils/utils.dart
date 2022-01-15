@@ -153,6 +153,24 @@ class Utils {
       ..showSnackBar(snackBar);
   }
 
+  static String getWeek(int now) {
+    if (now == 1) {
+      return "Mon";
+    } else if (now == 2) {
+      return "Tue";
+    } else if (now == 3) {
+      return "Wed";
+    } else if (now == 4) {
+      return "Thu";
+    } else if (now == 5) {
+      return "Fri";
+    } else if (now == 6) {
+      return "Sat";
+    } else {
+      return "Sun";
+    }
+  }
+
   static String getMonth(int now) {
     if (now == 1) {
       return "January";

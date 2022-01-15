@@ -7,23 +7,20 @@ import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
-
   final Function() onBack;
   final String name;
   final String image;
   final int gender;
   final int id;
 
-   TasksScreen(
-      {Key? key,
-      required this.name,
-      required this.image,
-      required this.gender,
-      required this.id,
-
-
-      required this.onBack})
-      : super(key: key);
+  const TasksScreen({
+    Key? key,
+    required this.name,
+    required this.image,
+    required this.gender,
+    required this.id,
+    required this.onBack,
+  }) : super(key: key);
 
   @override
   _TasksScreenState createState() => _TasksScreenState();
@@ -31,8 +28,15 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   DateTime now = DateTime.now();
-  DateTime date = DateTime.now();
   DateTime selectedDay = DateTime.now();
+
+  @override
+  void initState() {
+    setState(() {
+      selectedDay = now;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,7 @@ class _TasksScreenState extends State<TasksScreen> {
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
         elevation: 0,
+        centerTitle: true,
         backgroundColor: AppTheme.blue,
         leading: GestureDetector(
           onTap: () {
@@ -71,11 +76,8 @@ class _TasksScreenState extends State<TasksScreen> {
         actions: [
           Center(
             child: Container(
-              height: 48,
-              width: 48,
-              margin: EdgeInsets.only(
-                right: 16 * w,
-              ),
+              width: 44,
+              height: 44,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8 * o),
               ),
@@ -89,24 +91,19 @@ class _TasksScreenState extends State<TasksScreen> {
                     : Container(
                         color: AppTheme.white,
                         child: widget.gender == 1
-                            ? SizedBox(
-                                height: 48 * o,
-                                width: 48 * o,
-                                child: SvgPicture.asset(
-                                  "assets/icons/boy_.svg",
-                                ),
+                            ? SvgPicture.asset(
+                                "assets/icons/boy_.svg",
                               )
-                            : SizedBox(
-                                height: 48 * o,
-                                width: 48 * o,
-                                child: SvgPicture.asset(
-                                  "assets/icons/girl_.svg",
-                                ),
+                            : SvgPicture.asset(
+                                "assets/icons/girl_.svg",
                               ),
                       ),
               ),
             ),
           ),
+          SizedBox(
+            width: 16 * w,
+          )
         ],
       ),
       body: Column(
@@ -135,31 +132,29 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        selectedDay = now;
-                      });
+                      change(0);
                     },
                     child: Container(
                       height: 32 * o,
                       width: 32 * o,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: selectedDay == now
+                        border: selectedDay == getData(0)
                             ? null
                             : Border.all(color: AppTheme.border, width: 1),
-                        color: selectedDay == now
+                        color: selectedDay == getData(0)
                             ? AppTheme.blue1
                             : AppTheme.white,
                       ),
                       child: Center(
                         child: Text(
-                          getWeek(now.weekday % 7),
+                          Utils.getWeek(weekDay(0)),
                           style: TextStyle(
                             fontStyle: FontStyle.normal,
                             fontSize: 12 * o,
                             fontWeight: FontWeight.w600,
                             height: 14 / 12 * h,
-                            color: selectedDay == now
+                            color: selectedDay == getData(0)
                                 ? AppTheme.white
                                 : AppTheme.black,
                           ),
@@ -170,22 +165,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(32 * o),
-                      border: Border.all(color: AppTheme.border, width: 1),
-                    ),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 1)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                  GestureDetector(
+                    onTap: () {
+                      change(1);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32 * o),
+                        border: selectedDay == getData(1)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(1)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(1),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(1)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -193,21 +202,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
+                  GestureDetector(
+                    onTap: () {
+                      change(2);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: Border.all(color: AppTheme.border, width: 1)),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 2)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                        border: selectedDay == getData(2)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(2)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(2),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(2)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -215,21 +239,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
+                  GestureDetector(
+                    onTap: () {
+                      change(3);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: Border.all(color: AppTheme.border, width: 1)),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 3)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                        border: selectedDay == getData(3)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(3)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(3),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(3)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -237,21 +276,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
+                  GestureDetector(
+                    onTap: () {
+                      change(4);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: Border.all(color: AppTheme.border, width: 1)),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 4)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                        border: selectedDay == getData(4)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(4)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(4),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(4)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -259,21 +313,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
+                  GestureDetector(
+                    onTap: () {
+                      change(5);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: Border.all(color: AppTheme.border, width: 1)),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 5)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                        border: selectedDay == getData(5)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(5)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(5),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(5)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -281,21 +350,36 @@ class _TasksScreenState extends State<TasksScreen> {
                   SizedBox(
                     width: 14 * w,
                   ),
-                  Container(
-                    height: 32 * o,
-                    width: 32 * o,
-                    decoration: BoxDecoration(
+                  GestureDetector(
+                    onTap: () {
+                      change(6);
+                    },
+                    child: Container(
+                      height: 32 * o,
+                      width: 32 * o,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32 * o),
-                        border: Border.all(color: AppTheme.border, width: 1)),
-                    child: Center(
-                      child: Text(
-                        getWeek(now.add(const Duration(days: 6)).weekday % 7),
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 12 * o,
-                          fontWeight: FontWeight.normal,
-                          height: 14 / 12 * h,
-                          color: AppTheme.black,
+                        border: selectedDay == getData(6)
+                            ? null
+                            : Border.all(color: AppTheme.border, width: 1),
+                        color: selectedDay == getData(6)
+                            ? AppTheme.blue1
+                            : AppTheme.white,
+                      ),
+                      child: Center(
+                        child: Text(
+                          Utils.getWeek(
+                            weekDay(6),
+                          ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 12 * o,
+                            fontWeight: FontWeight.normal,
+                            height: 14 / 12 * h,
+                            color: selectedDay == getData(6)
+                                ? AppTheme.white
+                                : AppTheme.black,
+                          ),
                         ),
                       ),
                     ),
@@ -314,11 +398,11 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 24 * h,
                 ),
                 Text(
-                  getMonth(date.month) +
+                  Utils.getMonth(selectedDay.month) +
                       " " +
-                      date.day.toString() +
+                      selectedDay.day.toString() +
                       ", " +
-                      date.year.toString(),
+                      selectedDay.year.toString(),
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,
@@ -493,10 +577,13 @@ class _TasksScreenState extends State<TasksScreen> {
                       MaterialPageRoute(
                         builder: (context) {
                           return NewTasksScreen(
-                              name: widget.name,
-                              image: widget.image,
-                              gender: widget.gender,
-                              id: widget.id, taskChanged: (String startTime, String finishTime, String name, String image) {  },);
+                            name: widget.name,
+                            image: widget.image,
+                            gender: widget.gender,
+                            id: widget.id,
+                            taskChanged: (String startTime, String finishTime,
+                                String name, String image) {},
+                          );
                         },
                       ),
                     );
@@ -534,49 +621,21 @@ class _TasksScreenState extends State<TasksScreen> {
     );
   }
 
-  String getWeek(int now) {
-    if (now == 1) {
-      return "Mon";
-    } else if (now == 2) {
-      return "Tue";
-    } else if (now == 3) {
-      return "Wed";
-    } else if (now == 4) {
-      return "Thu";
-    } else if (now == 5) {
-      return "Fri";
-    } else if (now == 6) {
-      return "Sat";
-    } else {
-      return "Sun";
-    }
+  int weekDay(int i) {
+    return now.add(Duration(days: i)).weekday % 7;
   }
 
-  String getMonth(int now) {
-    if (date.month == 1) {
-      return "January";
-    } else if (date == 2) {
-      return "February";
-    } else if (date == 3) {
-      return "March";
-    } else if (date == 4) {
-      return "April";
-    } else if (date == 5) {
-      return "May";
-    } else if (date == 6) {
-      return "June";
-    } else if (date == 7) {
-      return "July";
-    } else if (date == 8) {
-      return "August";
-    } else if (date == 9) {
-      return "September";
-    } else if (date == 10) {
-      return "October";
-    } else if (date == 11) {
-      return "November";
-    } else {
-      return "December";
-    }
+  void change(int i) {
+    setState(() {
+      selectedDay = now.add(
+        Duration(days: i),
+      );
+    });
+  }
+
+  DateTime getData(int i) {
+    return now.add(
+      Duration(days: i),
+    );
   }
 }
