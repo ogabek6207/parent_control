@@ -500,4 +500,100 @@ class BottomDialog {
       },
     );
   }
+
+  static void showHourPicker(
+      BuildContext context,
+      int start,
+      int end,
+      Function(int hour) change,
+      ) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 324 * h,
+          width: MediaQuery.of(context).size.width,
+          color: AppTheme.white,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 30 * h,
+              ),
+              Text(
+                "Time for the task",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w500,
+                  height: 24 / 20 * h,
+                ),
+              ),
+              SizedBox(
+                height: 12 * h,
+              ),
+              SizedBox(
+                height: 20,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 72 * w,
+                    ),
+                    Text(
+                      "Start",
+                      style: TextStyle(
+                        color: AppTheme.black75,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16 * o,
+                        height: 19 / 16 * h,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      "Finish",
+                      style: TextStyle(
+                        color: AppTheme.black75,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16 * o,
+                        height: 19 / 16 * h,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 76 * w,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: CustomTimerPicker(
+                        maximumTime: 23,
+                        minimumTime: 0,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                        onTimeChanged: (int value) {
+                          start = value;
+                          change(start);
+                        },
+                        initialTime: start,
+                        size: MediaQuery.of(context).size.width / 2 - 24,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
