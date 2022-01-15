@@ -11,18 +11,19 @@ class NewTasksScreen extends StatefulWidget {
   final int gender;
   final int id;
   final Function(
-      String startTime,
-      String finishTime,
-      String name,
-      String image,
+    String startTime,
+    String finishTime,
+    String name,
+    String image,
+  ) taskChanged;
 
-      ) taskChanged;
   const NewTasksScreen({
     Key? key,
     required this.name,
     required this.image,
     required this.gender,
-    required this.id, required this.taskChanged,
+    required this.id,
+    required this.taskChanged,
   }) : super(key: key);
 
   @override
@@ -32,8 +33,7 @@ class NewTasksScreen extends StatefulWidget {
 class _NewTasksScreenState extends State<NewTasksScreen> {
   final TextEditingController _controller = TextEditingController();
   DateTime date = DateTime.now();
-  int start = 8,
-      end = 9;
+  int start = 8, end = 9;
   int color = 1;
 
   @override
@@ -86,19 +86,19 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
               borderRadius: BorderRadius.circular(8 * o),
               child: widget.image != ""
                   ? Image.file(
-                File(widget.image),
-                fit: BoxFit.cover,
-              )
+                      File(widget.image),
+                      fit: BoxFit.cover,
+                    )
                   : Container(
-                color: AppTheme.white,
-                child: widget.gender == 1
-                    ? SvgPicture.asset(
-                  "assets/icons/boy_.svg",
-                )
-                    : SvgPicture.asset(
-                  "assets/icons/girl_.svg",
-                ),
-              ),
+                      color: AppTheme.white,
+                      child: widget.gender == 1
+                          ? SvgPicture.asset(
+                              "assets/icons/boy_.svg",
+                            )
+                          : SvgPicture.asset(
+                              "assets/icons/girl_.svg",
+                            ),
+                    ),
             ),
           ),
           SizedBox(
@@ -110,10 +110,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
         children: [
           Container(
             height: 660 * h,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
               top: 16 * h,
               left: 16 * w,
@@ -130,7 +127,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                   height: 25 * h,
                 ),
                 Text(
-                  getMonth(date.month) +
+                  Utils.getMonth(date.month) +
                       " " +
                       date.day.toString() +
                       ", " +
@@ -152,10 +149,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                       Container(
                         height: 56 * h,
                         padding: EdgeInsets.only(left: 16 * w),
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width,
+                        width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 16 * w),
                         decoration: BoxDecoration(
                           color: AppTheme.milk,
@@ -185,7 +179,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                             context,
                             start,
                             end,
-                                (_start, _end) {
+                            (_start, _end) {
                               setState(() {
                                 start = _start;
                                 end = _end;
@@ -195,10 +189,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                         },
                         child: Container(
                           height: 56 * h,
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           margin: EdgeInsets.symmetric(horizontal: 16 * w),
                           child: Row(
                             children: [
@@ -301,22 +292,20 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                             context,
                             color,
                             (_id) {
-                                setState(() {
-                                  color = _id;
-                                });
-                              } );
+                              setState(() {
+                                color = _id;
+                              });
+                            },
+                          );
                         },
                         child: Container(
                           height: 56 * h,
                           padding: EdgeInsets.only(left: 16 * w),
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
                           margin: EdgeInsets.symmetric(horizontal: 16 * w),
                           decoration: BoxDecoration(
                             border:
-                            Border.all(color: AppTheme.greyE4, width: 1),
+                                Border.all(color: AppTheme.greyE4, width: 1),
                             color: AppTheme.white,
                             borderRadius: BorderRadius.circular(8 * o),
                           ),
@@ -325,7 +314,14 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                               Container(
                                 height: 24 * o,
                                 width: 24 * o,
-                                color: getColor(color),
+                                decoration: BoxDecoration(
+                                    color: Utils.getColor(color),
+                                    borderRadius: BorderRadius.circular(4),
+                                    border: color == 1
+                                        ? Border.all(
+                                            color: const Color(0xFFECECEC),
+                                          )
+                                        : null),
                               ),
                               SizedBox(
                                 width: 16 * w,
@@ -359,10 +355,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                 ),
                 Container(
                   height: 56,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 40 * w),
                   decoration: BoxDecoration(
                     color: AppTheme.milk,
@@ -391,57 +384,4 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
       ),
     );
   }
-
-  String getMonth(int now) {
-    if (date.month == 1) {
-      return "January";
-    } else if (date == 2) {
-      return "February";
-    } else if (date == 3) {
-      return "March";
-    } else if (date == 4) {
-      return "April";
-    } else if (date == 5) {
-      return "May";
-    } else if (date == 6) {
-      return "June";
-    } else if (date == 7) {
-      return "July";
-    } else if (date == 8) {
-      return "August";
-    } else if (date == 9) {
-      return "September";
-    } else if (date == 10) {
-      return "October";
-    } else if (date == 11) {
-      return "November";
-    } else {
-      return "December";
-    }
-  }
-  Color getColor(int id) {
-    if (color == 1) {
-      return AppTheme.white;
-    } else if (color == 2) {
-      return AppTheme.light_grey;
-    } else if (color == 3) {
-      return AppTheme.light_blue;
-    } else if (color == 4) {
-      return AppTheme.light_green;
-    } else if (color == 5) {
-      return AppTheme.light_yellow;
-    } else if (color == 6) {
-      return AppTheme.peach;
-    } else if (color == 7) {
-      return AppTheme.rose;
-    } else if (color == 8) {
-      return AppTheme.lilac;
-    } else if (color == 9) {
-      return AppTheme.lilacA2;
-    }  else {
-      return AppTheme.lilac6B;
-    }
-  }
-
-
 }

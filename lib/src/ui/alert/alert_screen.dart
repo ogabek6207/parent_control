@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/social_bloc.dart';
+import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -138,84 +139,89 @@ class _AlertScreenState extends State<AlertScreen> {
                     padding: EdgeInsets.zero,
                     itemCount: result.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 56 * h,
-                        margin: EdgeInsets.only(
-                          top: 8 * h,
-                          left: 16 * w,
-                          right: 16 * w,
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12 * o),
-                          color: AppTheme.white,
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            Image.asset(
-                              Utils.socialImage(
-                                result[index].typeId,
+                      return GestureDetector(
+                        onTap: (){
+                          // BottomDialog.showHourPicker(context, hour, (hour) => null)
+                        },
+                        child: Container(
+                          height: 56 * h,
+                          margin: EdgeInsets.only(
+                            top: 8 * h,
+                            left: 16 * w,
+                            right: 16 * w,
+                          ),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12 * o),
+                            color: AppTheme.white,
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 16 * w,
                               ),
-                            ),
-                            SizedBox(
-                              width: 24 * w,
-                            ),
-                            Text(
-                              "1 hour",
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 16 * o,
-                                fontWeight: FontWeight.w500,
-                                height: 19 / 16 * h,
+                              Image.asset(
+                                Utils.socialImage(
+                                  result[index].typeId,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 24 * w,
+                              ),
+                              Text(
+                                "1 hour",
+                                style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16 * o,
+                                  fontWeight: FontWeight.w500,
+                                  height: 19 / 16 * h,
+                                  color: AppTheme.black,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 8 * w,
+                              ),
+                              SvgPicture.asset(
+                                "assets/icons/arrow_bottom.svg",
                                 color: AppTheme.black,
                               ),
-                            ),
-                            SizedBox(
-                              width: 8 * w,
-                            ),
-                            SvgPicture.asset(
-                              "assets/icons/arrow_bottom.svg",
-                              color: AppTheme.black,
-                            ),
-                            const Spacer(),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  one = !one;
-                                });
-                              },
-                              child: one
-                                  ? SvgPicture.asset(
-                                      "assets/icons/dislike.svg",
-                                    )
-                                  : SvgPicture.asset(
-                                      "assets/icons/dislike_.svg",
-                                    ),
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  two = !two;
-                                });
-                              },
-                              child: one
-                                  ? SvgPicture.asset(
-                                      "assets/icons/like.svg",
-                                    )
-                                  : SvgPicture.asset(
-                                      "assets/icons/like_.svg",
-                                    ),
-                            ),
-                            SizedBox(
-                              width: 16 * w,
-                            ),
-                          ],
+                              const Spacer(),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    one = !one;
+                                  });
+                                },
+                                child: one
+                                    ? SvgPicture.asset(
+                                        "assets/icons/dislike.svg",
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/icons/dislike_.svg",
+                                      ),
+                              ),
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    two = !two;
+                                  });
+                                },
+                                child: one
+                                    ? SvgPicture.asset(
+                                        "assets/icons/like.svg",
+                                      )
+                                    : SvgPicture.asset(
+                                        "assets/icons/like_.svg",
+                                      ),
+                              ),
+                              SizedBox(
+                                width: 16 * w,
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },

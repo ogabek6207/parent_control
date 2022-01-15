@@ -249,7 +249,7 @@ class BottomDialog {
   static void showDefaultColor(
     BuildContext context,
     int id,
-      Function(int _id) change,
+    Function(int _id) change,
   ) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
@@ -286,10 +286,10 @@ class BottomDialog {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      Navigator.pop(context);
+                    onTap: () {
                       id = 1;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -297,8 +297,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.white,
                         border: Border.all(
-                          color: AppTheme.greyE4,
-                          width: 1,
+                          color: id == 1 ? AppTheme.blue1 : AppTheme.greyE4,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -308,7 +308,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 2;
                       change(id);
@@ -318,7 +318,10 @@ class BottomDialog {
                       width: 56 * o,
                       decoration: BoxDecoration(
                         color: AppTheme.light_grey,
-                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        border: Border.all(
+                          color: id == 2 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
                     ),
@@ -327,7 +330,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 3;
                       change(id);
@@ -337,7 +340,10 @@ class BottomDialog {
                       width: 56 * o,
                       decoration: BoxDecoration(
                         color: AppTheme.light_blue,
-                        border: Border.all(color: AppTheme.blue1, width: 2),
+                        border: Border.all(
+                          color: id == 3 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
                     ),
@@ -346,7 +352,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 4;
                       change(id);
@@ -357,7 +363,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.light_green,
                         border: Border.all(
-                          color: AppTheme.greyE4,
+                          color: id == 4 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -367,7 +374,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 5;
                       change(id);
@@ -378,7 +385,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.light_yellow,
                         border: Border.all(
-                          color: AppTheme.greyE4,
+                          color: id == 5 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -394,7 +402,7 @@ class BottomDialog {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 6;
                       change(id);
@@ -405,8 +413,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.peach,
                         border: Border.all(
-                          color: AppTheme.greyE4,
-                          width: 1,
+                          color: id == 6 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -416,7 +424,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 7;
                       change(id);
@@ -426,7 +434,10 @@ class BottomDialog {
                       width: 56 * o,
                       decoration: BoxDecoration(
                         color: AppTheme.rose,
-                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        border: Border.all(
+                          color: id == 7 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
                     ),
@@ -435,7 +446,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 8;
                       change(id);
@@ -445,7 +456,10 @@ class BottomDialog {
                       width: 56 * o,
                       decoration: BoxDecoration(
                         color: AppTheme.lilac,
-                        border: Border.all(color: AppTheme.greyE4, width: 1),
+                        border: Border.all(
+                          color: id == 8 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
+                        ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
                     ),
@@ -454,7 +468,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 9;
                       change(id);
@@ -465,7 +479,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.lilacA2,
                         border: Border.all(
-                          color: AppTheme.greyE4,
+                          color: id == 9 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -475,7 +490,7 @@ class BottomDialog {
                     width: 16 * w,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pop(context);
                       id = 10;
                       change(id);
@@ -486,7 +501,8 @@ class BottomDialog {
                       decoration: BoxDecoration(
                         color: AppTheme.lilac6B,
                         border: Border.all(
-                          color: AppTheme.greyE4,
+                          color: id == 10 ? AppTheme.blue1 : Colors.transparent,
+                          width: 2,
                         ),
                         borderRadius: BorderRadius.circular(100 * o),
                       ),
@@ -502,11 +518,10 @@ class BottomDialog {
   }
 
   static void showHourPicker(
-      BuildContext context,
-      int start,
-      int end,
-      Function(int hour) change,
-      ) {
+    BuildContext context,
+    int hour,
+    Function(int hour) change,
+  ) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
@@ -580,10 +595,10 @@ class BottomDialog {
                           fontWeight: FontWeight.w600,
                         ),
                         onTimeChanged: (int value) {
-                          start = value;
-                          change(start);
+                          hour = value;
+                          change(hour);
                         },
-                        initialTime: start,
+                        initialTime: hour,
                         size: MediaQuery.of(context).size.width / 2 - 24,
                       ),
                     ),
