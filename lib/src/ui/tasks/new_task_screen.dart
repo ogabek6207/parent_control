@@ -10,6 +10,7 @@ class NewTasksScreen extends StatefulWidget {
   final String image;
   final int gender;
   final int id;
+  final DateTime dateTime;
   final Function(
     String startTime,
     String finishTime,
@@ -21,6 +22,7 @@ class NewTasksScreen extends StatefulWidget {
     Key? key,
     required this.name,
     required this.image,
+    required this.dateTime,
     required this.gender,
     required this.id,
     required this.taskChanged,
@@ -32,7 +34,6 @@ class NewTasksScreen extends StatefulWidget {
 
 class _NewTasksScreenState extends State<NewTasksScreen> {
   final TextEditingController _controller = TextEditingController();
-  DateTime date = DateTime.now();
   int start = 8, end = 9;
   int color = 1;
   bool isNext = false;
@@ -147,11 +148,11 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                   height: 25 * h,
                 ),
                 Text(
-                  Utils.getMonth(date.month) +
+                  Utils.getMonth(widget.dateTime.month) +
                       " " +
-                      date.day.toString() +
+                      widget.dateTime.day.toString() +
                       ", " +
-                      date.year.toString(),
+                      widget.dateTime.year.toString(),
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,

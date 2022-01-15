@@ -577,6 +577,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       MaterialPageRoute(
                         builder: (context) {
                           return NewTasksScreen(
+                            dateTime: selectedDay,
                             name: widget.name,
                             image: widget.image,
                             gender: widget.gender,
