@@ -5,11 +5,9 @@ class NotesModel {
     required this.year,
     required this.month,
     required this.day,
-    required this.start_hour,
-    required this.start_minute,
-    required this.end_hour,
-    required this.end_minute,
-    required this.user_id,
+    required this.startHour,
+    required this.endHour,
+    required this.userId,
     required this.title,
   });
 
@@ -17,12 +15,10 @@ class NotesModel {
   int year;
   int month;
   int day;
-  int start_hour;
-  int start_minute;
-  int end_hour;
-  int end_minute;
+  int startHour;
+  int endHour;
   int color;
-  int user_id;
+  int userId;
   String title;
 
   Map<String, dynamic> toJson() => {
@@ -30,11 +26,9 @@ class NotesModel {
         "month": month,
         "year": year,
         "day": day,
-        "start_hour": start_hour,
-        "start_minute": start_minute,
-        "end_hour": end_hour,
-        "end_minute": end_minute,
-        "user_id": user_id,
+        "start_hour": startHour,
+        "end_hour": endHour,
+        "user_id": userId,
         "title": title,
       };
 }

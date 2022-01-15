@@ -23,7 +23,27 @@ class _AddChildScreenState extends State<AddChildScreen> {
   final TextEditingController _controller = TextEditingController();
   File? data;
   bool gender = true;
-  bool errorText = false;
+  bool isNext = false;
+
+  @override
+  void initState() {
+    _controller.addListener(() {
+      if (_controller.text.length >= 4) {
+        if (!isNext) {
+          setState(() {
+            isNext = true;
+          });
+        }
+      } else {
+        if (isNext) {
+          setState(() {
+            isNext = false;
+          });
+        }
+      }
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -35,8 +55,8 @@ class _AddChildScreenState extends State<AddChildScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-       leading: Container(),
-       title: Text(
+        leading: Container(),
+        title: Text(
           "Create your child profile",
           style: TextStyle(
               color: AppTheme.white,
@@ -51,12 +71,10 @@ class _AddChildScreenState extends State<AddChildScreen> {
           SizedBox(
             height: 24 * h,
           ),
-
           Container(
             height: 648 * h,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
-
               left: 16 * w,
               right: 16 * w,
             ),
@@ -106,17 +124,20 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               SvgPicture.asset(
                                 "assets/icons/gallery.svg",
                               ),
-                              SizedBox(height: 18*h,),
+                              SizedBox(
+                                height: 18 * h,
+                              ),
                               Container(
-                                margin: EdgeInsets.only(left: 13.5*w, right: 13.5*w),
-                                child: Text("Click here to upload a photo",
+                                margin: EdgeInsets.only(
+                                    left: 13.5 * w, right: 13.5 * w),
+                                child: Text(
+                                  "Click here to upload a photo",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: AppTheme.grey,
                                     fontStyle: FontStyle.normal,
-                                    fontSize: 13.5*o,
+                                    fontSize: 13.5 * o,
                                     fontWeight: FontWeight.normal,
-
                                   ),
                                 ),
                               ),
@@ -258,10 +279,10 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
-
                         child: TextField(
                           controller: _controller,
                           decoration: InputDecoration(
@@ -282,7 +303,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 GestureDetector(
                   onTap: () async {
                     if (_controller.text.length >= 3) {
-                      errorText = true;
+                      isNext = true;
                       var image = data == null ? "" : data!.path;
                       int userId = await _repository.saveProducts(
                         UserModel(
@@ -310,7 +331,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: errorText ?  AppTheme.blue :AppTheme.milk,
+                      color: isNext ? AppTheme.blue : AppTheme.milk,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(

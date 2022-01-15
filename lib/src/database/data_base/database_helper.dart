@@ -31,9 +31,7 @@ class DatabaseHelper {
   final String columnNotesMonth = 'month';
   final String columnNotesDay = 'day';
   final String columnNotesStartHour = 'start_hour';
-  final String columnNotesStartMinute = 'start_minute';
   final String columnNotesEndHour = 'end_hour';
-  final String columnNotesEndMinute = 'end_minute';
   final String columnNotesColor = 'color';
   final String columnNotesUserId = 'user_id';
   final String columnNotesTitle = 'title';
@@ -79,9 +77,7 @@ class DatabaseHelper {
         '$columnNotesMonth INTEGER, '
         '$columnNotesDay INTEGER, '
         '$columnNotesStartHour INTEGER, '
-        '$columnNotesStartMinute INTEGER, '
         '$columnNotesEndHour INTEGER, '
-        '$columnNotesEndMinute INTEGER, '
         '$columnNotesColor INTEGER, '
         '$columnNotesTitle INTEGER, '
         '$columnNotesYear INTEGER)');
@@ -142,14 +138,12 @@ class DatabaseHelper {
     for (int i = 0; i < list.length; i++) {
       var items = NotesModel(
         id: list[i][columnUserId],
-        user_id: list[i][columnNotesUserId],
+        userId: list[i][columnNotesUserId],
         year: list[i][columnNotesYear],
         day: list[i][columnNotesDay],
         month: list[i][columnNotesMonth],
-        start_hour: list[i][columnNotesStartHour],
-        start_minute: list[i][columnNotesStartMinute],
-        end_hour: list[i][columnNotesEndHour],
-        end_minute: list[i][columnNotesEndMinute],
+        startHour: list[i][columnNotesStartHour],
+        endHour: list[i][columnNotesEndHour],
         title: list[i][columnNotesTitle],
         color: list[i][columnNotesColor],
       );
