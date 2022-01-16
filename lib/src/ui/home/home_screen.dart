@@ -68,6 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   List<UserModel> result = snapshot.data!;
                   if (isFirst) {
                     taskBloc.getUserCurrentTask(result[0].id, DateTime.now());
+                    taskBloc.getWeekTask(result[0].id, DateTime.now());
+
                     widget.userChanged(result[0].id, result[0].name,
                         result[0].image, result[0].gender);
                     isFirst = false;
@@ -77,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPageChanged: (_index) {
                       taskBloc.getUserCurrentTask(
                           result[_index].id, DateTime.now());
+                      taskBloc.getWeekTask(result[_index].id, DateTime.now());
                       widget.userChanged(
                         result[_index].id,
                         result[_index].name,
@@ -257,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                   child: Center(
                                                     child: Text(
-                                                      result[0].title,
+                                                      result[0].title + " "  + result[0].startHour.toString() +"am - "+ result[0].endHour.toString() + "pm",
                                                       style: TextStyle(
                                                         color: AppTheme.dark,
                                                         fontSize: 16,
@@ -288,45 +291,59 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: 72 * h,
-                                    width:
-                                        MediaQuery.of(context).size.width / 3 -
-                                            47 * w,
-                                    decoration: BoxDecoration(
-                                      color: AppTheme.grey7,
-                                      borderRadius:
-                                          BorderRadius.circular(8 * o),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            "3",
-                                            style: TextStyle(
-                                                color: AppTheme.blue1,
-                                                fontSize: 24,
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w500,
-                                                height: 29 / 24 * h),
+
+                                  StreamBuilder(
+                                    stream: taskBloc.allWeekTask,
+                                    builder: (context,
+                                        AsyncSnapshot<List<NotesModel>> snapshot) {
+                                      if (snapshot.hasData) {
+                                        List<NotesModel> result = snapshot.data!;
+                                        return Container(
+                                          height: 72 * h,
+                                          width:
+                                          MediaQuery.of(context).size.width / 3 -
+                                              47 * w,
+                                          decoration: BoxDecoration(
+                                            color: AppTheme.grey7,
+                                            borderRadius:
+                                            BorderRadius.circular(8 * o),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 3 * h,
-                                        ),
-                                        Text(
-                                          "Left to  complete",
-                                          style: TextStyle(
-                                              color: AppTheme.grey,
-                                              fontSize: 12,
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.normal,
-                                              height: 14 / 12 * h),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
-                                    ),
+                                          child: Column(
+                                            children: [
+                                              Center(
+                                                child: Text(
+                                                  result.length.toString(),
+                                                  style: TextStyle(
+                                                      color: AppTheme.blue1,
+                                                      fontSize: 24,
+                                                      fontStyle: FontStyle.normal,
+                                                      fontWeight: FontWeight.w500,
+                                                      height: 29 / 24 * h),
+                                                )
+                                              ),
+                                              SizedBox(
+                                                height: 3 * h,
+                                              ),
+                                              Text(
+                                                "Left to  complete",
+                                                style: TextStyle(
+                                                    color: AppTheme.grey,
+                                                    fontSize: 12,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.normal,
+                                                    height: 14 / 12 * h),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                      return Container();
+                                    },
                                   ),
+
+
+
                                   SizedBox(
                                     width: 15 * w,
                                   ),
@@ -344,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         Center(
                                           child: Text(
-                                            "2",
+                                            DateTime.now().day.toString(),
                                             style: TextStyle(
                                                 color: AppTheme.red,
                                                 fontSize: 24,
@@ -386,7 +403,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       children: [
                                         Center(
                                           child: Text(
-                                            "12",
+                                            DateTime.now().year.toString(),
                                             style: TextStyle(
                                                 color: AppTheme.black,
                                                 fontSize: 24,

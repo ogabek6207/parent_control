@@ -4,13 +4,18 @@ import 'package:rxdart/rxdart.dart';
 
 class TaskBloc {
   final _repository = Repository();
+
   final _noteFetch = PublishSubject<List<NotesModel>>();
+
+  final _noteWeekFetch = PublishSubject<List<NotesModel>>();
 
   final _noteUserFetch = PublishSubject<List<NotesModel>>();
 
   Stream<List<NotesModel>> get allTask => _noteFetch.stream;
 
   Stream<List<NotesModel>> get allUserTask => _noteUserFetch.stream;
+
+  Stream<List<NotesModel>> get allWeekTask => _noteWeekFetch.stream;
 
   getOneTask(
     int userId,
@@ -37,9 +42,53 @@ class TaskBloc {
     _noteUserFetch.sink.add(data);
   }
 
+
+
+
+  getWeekTask(
+      int userId,
+      DateTime dateTime,
+      ) async {
+    var results = await _repository.getUserDayNotes(userId, dateTime);
+    List<NotesModel> data = [];
+    for (int i = 0; i < 8-DateTime.now().day; i++) {
+      if (results[i].day >= dateTime.weekday) {
+
+        data.add(results[i]);
+
+
+      }else{
+        break;
+      }
+    }
+    _noteWeekFetch.sink.add(data);
+  }
+
+  getAllWeekTask(
+      int userId,
+      DateTime dateTime,
+      ) async {
+    var results = await _repository.getUserDayNotes(userId, dateTime);
+    List<NotesModel> data = [];
+    for (int i = 0; i < 8-DateTime.now().day; i++) {
+      if (results[dateTime.weekday].day >= dateTime.weekday) {
+
+        data.add(results[i]);
+
+
+      }else{
+        break;
+      }
+    }
+    _noteWeekFetch.sink.add(data);
+  }
+
+
+
   dispose() {
     _noteFetch.close();
     _noteUserFetch.close();
+    _noteWeekFetch.close();
   }
 }
 
