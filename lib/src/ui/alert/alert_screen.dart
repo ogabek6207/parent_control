@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/social_bloc.dart';
-import 'package:parent_control/src/dialog/bottom_dialog.dart';
 import 'package:parent_control/src/model/social_model.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
@@ -140,7 +139,7 @@ class _AlertScreenState extends State<AlertScreen> {
                     itemCount: result.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           // BottomDialog.showHourPicker(context, hour, (hour) => null)
                         },
                         child: Container(
