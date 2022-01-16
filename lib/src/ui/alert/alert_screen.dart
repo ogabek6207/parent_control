@@ -38,8 +38,8 @@ class _AlertScreenState extends State<AlertScreen> {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-    bool one = true;
-    bool two = true;
+    bool one = false;
+    bool two = false;
     return Scaffold(
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
@@ -188,15 +188,16 @@ class _AlertScreenState extends State<AlertScreen> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    one = !one;
+                                    one = true;
+                                    two = false;
                                   });
                                 },
                                 child: one
                                     ? SvgPicture.asset(
-                                        "assets/icons/dislike.svg",
+                                        "assets/icons/dislike_.svg",
                                       )
                                     : SvgPicture.asset(
-                                        "assets/icons/dislike_.svg",
+                                        "assets/icons/dislike.svg",
                                       ),
                               ),
                               SizedBox(
@@ -205,15 +206,18 @@ class _AlertScreenState extends State<AlertScreen> {
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    two = !two;
+                                    one = false;
+                                    two = true;
+
                                   });
+
                                 },
-                                child: one
+                                child: two
                                     ? SvgPicture.asset(
-                                        "assets/icons/like.svg",
+                                        "assets/icons/like_.svg",
                                       )
                                     : SvgPicture.asset(
-                                        "assets/icons/like_.svg",
+                                        "assets/icons/like.svg",
                                       ),
                               ),
                               SizedBox(
@@ -230,8 +234,11 @@ class _AlertScreenState extends State<AlertScreen> {
               },
             ),
           ),
+
         ],
       ),
     );
+
   }
+
 }
