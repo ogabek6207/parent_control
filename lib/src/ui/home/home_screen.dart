@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    taskBloc.getUserTask(0, DateTime.now());
     homeBloc.getUsers();
     super.initState();
   }
@@ -68,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.hasData) {
                   List<UserModel> result = snapshot.data!;
                   if (isFirst) {
+                    taskBloc.getUserCurrentTask(result[0].id, DateTime.now());
                     widget.userChanged(result[0].id, result[0].name,
                         result[0].image, result[0].gender);
                     isFirst = false;
@@ -75,6 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   return PageView.builder(
                     controller: controller,
                     onPageChanged: (_index) {
+                      taskBloc.getUserCurrentTask(
+                          result[_index].id, DateTime.now());
                       widget.userChanged(
                         result[_index].id,
                         result[_index].name,
@@ -203,70 +205,79 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 21 * h,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 16 * w,
-                                ),
-                                Text(
-                                  "Current task",
-                                  style: TextStyle(
-                                    color: AppTheme.grey,
-                                    fontSize: 12,
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.normal,
-                                    height: 14 / 12 * h,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10 * h,
-                            ),
-
-
-
                             StreamBuilder(
                               stream: taskBloc.allUserTask,
-                              builder: (context, AsyncSnapshot<List<NotesModel>> snapshot) {
+                              builder: (context,
+                                  AsyncSnapshot<List<NotesModel>> snapshot) {
                                 if (snapshot.hasData) {
                                   List<NotesModel> result = snapshot.data!;
-                                  print(snapshot.data!.length);
-                                  return  Row(
-                                    children: [
-                                      SizedBox(width: 16 * w),
-                                      Container(
-                                        height: 28 * h,
-                                        width: 156 * w,
-                                        decoration: BoxDecoration(
-                                          color: AppTheme.purple,
-                                          borderRadius: BorderRadius.circular(8 * o),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "trdyh",
-                                            style: TextStyle(
-                                              color: AppTheme.dark,
-                                              fontSize: 16,
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.normal,
-                                              height: 19 / 16 * h,
+                                  return result.isEmpty
+                                      ? Container()
+                                      : Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 21 * h,
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-
-
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: 16 * w,
+                                                ),
+                                                Text(
+                                                  "Current task",
+                                                  style: TextStyle(
+                                                    color: AppTheme.grey,
+                                                    fontSize: 12,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    height: 14 / 12 * h,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10 * h,
+                                            ),
+                                            Row(
+                                              children: [
+                                                SizedBox(width: 16 * w),
+                                                Container(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 12),
+                                                  height: 28 * h,
+                                                  decoration: BoxDecoration(
+                                                    color: Utils.getColor(
+                                                        result[0].color),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                      8 * o,
+                                                    ),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      result[0].title,
+                                                      style: TextStyle(
+                                                        color: AppTheme.dark,
+                                                        fontSize: 16,
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        height: 19 / 16 * h,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        );
                                 }
                                 return Container();
                               },
                             ),
-
                             SizedBox(
                               height: 24 * h,
                             ),
