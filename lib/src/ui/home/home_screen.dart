@@ -70,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     taskBloc.getUserCurrentTask(result[0].id, DateTime.now());
                     taskBloc.getWeekTask(result[0].id);
                     taskBloc.getWeekEndTask(result[0].id);
-
                     widget.userChanged(result[0].id, result[0].name,
                         result[0].image, result[0].gender);
                     isFirst = false;
@@ -305,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 24 * h,
                             ),
                             SizedBox(
-                              height: 96 * h,
+
                               width: MediaQuery.of(context).size.width,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,

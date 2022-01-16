@@ -67,40 +67,42 @@ class TaskBloc {
     _noteWeekFetch.sink.add(data.length);
   }
 
-
-
   getWeekEndTask(
-      int userId,
-      ) async {
+    int userId,
+  ) async {
     DateTime now = DateTime.now();
     int currentDay = now.weekday;
     DateTime firstDayOfWeek = now.subtract(
       Duration(days: currentDay - 1),
     );
     List<NotesModel> data = [];
-    for (int i = 0; i < 7; i++) {
+    for (int i = now.weekday + 1; i < 7; i++) {
       var results = await _repository.getUserDayNotes(
         userId,
-
-          currentDay >= DateTime.now().weekday ?
         firstDayOfWeek.add(
           Duration(days: i),
-        ) : DateTime.now(),
+        ),
       );
       data.addAll(results);
+    }
+    var results = await _repository.getUserDayNotes(
+      userId,
+      now,
+    );
+    for (int i = 0; i < results.length; i++) {
+      if (results[i].startHour >= now.hour) {
+        data.add(results[i]);
+      }
     }
 
     _noteWeekEndFetch.sink.add(data.length);
   }
-
-
 
   dispose() {
     _noteFetch.close();
     _noteUserFetch.close();
     _noteWeekFetch.close();
     _noteWeekEndFetch.close();
-
   }
 }
 
