@@ -260,7 +260,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                   child: Center(
                                                     child: Text(
-                                                      result[0].title + " "  + result[0].startHour.toString() +"am - "+ result[0].endHour.toString() + "pm",
+                                                      result[0].title +
+                                                          " " +
+                                                          result[0]
+                                                              .startHour
+                                                              .toString() +
+                                                          (result[0].startHour >=
+                                                                  13
+                                                              ? "pm "
+                                                              : "am ") +
+                                                          " - " +
+                                                          result[0]
+                                                              .endHour
+                                                              .toString() +
+                                                          (result[0].endHour >=
+                                                                  13
+                                                              ? "pm "
+                                                              : "am "),
                                                       style: TextStyle(
                                                         color: AppTheme.dark,
                                                         fontSize: 16,
@@ -291,36 +307,38 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-
                                   StreamBuilder(
                                     stream: taskBloc.allWeekTask,
                                     builder: (context,
-                                        AsyncSnapshot<List<NotesModel>> snapshot) {
+                                        AsyncSnapshot<List<NotesModel>>
+                                            snapshot) {
                                       if (snapshot.hasData) {
-                                        List<NotesModel> result = snapshot.data!;
+                                        List<NotesModel> result =
+                                            snapshot.data!;
                                         return Container(
                                           height: 72 * h,
-                                          width:
-                                          MediaQuery.of(context).size.width / 3 -
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3 -
                                               47 * w,
                                           decoration: BoxDecoration(
                                             color: AppTheme.grey7,
                                             borderRadius:
-                                            BorderRadius.circular(8 * o),
+                                                BorderRadius.circular(8 * o),
                                           ),
                                           child: Column(
                                             children: [
                                               Center(
-                                                child: Text(
-                                                  result.length.toString(),
-                                                  style: TextStyle(
-                                                      color: AppTheme.blue1,
-                                                      fontSize: 24,
-                                                      fontStyle: FontStyle.normal,
-                                                      fontWeight: FontWeight.w500,
-                                                      height: 29 / 24 * h),
-                                                )
-                                              ),
+                                                  child: Text(
+                                                result.length.toString(),
+                                                style: TextStyle(
+                                                    color: AppTheme.blue1,
+                                                    fontSize: 24,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w500,
+                                                    height: 29 / 24 * h),
+                                              )),
                                               SizedBox(
                                                 height: 3 * h,
                                               ),
@@ -330,7 +348,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     color: AppTheme.grey,
                                                     fontSize: 12,
                                                     fontStyle: FontStyle.normal,
-                                                    fontWeight: FontWeight.normal,
+                                                    fontWeight:
+                                                        FontWeight.normal,
                                                     height: 14 / 12 * h),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -341,9 +360,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       return Container();
                                     },
                                   ),
-
-
-
                                   SizedBox(
                                     width: 15 * w,
                                   ),
