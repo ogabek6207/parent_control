@@ -5,6 +5,7 @@ import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/task_bloc.dart';
 import 'package:parent_control/src/model/notes_model.dart';
 import 'package:parent_control/src/ui/tasks/new_task_screen.dart';
+import 'package:parent_control/src/ui/tasks/update_task_screen.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -425,66 +426,89 @@ class _TasksScreenState extends State<TasksScreen> {
                         return ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              height: 56 * h,
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.only(
-                                  left: 16 * w, right: 16 * w, bottom: 16 * h),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8 * o),
-                                border: snapshot.data![index].color == 1
-                                    ? Border.all(color: Colors.black)
-                                    : null,
-                                color:
-                                    Utils.getColor(snapshot.data![index].color),
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 16 * w,
-                                  ),
-                                  Text(
-                                    snapshot.data![index].title,
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 16 * o,
-                                      fontWeight: FontWeight.w500,
-                                      height: 19 / 16 * h,
-                                      color: AppTheme.black,
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return UpdateTasksScreen(
+                                      name: widget.name,
+                                      image: widget.image,
+                                      gender: widget.gender,
+                                      id: widget.id,
+                                      dateTime: DateTime.now(),
+                                      taskName: snapshot.data![index].title,
+                                      startHour:
+                                          snapshot.data![index].startHour,
+                                      endHour: snapshot.data![index].endHour, defaultColor: snapshot.data![index].color,
+                                    );
+                                  }),
+                                );
+                              },
+                              child: Container(
+                                height: 56 * h,
+                                width: MediaQuery.of(context).size.width,
+                                margin: EdgeInsets.only(
+                                    left: 16 * w,
+                                    right: 16 * w,
+                                    bottom: 16 * h),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8 * o),
+                                  border: snapshot.data![index].color == 1
+                                      ? Border.all(color: Colors.black)
+                                      : null,
+                                  color: Utils.getColor(
+                                      snapshot.data![index].color),
+                                ),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 16 * w,
                                     ),
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    snapshot.data![index].startHour.toString() +
-                                        (snapshot.data![index].startHour >= 13
-                                            ? " pm "
-                                            : " am ") +
-                                        " - " +
-                                        snapshot.data![index].endHour
-                                            .toString() +
-                                        (snapshot.data![index].endHour >= 13
-                                            ? " pm "
-                                            : " am "),
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 16 * o,
-                                      fontWeight: FontWeight.w500,
-                                      height: 19 / 16 * h,
-                                      color: AppTheme.black,
+                                    Text(
+                                      snapshot.data![index].title,
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16 * o,
+                                        fontWeight: FontWeight.w500,
+                                        height: 19 / 16 * h,
+                                        color: AppTheme.black,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 16 * w,
-                                  ),
-                                  SvgPicture.asset(
-                                    "assets/icons/arrow_left.svg",
-                                    height: 10 * h,
-                                    width: 5 * w,
-                                  ),
-                                  SizedBox(
-                                    width: 16 * w,
-                                  ),
-                                ],
+                                    const Spacer(),
+                                    Text(
+                                      snapshot.data![index].startHour
+                                              .toString() +
+                                          (snapshot.data![index].startHour >= 13
+                                              ? " pm "
+                                              : " am ") +
+                                          " - " +
+                                          snapshot.data![index].endHour
+                                              .toString() +
+                                          (snapshot.data![index].endHour >= 13
+                                              ? " pm "
+                                              : " am "),
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        fontSize: 16 * o,
+                                        fontWeight: FontWeight.w500,
+                                        height: 19 / 16 * h,
+                                        color: AppTheme.black,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 16 * w,
+                                    ),
+                                    SvgPicture.asset(
+                                      "assets/icons/arrow_left.svg",
+                                      height: 10 * h,
+                                      width: 5 * w,
+                                    ),
+                                    SizedBox(
+                                      width: 16 * w,
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },

@@ -7,7 +7,8 @@ class TaskBloc {
 
   final _noteFetch = PublishSubject<List<NotesModel>>();
 
-  final _noteWeekFetch = PublishSubject<List<NotesModel>>();
+  final _noteWeekFetch = PublishSubject<int>();
+  final _noteWeekEndFetch = PublishSubject<int>();
 
   final _noteUserFetch = PublishSubject<List<NotesModel>>();
 
@@ -15,7 +16,9 @@ class TaskBloc {
 
   Stream<List<NotesModel>> get allUserTask => _noteUserFetch.stream;
 
-  Stream<List<NotesModel>> get allWeekTask => _noteWeekFetch.stream;
+  Stream<int> get allWeekTask => _noteWeekFetch.stream;
+
+  Stream<int> get allWeekEndTask => _noteWeekEndFetch.stream;
 
   getOneTask(
     int userId,
@@ -42,45 +45,52 @@ class TaskBloc {
     _noteUserFetch.sink.add(data);
   }
 
-
-
-
   getWeekTask(
-      int userId,
-      DateTime dateTime,
-      ) async {
-    var results = await _repository.getUserDayNotes(userId, dateTime);
+    int userId,
+  ) async {
+    DateTime now = DateTime.now();
+    int currentDay = now.weekday;
+    DateTime firstDayOfWeek = now.subtract(
+      Duration(days: currentDay - 1),
+    );
     List<NotesModel> data = [];
-    for (int i = 0; i < 8-DateTime.now().day; i++) {
-      if (results[i].day >= dateTime.weekday) {
-
-        data.add(results[i]);
-
-
-      }else{
-        break;
-      }
+    for (int i = 0; i < 7; i++) {
+      var results = await _repository.getUserDayNotes(
+        userId,
+        firstDayOfWeek.add(
+          Duration(days: i),
+        ),
+      );
+      data.addAll(results);
     }
-    _noteWeekFetch.sink.add(data);
+
+    _noteWeekFetch.sink.add(data.length);
   }
 
-  getAllWeekTask(
+
+
+  getWeekEndTask(
       int userId,
-      DateTime dateTime,
       ) async {
-    var results = await _repository.getUserDayNotes(userId, dateTime);
+    DateTime now = DateTime.now();
+    int currentDay = now.weekday;
+    DateTime firstDayOfWeek = now.subtract(
+      Duration(days: currentDay - 1),
+    );
     List<NotesModel> data = [];
-    for (int i = 0; i < 8-DateTime.now().day; i++) {
-      if (results[dateTime.weekday].day >= dateTime.weekday) {
+    for (int i = 0; i < 7; i++) {
+      var results = await _repository.getUserDayNotes(
+        userId,
 
-        data.add(results[i]);
-
-
-      }else{
-        break;
-      }
+          currentDay >= DateTime.now().weekday ?
+        firstDayOfWeek.add(
+          Duration(days: i),
+        ) : DateTime.now(),
+      );
+      data.addAll(results);
     }
-    _noteWeekFetch.sink.add(data);
+
+    _noteWeekEndFetch.sink.add(data.length);
   }
 
 
@@ -89,6 +99,8 @@ class TaskBloc {
     _noteFetch.close();
     _noteUserFetch.close();
     _noteWeekFetch.close();
+    _noteWeekEndFetch.close();
+
   }
 }
 

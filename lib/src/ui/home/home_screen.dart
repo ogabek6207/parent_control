@@ -68,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   List<UserModel> result = snapshot.data!;
                   if (isFirst) {
                     taskBloc.getUserCurrentTask(result[0].id, DateTime.now());
-                    taskBloc.getWeekTask(result[0].id, DateTime.now());
+                    taskBloc.getWeekTask(result[0].id);
+                    taskBloc.getWeekEndTask(result[0].id);
 
                     widget.userChanged(result[0].id, result[0].name,
                         result[0].image, result[0].gender);
@@ -78,8 +79,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller: controller,
                     onPageChanged: (_index) {
                       taskBloc.getUserCurrentTask(
-                          result[_index].id, DateTime.now());
-                      taskBloc.getWeekTask(result[_index].id, DateTime.now());
+                        result[_index].id,
+                        DateTime.now(),
+                      );
+                      taskBloc.getWeekTask(result[_index].id);
+                      taskBloc.getWeekEndTask(result[_index].id);
                       widget.userChanged(
                         result[_index].id,
                         result[_index].name,
@@ -308,13 +312,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   StreamBuilder(
-                                    stream: taskBloc.allWeekTask,
-                                    builder: (context,
-                                        AsyncSnapshot<List<NotesModel>>
-                                            snapshot) {
+                                    stream: taskBloc.allWeekEndTask,
+                                    builder:
+                                        (context, AsyncSnapshot<int> snapshot) {
                                       if (snapshot.hasData) {
-                                        List<NotesModel> result =
-                                            snapshot.data!;
                                         return Container(
                                           height: 72 * h,
                                           width: MediaQuery.of(context)
@@ -330,15 +331,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: Column(
                                             children: [
                                               Center(
-                                                  child: Text(
-                                                result.length.toString(),
-                                                style: TextStyle(
+                                                child: Text(
+                                                  snapshot.data!.toString(),
+                                                  style: TextStyle(
                                                     color: AppTheme.blue1,
                                                     fontSize: 24,
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight: FontWeight.w500,
-                                                    height: 29 / 24 * h),
-                                              )),
+                                                    height: 29 / 24 * h,
+                                                  ),
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 3 * h,
                                               ),
@@ -405,44 +408,57 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(
                                     width: 15 * w,
                                   ),
-                                  Container(
-                                    height: 72 * h,
-                                    width:
-                                        MediaQuery.of(context).size.width / 3 -
-                                            47 * w,
-                                    decoration: BoxDecoration(
-                                      color: AppTheme.grey7,
-                                      borderRadius:
-                                          BorderRadius.circular(8 * o),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            DateTime.now().year.toString(),
-                                            style: TextStyle(
-                                                color: AppTheme.black,
-                                                fontSize: 24,
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w500,
-                                                height: 29 / 24 * h),
+                                  StreamBuilder(
+                                    stream: taskBloc.allWeekTask,
+                                    builder:
+                                        (context, AsyncSnapshot<int> snapshot) {
+                                      if (snapshot.hasData) {
+                                        return Container(
+                                          height: 72 * h,
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  3 -
+                                              47 * w,
+                                          decoration: BoxDecoration(
+                                            color: AppTheme.grey7,
+                                            borderRadius:
+                                                BorderRadius.circular(8 * o),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 3 * h,
-                                        ),
-                                        Text(
-                                          "Tasks for the week",
-                                          style: TextStyle(
-                                              color: AppTheme.grey,
-                                              fontSize: 12,
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.normal,
-                                              height: 14 / 12 * h),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
-                                    ),
+                                          child: Column(
+                                            children: [
+                                              Center(
+                                                child: Text(
+                                                  snapshot.data!.toString(),
+                                                  style: TextStyle(
+                                                    color: AppTheme.blue1,
+                                                    fontSize: 24,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w500,
+                                                    height: 29 / 24 * h,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 3 * h,
+                                              ),
+                                              Text(
+                                                "Tasks for the week",
+                                                style: TextStyle(
+                                                    color: AppTheme.grey,
+                                                    fontSize: 12,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    height: 14 / 12 * h),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                      return Container();
+                                    },
                                   ),
                                 ],
                               ),
