@@ -63,6 +63,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
   }
 
   @override
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -394,8 +395,8 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                           title: _controller.text,
                         ),
                       );
-                      if(id>=0){
-                        taskBloc.getOneTask(widget.id,  widget.dateTime);
+                      if (id >= 0) {
+                        taskBloc.getOneTask(widget.id, widget.dateTime);
                       }
                       Navigator.pop(context);
                     }

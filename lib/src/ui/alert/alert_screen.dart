@@ -138,9 +138,12 @@ class _AlertScreenState extends State<AlertScreen> {
                     padding: EdgeInsets.zero,
                     itemCount: result.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          // BottomDialog.showHourPicker(context, hour, (hour) => null)
+                      return  GestureDetector(
+                        onTap: (){
+                          setState(() {
+one = !one;
+two = !two;
+                          });
                         },
                         child: Container(
                           height: 56 * h,
@@ -185,41 +188,24 @@ class _AlertScreenState extends State<AlertScreen> {
                                 color: AppTheme.black,
                               ),
                               const Spacer(),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    one = true;
-                                    two = false;
-                                  });
-                                },
-                                child: one
-                                    ? SvgPicture.asset(
-                                        "assets/icons/dislike_.svg",
-                                      )
-                                    : SvgPicture.asset(
-                                        "assets/icons/dislike.svg",
-                                      ),
+                              one
+                                  ? SvgPicture.asset(
+                                "assets/icons/dislike_.svg",
+                              )
+                                  : SvgPicture.asset(
+                                "assets/icons/dislike.svg",
                               ),
                               SizedBox(
                                 width: 16 * w,
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    one = false;
-                                    two = true;
-
-                                  });
-
-                                },
-                                child: two
-                                    ? SvgPicture.asset(
-                                        "assets/icons/like_.svg",
-                                      )
-                                    : SvgPicture.asset(
-                                        "assets/icons/like.svg",
-                                      ),
+                              two
+                                  ? SvgPicture.asset(
+                                "assets/icons/like_.svg",
+                              )
+                                  : SvgPicture.asset(
+                                "assets/icons/like.svg",
                               ),
+
                               SizedBox(
                                 width: 16 * w,
                               ),
@@ -230,15 +216,13 @@ class _AlertScreenState extends State<AlertScreen> {
                     },
                   );
                 }
+
                 return Container();
               },
             ),
           ),
-
         ],
       ),
     );
-
   }
-
 }
