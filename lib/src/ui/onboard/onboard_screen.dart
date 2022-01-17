@@ -27,7 +27,8 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     OnboardModel(
       msg: "Ilovani yaxshilashga yordam bering",
       image: 'assets/images/onboard_two.png',
-      title: 'Biz doimo fikr-mulohazalarni kuzatib boramiz va sizning fikringizga muhtojmiz',
+      title:
+          'Biz doimo fikr-mulohazalarni kuzatib boramiz va sizning fikringizga muhtojmiz',
     ),
     OnboardModel(
       msg: "Farzandlaringiz uchun profil yarating",
@@ -38,8 +39,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     OnboardModel(
       msg: "Oldindan sozlangan mashhur xizmatlar",
       image: 'assets/images/onboard_four.png',
-      title:
-          'Hozir ilova sinov muddatida Fikringiz biz uchun juda muhim!',
+      title: 'Hozir ilova sinov muddatida Fikringiz biz uchun juda muhim!',
     ),
   ];
 
@@ -90,14 +90,13 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-
-                   height: 250*o,
-                          width: 300*o,
+                          height: 250 * o,
+                          width: 300 * o,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50*o),
+                            borderRadius: BorderRadius.circular(50 * o),
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50*o),
+                            borderRadius: BorderRadius.circular(50 * o),
                             child: Image.asset(
                               data[index].image,
                               width: MediaQuery.of(context).size.width - 32 * w,
@@ -171,7 +170,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ),
                 child: Center(
                   child: Text(
-                    "Continue",
+                    "Davom eting",
                     style: TextStyle(
                       color: AppTheme.blue1,
                       fontSize: 18 * o,
@@ -191,7 +190,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Terms of Use",
+                        "Foydalanish shartlari",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -206,7 +205,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Restore",
+                        "Qayta tiklash",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
@@ -221,7 +220,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        "Privacy policy",
+                        "Maxfiylik siyosati",
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
