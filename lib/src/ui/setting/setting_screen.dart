@@ -36,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Settings",
+                  "Sozlamalar",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 22 * o,
@@ -62,7 +62,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Privacy Policy",
+                  "Maxfiylik siyosati",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,
@@ -96,7 +96,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Term of Use",
+                  "Foydalanish muddati",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,
@@ -130,7 +130,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   width: 16 * w,
                 ),
                 Text(
-                  "Support",
+                  "Qo'llab-quvvatlash",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16 * o,
@@ -172,7 +172,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               child: Center(
                 child: Text(
-                  "Add child",
+                  "Bola qo'shing",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 18 * o,
@@ -212,7 +212,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               child: Center(
                 child: Text(
-                  "Add services",
+                  "Xizmatlarni qo'shish",
                   style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 18 * o,

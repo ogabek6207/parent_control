@@ -57,7 +57,7 @@ class _AlertScreenState extends State<AlertScreen> {
         ),
         title: Center(
           child: Text(
-            "Alerts " + widget.name,
+            "Bildirishnomalar" + widget.name,
             style: TextStyle(
               fontStyle: FontStyle.normal,
               fontSize: 22 * o,
@@ -113,7 +113,7 @@ class _AlertScreenState extends State<AlertScreen> {
             margin: EdgeInsets.symmetric(horizontal: 16 * w),
             child: Center(
               child: Text(
-                "At the end of the day, ask your child about his impressions on the Internet for the past day",
+                "Kun oxirida, farzandingizdan o'tgan kun davomida Internetdagi taassurotlari haqida so'rang",
                 style: TextStyle(
                   fontStyle: FontStyle.normal,
                   fontSize: 16 * o,
@@ -171,7 +171,7 @@ two = !two;
                                 width: 24 * w,
                               ),
                               Text(
-                                "1 hour",
+                                "1 soat",
                                 style: TextStyle(
                                   fontStyle: FontStyle.normal,
                                   fontSize: 16 * o,

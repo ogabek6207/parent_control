@@ -173,29 +173,29 @@ class Utils {
 
   static String getMonth(int now) {
     if (now == 1) {
-      return "January";
+      return "Yanvar";
     } else if (now == 2) {
-      return "February";
+      return "Fevral";
     } else if (now == 3) {
-      return "March";
+      return "Mart";
     } else if (now == 4) {
       return "April";
     } else if (now == 5) {
       return "May";
     } else if (now == 6) {
-      return "June";
+      return "Iyun";
     } else if (now == 7) {
-      return "July";
+      return "Iyul";
     } else if (now == 8) {
-      return "August";
+      return "Avgust";
     } else if (now == 9) {
-      return "September";
+      return "Sentabr";
     } else if (now == 10) {
-      return "October";
+      return "Octabr";
     } else if (now == 11) {
-      return "November";
+      return "Noyabr";
     } else {
-      return "December";
+      return "Dekabr";
     }
   }
 

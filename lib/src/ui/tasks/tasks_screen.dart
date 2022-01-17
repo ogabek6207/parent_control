@@ -67,7 +67,7 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
         ),
         title: Text(
-          "Tasks " + widget.name,
+          "Vazifalar " + widget.name,
           style: TextStyle(
             fontStyle: FontStyle.normal,
             fontSize: 22 * o,
@@ -547,7 +547,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "+ Add task",
+                        "+ Vazifa qo'shish",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
                           fontSize: 18 * o,

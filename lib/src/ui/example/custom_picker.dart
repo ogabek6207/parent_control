@@ -116,7 +116,7 @@ class _CustomTimerPickerState extends State<CustomTimerPicker> {
                   child: child,
                 );
               },
-              CupertinoPickerDefaultSelectionOverlay(
+              const CupertinoPickerDefaultSelectionOverlay(
                 capLeftEdge: false,
                 capRightEdge: false,
               ),

@@ -90,7 +90,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
           ),
         ),
         title: Text(
-          "Tasks " + widget.name,
+          "Vazifalar " + widget.name,
           style: TextStyle(
             fontStyle: FontStyle.normal,
             fontSize: 22 * o,
@@ -184,7 +184,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                         child: TextField(
                           controller: _controller,
                           decoration: InputDecoration(
-                            hintText: "Title name",
+                            hintText: "Sarlavha nomi",
                             border: InputBorder.none,
                             hintStyle: TextStyle(
                               color: AppTheme.black.withOpacity(0.3),
@@ -353,7 +353,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                                 width: 16 * w,
                               ),
                               Text(
-                                "Default color",
+                                "Standart rang",
                                 style: TextStyle(
                                   color: AppTheme.black,
                                   fontWeight: FontWeight.w500,
@@ -411,7 +411,7 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "Save",
+                        "Saqlash",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
                           fontSize: 18 * o,

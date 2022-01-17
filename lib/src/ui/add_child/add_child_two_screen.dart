@@ -24,6 +24,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
   File? data;
   bool gender = true;
   bool errorText = true;
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -54,7 +55,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
               ),
               const Spacer(),
               Text(
-                "Profile setting",
+                "Profil sozlamalari",
                 style: TextStyle(
                     color: AppTheme.white,
                     fontSize: 22 * o,
@@ -119,18 +120,21 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                               SvgPicture.asset(
                                 "assets/icons/gallery.svg",
                               ),
-                              SizedBox(height: 18*h,),
+                              SizedBox(
+                                height: 18 * h,
+                              ),
                               Container(
-                                margin: EdgeInsets.only(left: 13.5*w, right: 13.5*w),
-                                child: Text("Click here to upload a photo",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: AppTheme.grey,
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 13.5*o,
-                                  fontWeight: FontWeight.normal,
-
-                                ),
+                                margin: EdgeInsets.only(
+                                    left: 13.5 * w, right: 13.5 * w),
+                                child: Text(
+                                  "Surat yuklash uchun shu yerni bosing",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: AppTheme.grey,
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 13.5 * o,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
                               ),
                             ],
@@ -206,7 +210,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                         ),
                         SizedBox(height: 8 * h),
                         Text(
-                          "Boy",
+                          "Bola",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
@@ -245,7 +249,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                         ),
                         SizedBox(height: 8 * h),
                         Text(
-                          "Girl",
+                          "Qiz",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
@@ -265,17 +269,17 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                   height: 56 * h,
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                  padding: EdgeInsets.only(left: 16 * w, top: 3*h),
+                  padding: EdgeInsets.only(left: 16 * w, top: 3 * h),
                   decoration: BoxDecoration(
                     color: AppTheme.milk,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child:   TextField(
+                  child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "Name",
+                      hintText: "Ism",
                       hintStyle: TextStyle(
                         color: AppTheme.black.withOpacity(0.3),
                       ),
@@ -316,14 +320,16 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 40 * w),
                     decoration: BoxDecoration(
-                      color: errorText ?  AppTheme.blue :AppTheme.milk,
+                      color: errorText ? AppTheme.blue : AppTheme.milk,
                       borderRadius: BorderRadius.circular(32 * o),
                     ),
                     child: Center(
                       child: Text(
-                        "Add child",
+                        "Bola qo'shing",
                         style: TextStyle(
-                          color:  errorText ? AppTheme.white :AppTheme.dark.withOpacity(0.3),
+                          color: errorText
+                              ? AppTheme.white
+                              : AppTheme.dark.withOpacity(0.3),
                           fontSize: 18,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,

@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "Home",
+          "Bosh sahifa",
           style: TextStyle(
             fontStyle: FontStyle.normal,
             fontSize: 22 * o,
@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   width: 16 * w,
                                                 ),
                                                 Text(
-                                                  "Current task",
+                                                  "Joriy vazifa",
                                                   style: TextStyle(
                                                     color: AppTheme.grey,
                                                     fontSize: 12,
@@ -345,7 +345,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 height: 3 * h,
                                               ),
                                               Text(
-                                                "Left to  complete",
+                                                "Qolgan vazifalar",
                                                 style: TextStyle(
                                                     color: AppTheme.grey,
                                                     fontSize: 12,
@@ -392,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: 3 * h,
                                         ),
                                         Text(
-                                          "Alerts need review",
+                                          "Ko'rib chiqish kerak",
                                           style: TextStyle(
                                               color: AppTheme.grey,
                                               fontSize: 12,
@@ -442,7 +442,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 height: 3 * h,
                                               ),
                                               Text(
-                                                "Tasks for the week",
+                                                "Hafta uchun vazifalar",
                                                 style: TextStyle(
                                                     color: AppTheme.grey,
                                                     fontSize: 12,
@@ -473,7 +473,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "2 alerts need review",
+                                  "2 ta ogohlantirish koʻrib chiqilishi kerak",
                                   style: TextStyle(
                                       color: AppTheme.white,
                                       fontSize: 18,

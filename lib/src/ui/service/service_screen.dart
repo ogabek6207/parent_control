@@ -40,7 +40,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text(
-          "What apps does Victoria use",
+          "Farzandingiz qanday ilovalardan foydalanadi",
           style: TextStyle(
               color: AppTheme.white,
               fontSize: 22 * o,
@@ -178,7 +178,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              "Save",
+                              "Saqlash",
                               style: TextStyle(
                                   color: AppTheme.blue,
                                   fontSize: 18,

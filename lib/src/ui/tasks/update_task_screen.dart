@@ -93,7 +93,7 @@ class _UpdateTasksScreenState extends State<UpdateTasksScreen> {
           ),
         ),
         title: Text(
-          "Tasks " + widget.name,
+          "Vazifalar " + widget.name,
           style: TextStyle(
             fontStyle: FontStyle.normal,
             fontSize: 22 * o,
@@ -187,7 +187,7 @@ class _UpdateTasksScreenState extends State<UpdateTasksScreen> {
                         child: TextField(
                           controller: _controller,
                           decoration: InputDecoration(
-                            hintText: "Title name",
+                            hintText: "Sarlavha nomi",
                             border: InputBorder.none,
                             hintStyle: TextStyle(
                               color: AppTheme.black.withOpacity(0.3),
@@ -414,7 +414,7 @@ class _UpdateTasksScreenState extends State<UpdateTasksScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        "Save",
+                        "Saqlash",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
                           fontSize: 18 * o,

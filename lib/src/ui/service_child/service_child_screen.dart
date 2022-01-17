@@ -90,7 +90,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                 Expanded(
                   child: Center(
                     child: Text(
-                      "Profile setting",
+                      "Profil sozlamalari",
                       style: TextStyle(
                         color: AppTheme.white,
                         fontSize: 22 * o,
@@ -173,7 +173,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                                       margin: EdgeInsets.only(
                                           left: 13.5 * w, right: 13.5 * w),
                                       child: Text(
-                                        "Click here to upload a photo",
+                                        "Surat yuklash uchun shu yerni bosing",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: AppTheme.grey,
@@ -260,7 +260,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                           ),
                           SizedBox(height: 8 * h),
                           Text(
-                            "Boy",
+                            "Bola",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -300,7 +300,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                           ),
                           SizedBox(height: 8 * h),
                           Text(
-                            "Girl",
+                            "Qiz",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
@@ -330,7 +330,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       controller: _controller,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Name",
+                        hintText: "Ism",
                         hintStyle: TextStyle(
                           color: AppTheme.black.withOpacity(0.3),
                         ),
@@ -368,7 +368,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          "Save",
+                          "Saqlash",
                           style: TextStyle(
                             color: AppTheme.white,
                             fontSize: 18,
@@ -413,7 +413,7 @@ class _AddChildScreenTwoState extends State<ServiceChildScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          "Delete profile",
+                          "Profilni o'chirish",
                           style: TextStyle(
                             color: AppTheme.red,
                             fontSize: 18,
