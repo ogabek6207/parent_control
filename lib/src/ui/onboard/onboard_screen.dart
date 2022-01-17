@@ -19,27 +19,27 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   int _selectedIndex = 0;
   List<OnboardModel> data = [
     OnboardModel(
-      msg: "Сontrol and educate correctly",
+      msg: "To'g'ri nazorat qiling va tarbiyalang ",
       image: 'assets/images/onboard_one.png',
       title:
-          'Set tasks and control the time spent online and the content of the child',
+          'Vazifalarni qo\ying va onlayn vaqtni va bolaning mazmunini nazorat qiling',
     ),
     OnboardModel(
-      msg: "Help us to improve the app",
+      msg: "Ilovani yaxshilashga yordam bering",
       image: 'assets/images/onboard_two.png',
-      title: 'We constantly monitor feedback and need your opinion',
+      title: 'Biz doimo fikr-mulohazalarni kuzatib boramiz va sizning fikringizga muhtojmiz',
     ),
     OnboardModel(
-      msg: "Create profiles  for your kids",
+      msg: "Farzandlaringiz uchun profil yarating",
       image: 'assets/images/onboard_three.png',
       title:
-          'Create unique profiles for your kids for their different lifestyles',
+          'Farzandlaringiz uchun turli xil turmush tarzi uchun noyob profillar yarating',
     ),
     OnboardModel(
-      msg: "Pre-configured  popular services",
+      msg: "Oldindan sozlangan mashhur xizmatlar",
       image: 'assets/images/onboard_four.png',
       title:
-          '9:41 Pre-configured  popular services Subscribe to unlock all the features, just 3.99/week Continue Terms of UsestorPrivacy policy',
+          'Hozir ilova sinov muddatida Fikringiz biz uchun juda muhim!',
     ),
   ];
 
@@ -89,10 +89,21 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          data[index].image,
-                          width: MediaQuery.of(context).size.width - 32 * w,
-                          fit: BoxFit.fitWidth,
+                        Container(
+
+                   height: 250*o,
+                          width: 300*o,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50*o),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50*o),
+                            child: Image.asset(
+                              data[index].image,
+                              width: MediaQuery.of(context).size.width - 32 * w,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                         SizedBox(
                           height: 44 * h,

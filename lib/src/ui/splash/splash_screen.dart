@@ -27,7 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
@@ -43,18 +42,23 @@ class _SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.cover,
             )),
           ),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("BOLA NAZORATI",
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 36*o,
-                fontWeight: FontWeight.bold,
-                color: AppTheme.blue,
+              SizedBox(
+                height: 550 * h,
               ),
+              Center(
+                child: Text(
+                  "BOLA NAZORATI",
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 36 * o,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.black,
+                  ),
+                ),
               ),
             ],
           ),
@@ -67,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     bool isFirst = pref.getBool("isFirst") ?? false;
     int k = (await _repository.getUsers()).length;
-    Timer(const Duration(milliseconds: 1250), () {
+    Timer(const Duration(milliseconds: 2250), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
