@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
 import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/ui/onboard/onboard_screen.dart';
+import 'package:parent_control/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,15 +27,38 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
     return Scaffold(
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ClipRRect(
-            child: Image.asset(
-          "assets/images/splash.png",
-          fit: BoxFit.cover,
-        )),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: ClipRRect(
+                child: Image.asset(
+              "assets/images/splash.png",
+              fit: BoxFit.cover,
+            )),
+          ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("BOLA NAZORATI",
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 36*o,
+                fontWeight: FontWeight.bold,
+                color: AppTheme.blue,
+              ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

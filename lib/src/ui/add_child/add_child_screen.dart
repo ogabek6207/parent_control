@@ -27,23 +27,28 @@ class _AddChildScreenState extends State<AddChildScreen> {
 
   @override
   void initState() {
-    _controller.addListener(() {
-      if (_controller.text.length >= 4) {
-        if (!isNext) {
-          setState(() {
-            isNext = true;
-          });
+    _controller.addListener(
+      () {
+        if (_controller.text.length >= 4) {
+          if (!isNext) {
+            setState(
+              () {
+                isNext = true;
+              },
+            );
+          }
+        } else {
+          if (isNext) {
+            setState(() {
+              isNext = false;
+            });
+          }
         }
-      } else {
-        if (isNext) {
-          setState(() {
-            isNext = false;
-          });
-        }
-      }
-    });
+      },
+    );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);

@@ -32,14 +32,14 @@ class _AlertScreenState extends State<AlertScreen> {
     socialBloc.getSocial(widget.id);
     super.initState();
   }
-
+  bool one = false;
+  bool two = false;
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
     double w = Utils.windowWidth(context);
     double o = (h + w) / 2;
-    bool one = false;
-    bool two = false;
+
     return Scaffold(
       backgroundColor: AppTheme.blue,
       appBar: AppBar(
