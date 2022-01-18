@@ -203,13 +203,13 @@ class Utils {
     if (id == 1) {
       return AppTheme.white;
     } else if (id == 2) {
-      return AppTheme.light_grey;
+      return AppTheme.lightGrey;
     } else if (id == 3) {
-      return AppTheme.light_blue;
+      return AppTheme.lightBlue;
     } else if (id == 4) {
-      return AppTheme.light_green;
+      return AppTheme.lightGreen;
     } else if (id == 5) {
-      return AppTheme.light_yellow;
+      return AppTheme.lightYellow;
     } else if (id == 6) {
       return AppTheme.peach;
     } else if (id == 7) {

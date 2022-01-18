@@ -11,12 +11,12 @@ class AppTheme {
   static Color grey7 = const Color(0xFFF7F7F7);
   static Color red = const Color(0xFFFF4D00);
   static Color greyE4 = const Color(0xFFE4E4E4);
-  static Color light_blue = const Color(0xFF9BEDFF);
-  static Color light_green = const Color(0xFFA9FFA3);
-  static Color light_grey = const Color(0xFFECECEC);
+  static Color lightBlue = const Color(0xFF9BEDFF);
+  static Color lightGreen = const Color(0xFFA9FFA3);
+  static Color lightGrey = const Color(0xFFECECEC);
   static Color blueFF = const Color(0xFFEBF5FF);
   static Color yellow = const Color(0xFFFEFFC8);
-  static Color light_yellow = const Color(0xFFFCFF82);
+  static Color lightYellow = const Color(0xFFFCFF82);
   static Color peach = const Color(0xFFFFAAAA);
   static Color rose = const Color(0xFFFF8BE6);
   static Color lilac = const Color(0xFFD187FF);

@@ -317,7 +317,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.light_grey,
+                        color: AppTheme.lightGrey,
                         border: Border.all(
                           color: id == 2 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,
@@ -339,7 +339,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.light_blue,
+                        color: AppTheme.lightBlue,
                         border: Border.all(
                           color: id == 3 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,
@@ -361,7 +361,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.light_green,
+                        color: AppTheme.lightGreen,
                         border: Border.all(
                           color: id == 4 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,
@@ -383,7 +383,7 @@ class BottomDialog {
                       height: 56 * o,
                       width: 56 * o,
                       decoration: BoxDecoration(
-                        color: AppTheme.light_yellow,
+                        color: AppTheme.lightYellow,
                         border: Border.all(
                           color: id == 5 ? AppTheme.blue1 : Colors.transparent,
                           width: 2,
