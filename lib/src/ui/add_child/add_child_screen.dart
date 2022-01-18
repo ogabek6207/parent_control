@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -275,7 +274,6 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   height: 28 * h,
                 ),
                 Container(
-                  height: 56 * h,
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 16 * w),
                   padding: EdgeInsets.only(left: 16 * w),
@@ -284,22 +282,15 @@ class _AddChildScreenState extends State<AddChildScreen> {
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.white),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _controller,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Ism",
-                            hintStyle: TextStyle(
-                              color: AppTheme.black.withOpacity(0.3),
-                            ),
-                          ),
-                        ),
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Ism",
+                      hintStyle: TextStyle(
+                        color: AppTheme.black.withOpacity(0.3),
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -343,7 +334,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
                       child: Text(
                         "Bola qo'shing",
                         style: TextStyle(
-                          color: AppTheme.dark.withOpacity(0.3),
+                          color: isNext
+                              ? AppTheme.white
+                              : AppTheme.dark.withOpacity(0.3),
                           fontSize: 18,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500,

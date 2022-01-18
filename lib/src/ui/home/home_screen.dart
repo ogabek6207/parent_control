@@ -59,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: StreamBuilder(
@@ -304,7 +305,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 24 * h,
                             ),
                             SizedBox(
-
                               width: MediaQuery.of(context).size.width,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -328,6 +328,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 BorderRadius.circular(8 * o),
                                           ),
                                           child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Center(
                                                 child: Text(
@@ -376,6 +380,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                           BorderRadius.circular(8 * o),
                                     ),
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Center(
                                           child: Text(
@@ -425,6 +433,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 BorderRadius.circular(8 * o),
                                           ),
                                           child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Center(
                                                 child: Text(
@@ -473,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "2 ta ogohlantirish koʻrib chiqilishi kerak",
+                                  "2 ta ogohlantirish",
                                   style: TextStyle(
                                       color: AppTheme.white,
                                       fontSize: 18,
