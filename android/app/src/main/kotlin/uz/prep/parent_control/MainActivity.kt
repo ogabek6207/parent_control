@@ -1,4 +1,4 @@
-package com.example.parent_control
+package uz.prep.parent_control
 
 import io.flutter.embedding.android.FlutterActivity
 
