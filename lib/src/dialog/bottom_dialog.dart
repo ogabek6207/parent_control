@@ -257,266 +257,276 @@ class BottomDialog {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return Container(
-          height: 290 * h,
-          width: MediaQuery.of(context).size.width,
-          color: AppTheme.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 27 * h,
-              ),
-              Text(
-                "Color for task background",
-                style: TextStyle(
-                  color: AppTheme.dark,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20 * o,
-                  height: 24 / 20 * h,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-              SizedBox(
-                height: 43 * h,
-              ),
-              Row(
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Container(
+              height: 290 * h,
+              width: MediaQuery.of(context).size.width,
+              color: AppTheme.white,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      id = 1;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.white,
-                        border: Border.all(
-                          color: id == 1 ? AppTheme.blue1 : AppTheme.greyE4,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
+                  SizedBox(
+                    height: 27 * h,
+                  ),
+                  Text(
+                    "Color for task background",
+                    style: TextStyle(
+                      color: AppTheme.dark,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20 * o,
+                      height: 24 / 20 * h,
+                      fontStyle: FontStyle.normal,
                     ),
                   ),
                   SizedBox(
-                    width: 16 * w,
+                    height: 43 * h,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      id = 2;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.lightGrey,
-                        border: Border.all(
-                          color: id == 2 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          id = 1;
+                          setState(() {});
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.white,
+                            border: Border.all(
+                              color: id == 1 ? AppTheme.blue1 : AppTheme.greyE4,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                    ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 2;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.lightGrey,
+                            border: Border.all(
+                              color:
+                                  id == 2 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 3;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.lightBlue,
+                            border: Border.all(
+                              color:
+                                  id == 3 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 4;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.lightGreen,
+                            border: Border.all(
+                              color:
+                                  id == 4 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 5;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.lightYellow,
+                            border: Border.all(
+                              color:
+                                  id == 5 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                    width: 16 * w,
+                    height: 16 * h,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      id = 3;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.lightBlue,
-                        border: Border.all(
-                          color: id == 3 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          id = 6;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.peach,
+                            border: Border.all(
+                              color:
+                                  id == 6 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      id = 4;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.lightGreen,
-                        border: Border.all(
-                          color: id == 4 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 7;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.rose,
+                            border: Border.all(
+                              color:
+                                  id == 7 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      id = 5;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.lightYellow,
-                        border: Border.all(
-                          color: id == 5 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 8;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: AppTheme.lilac,
+                            border: Border.all(
+                              color:
+                                  id == 8 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(100 * o),
                       ),
-                    ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 9;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: Utils.getColor(9),
+                            border: Border.all(
+                              color:
+                                  id == 9 ? AppTheme.blue1 : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 16 * w,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          id = 10;
+                          change(id);
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 56 * o,
+                          width: 56 * o,
+                          decoration: BoxDecoration(
+                            color: Utils.getColor(10),
+                            border: Border.all(
+                              color: id == 10
+                                  ? AppTheme.blue1
+                                  : Colors.transparent,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100 * o),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(
-                height: 16 * h,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-
-                      id = 6;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.peach,
-                        border: Border.all(
-                          color: id == 6 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-
-                      id = 7;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.rose,
-                        border: Border.all(
-                          color: id == 7 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-
-                      id = 8;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: AppTheme.lilac,
-                        border: Border.all(
-                          color: id == 8 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-
-                      id = 9;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: Utils.getColor(9),
-                        border: Border.all(
-                          color: id == 9 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16 * w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-
-                      id = 10;
-                      change(id);
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 56 * o,
-                      width: 56 * o,
-                      decoration: BoxDecoration(
-                        color: Utils.getColor(10),
-                        border: Border.all(
-                          color: id == 10 ? AppTheme.blue1 : Colors.transparent,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(100 * o),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );

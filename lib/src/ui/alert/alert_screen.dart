@@ -59,7 +59,7 @@ class _AlertScreenState extends State<AlertScreen> {
         ),
         title: Center(
           child: Text(
-            "Bildirishnomalar" + widget.name,
+            "Bildirishnomalar " + widget.name,
             style: TextStyle(
               fontStyle: FontStyle.normal,
               fontSize: 22 * o,

@@ -20,27 +20,27 @@ class Utils {
       case 2:
         {
           return "assets/images/tiktok.png";
-          break;
+
         }
       case 3:
         {
           return "assets/images/youtube.png";
-          break;
+
         }
       case 4:
         {
           return "assets/images/twitter.png";
-          break;
+
         }
       case 5:
         {
           return "assets/images/steam.png";
-          break;
+
         }
       case 6:
         {
           return "assets/images/facebook.png";
-          break;
+
         }
       default:
         {
@@ -58,27 +58,23 @@ class Utils {
       case 2:
         {
           return "Tiktok";
-          break;
+
         }
       case 3:
         {
           return "Youtube";
-          break;
         }
       case 4:
         {
           return "Twitter";
-          break;
         }
       case 5:
         {
           return "Steam";
-          break;
         }
       case 6:
         {
           return "Facebook";
-          break;
         }
       default:
         {
@@ -96,27 +92,22 @@ class Utils {
       case 2:
         {
           return "Tue";
-          break;
         }
       case 3:
         {
           return "Wed";
-          break;
         }
       case 4:
         {
           return "Thu";
-          break;
         }
       case 5:
         {
           return "Fri";
-          break;
         }
       case 6:
         {
           return "Sat";
-          break;
         }
       default:
         {
@@ -137,7 +128,7 @@ class Utils {
             child,
           ],
           cancelButton: CupertinoActionSheetAction(
-            child: Text('Done'),
+            child: const Text('Done'),
             onPressed: onClicked,
           ),
         ),
@@ -145,7 +136,7 @@ class Utils {
 
   static void showSnackBar(BuildContext context, String text) {
     final snackBar = SnackBar(
-      content: Text(text, style: TextStyle(fontSize: 24)),
+      content: Text(text, style: const TextStyle(fontSize: 24)),
     );
 
     ScaffoldMessenger.of(context)
