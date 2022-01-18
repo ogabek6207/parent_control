@@ -79,7 +79,7 @@ class _CustomTimerPickerState extends State<CustomTimerPicker> {
           return itemPositioningBuilder(
             context,
             Text(
-              time.toString() + " pm",
+              time.toString(),
               style: widget.style,
             ),
           );

@@ -309,9 +309,9 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       id = 2;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -331,9 +331,9 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       id = 3;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -353,9 +353,9 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       id = 4;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -375,9 +375,9 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       id = 5;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -403,9 +403,10 @@ class BottomDialog {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+
                       id = 6;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -425,9 +426,10 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+
                       id = 7;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -447,9 +449,10 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+
                       id = 8;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -469,9 +472,10 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+
                       id = 9;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,
@@ -491,9 +495,10 @@ class BottomDialog {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
+
                       id = 10;
                       change(id);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 56 * o,

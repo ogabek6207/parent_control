@@ -173,25 +173,27 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
                   child: ListView(
                     children: [
                       Container(
-                        height: 56 * h,
-                        padding: EdgeInsets.only(left: 16 * w),
+
+                        padding: EdgeInsets.only(left: 16 * w, right: 16*w),
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 16 * w),
                         decoration: BoxDecoration(
                           color: AppTheme.milk,
                           borderRadius: BorderRadius.circular(8 * o),
                         ),
-                        child: TextField(
-                          controller: _controller,
-                          decoration: InputDecoration(
-                            hintText: "Sarlavha nomi",
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                              color: AppTheme.black.withOpacity(0.3),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16 * o,
-                              fontStyle: FontStyle.normal,
-                              height: 19 / 16 * h,
+                        child: Expanded(
+                          child: TextField(
+                            controller: _controller,
+                            decoration: InputDecoration(
+                              hintText: "Sarlavha nomi",
+                              border: InputBorder.none,
+                              hintStyle: TextStyle(
+                                color: AppTheme.black.withOpacity(0.3),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16 * o,
+                                fontStyle: FontStyle.normal,
+                                height: 19 / 16 * h,
+                              ),
                             ),
                           ),
                         ),

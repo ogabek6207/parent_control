@@ -155,19 +155,19 @@ class Utils {
 
   static String getWeek(int now) {
     if (now == 1) {
-      return "Mon";
+      return "Du";
     } else if (now == 2) {
-      return "Tue";
+      return "Se";
     } else if (now == 3) {
-      return "Wed";
+      return "Chor";
     } else if (now == 4) {
-      return "Thu";
+      return "Pay";
     } else if (now == 5) {
-      return "Fri";
+      return "Ju";
     } else if (now == 6) {
-      return "Sat";
+      return "Sha";
     } else {
-      return "Sun";
+      return "Yak";
     }
   }
 

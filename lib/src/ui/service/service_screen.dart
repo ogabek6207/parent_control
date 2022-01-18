@@ -58,12 +58,27 @@ class _ServiceScreenState extends State<ServiceScreen> {
             margin: EdgeInsets.symmetric(horizontal: 16 * w),
             height: 72 * h,
             width: 343,
-            child: ClipRRect(
-              child: Image.asset(
-                "assets/images/text.png",
-                fit: BoxFit.cover,
-              ),
-            ),
+padding: EdgeInsets.symmetric(horizontal: 12*w),
+decoration: BoxDecoration(
+  borderRadius: BorderRadius.circular(12*o),
+  color: AppTheme.yellow,
+),
+child: Center(
+  child: Text("Farzandingizning tanlangan ilovalardagi faoliyatini kuzatishingizga yordam beramiz",
+  textAlign: TextAlign.center,
+    style: TextStyle(
+    color: AppTheme.black,
+    fontStyle: FontStyle.normal,
+    fontSize: 16*o,
+    fontWeight: FontWeight.normal,
+    height: 19/16*h,
+  ),
+
+
+  ),
+),
+
+
           ),
           SizedBox(
             height: 16 * h,
