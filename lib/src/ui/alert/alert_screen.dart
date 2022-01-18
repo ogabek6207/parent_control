@@ -32,8 +32,10 @@ class _AlertScreenState extends State<AlertScreen> {
     socialBloc.getSocial(widget.id);
     super.initState();
   }
+
   bool one = false;
   bool two = false;
+
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -138,79 +140,84 @@ class _AlertScreenState extends State<AlertScreen> {
                     padding: EdgeInsets.zero,
                     itemCount: result.length,
                     itemBuilder: (context, index) {
-                      return  GestureDetector(
-                        onTap: (){
-                          setState(() {
-one = !one;
-two = !two;
-                          });
-                        },
-                        child: Container(
-                          height: 56 * h,
-                          margin: EdgeInsets.only(
-                            top: 8 * h,
-                            left: 16 * w,
-                            right: 16 * w,
-                          ),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12 * o),
-                            color: AppTheme.white,
-                          ),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 16 * w,
+                      return Container(
+                        height: 56 * h,
+                        margin: EdgeInsets.only(
+                          top: 8 * h,
+                          left: 16 * w,
+                          right: 16 * w,
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12 * o),
+                          color: AppTheme.white,
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 16 * w,
+                            ),
+                            Image.asset(
+                              Utils.socialImage(
+                                result[index].typeId,
                               ),
-                              Image.asset(
-                                Utils.socialImage(
-                                  result[index].typeId,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 24 * w,
-                              ),
-                              Text(
-                                "1 soat",
-                                style: TextStyle(
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16 * o,
-                                  fontWeight: FontWeight.w500,
-                                  height: 19 / 16 * h,
-                                  color: AppTheme.black,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 8 * w,
-                              ),
-                              SvgPicture.asset(
-                                "assets/icons/arrow_bottom.svg",
+                            ),
+                            SizedBox(
+                              width: 24 * w,
+                            ),
+                            Text(
+                              "1 soat",
+                              style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 16 * o,
+                                fontWeight: FontWeight.w500,
+                                height: 19 / 16 * h,
                                 color: AppTheme.black,
                               ),
-                              const Spacer(),
-                              one
+                            ),
+                            SizedBox(
+                              width: 8 * w,
+                            ),
+                            SvgPicture.asset(
+                              "assets/icons/arrow_bottom.svg",
+                              color: AppTheme.black,
+                            ),
+                            const Spacer(),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  one = !one;
+                                });
+                              },
+                              child: one
                                   ? SvgPicture.asset(
-                                "assets/icons/dislike_.svg",
-                              )
+                                      "assets/icons/dislike_.svg",
+                                    )
                                   : SvgPicture.asset(
-                                "assets/icons/dislike.svg",
-                              ),
-                              SizedBox(
-                                width: 16 * w,
-                              ),
-                              two
+                                      "assets/icons/dislike.svg",
+                                    ),
+                            ),
+                            SizedBox(
+                              width: 16 * w,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  two = !two;
+                                });
+                              },
+                              child: two
                                   ? SvgPicture.asset(
-                                "assets/icons/like_.svg",
-                              )
+                                      "assets/icons/like_.svg",
+                                    )
                                   : SvgPicture.asset(
-                                "assets/icons/like.svg",
-                              ),
-
-                              SizedBox(
-                                width: 16 * w,
-                              ),
-                            ],
-                          ),
+                                      "assets/icons/like.svg",
+                                    ),
+                            ),
+                            SizedBox(
+                              width: 16 * w,
+                            ),
+                          ],
                         ),
                       );
                     },

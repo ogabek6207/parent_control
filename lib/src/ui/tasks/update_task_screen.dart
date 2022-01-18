@@ -14,12 +14,13 @@ class UpdateTasksScreen extends StatefulWidget {
   final int gender;
   final int id;
   final DateTime dateTime;
-   int startHour;
-   int endHour;
-   int defaultColor;
+  int startHour;
+  int endHour;
+  int defaultColor;
 
   String taskName;
-   UpdateTasksScreen({
+
+  UpdateTasksScreen({
     Key? key,
     required this.name,
     required this.image,
@@ -31,8 +32,6 @@ class UpdateTasksScreen extends StatefulWidget {
     required this.defaultColor,
     required this.taskName,
   }) : super(key: key);
-
-
 
   @override
   _UpdateTasksScreenState createState() => _UpdateTasksScreenState();
