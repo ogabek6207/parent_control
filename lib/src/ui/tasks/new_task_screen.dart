@@ -63,7 +63,6 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
   }
 
   @override
-
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -147,292 +146,291 @@ class _NewTasksScreenState extends State<NewTasksScreen> {
               borderRadius: BorderRadius.circular(8 * o),
               color: AppTheme.white,
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 25 * h,
-                ),
-                Text(
-                  Utils.getMonth(widget.dateTime.month) +
-                      " " +
-                      widget.dateTime.day.toString() +
-                      ", " +
-                      widget.dateTime.year.toString(),
-                  style: TextStyle(
-                    fontStyle: FontStyle.normal,
-                    fontSize: 16 * o,
-                    fontWeight: FontWeight.w500,
-                    height: 22 / 16 * h,
-                    color: AppTheme.dark,
+            child:  Column(
+                children: [
+                  SizedBox(
+                    height: 25 * h,
                   ),
-                ),
-                SizedBox(
-                  height: 20 * h,
-                ),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Container(
-
-                        padding: EdgeInsets.only(left: 16 * w, right: 16*w),
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                        decoration: BoxDecoration(
-                          color: AppTheme.milk,
-                          borderRadius: BorderRadius.circular(8 * o),
-                        ),
-                        child: Expanded(
-                          child: TextField(
-                            controller: _controller,
-                            decoration: InputDecoration(
-                              hintText: "Sarlavha nomi",
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                color: AppTheme.black.withOpacity(0.3),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16 * o,
-                                fontStyle: FontStyle.normal,
-                                height: 19 / 16 * h,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16 * h,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          BottomDialog.showDatePicker(
-                            context,
-                            start,
-                            end,
-                            (_start, _end) {
-                              setState(() {
-                                start = _start;
-                                end = _end;
-                              });
-                            },
-                          );
-                        },
-                        child: Container(
-                          height: 56 * h,
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.symmetric(horizontal: 16 * w),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 56,
-                                width: 156 * w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(8 * o),
-                                    bottomLeft: Radius.circular(8 * o),
-                                  ),
-                                  border: Border.all(
-                                    color: AppTheme.greyE4,
-                                    width: 1 * o,
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16 * w,
-                                    ),
-                                    SvgPicture.asset(
-                                      "assets/icons/hour.svg",
-                                    ),
-                                    SizedBox(
-                                      width: 8 * w,
-                                    ),
-                                    Text(
-                                      start.toString() + " pm",
-                                      style: TextStyle(
-                                        color: AppTheme.black,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16 * o,
-                                        height: 19 / 16 * h,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 12 * w,
-                                    ),
-                                    SvgPicture.asset(
-                                      "assets/icons/more.svg",
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                height: 56,
-                                width: 155 * w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(8 * o),
-                                    bottomRight: Radius.circular(8 * o),
-                                  ),
-                                  border: Border.all(
-                                    color: AppTheme.greyE4,
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 16 * w,
-                                    ),
-                                    SvgPicture.asset(
-                                      "assets/icons/hour.svg",
-                                    ),
-                                    SizedBox(
-                                      width: 8 * w,
-                                    ),
-                                    Text(
-                                      end.toString() + " pm",
-                                      style: TextStyle(
-                                        color: AppTheme.black,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 16 * o,
-                                        height: 19 / 16 * h,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 12 * w,
-                                    ),
-                                    SvgPicture.asset(
-                                      "assets/icons/more.svg",
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16 * h,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          BottomDialog.showDefaultColor(
-                            context,
-                            color,
-                            (_id) {
-                              setState(() {
-                                color = _id;
-                              });
-                            },
-                          );
-                        },
-                        child: Container(
-                          height: 56 * h,
-                          padding: EdgeInsets.only(left: 16 * w),
+                  Text(
+                    Utils.getMonth(widget.dateTime.month) +
+                        " " +
+                        widget.dateTime.day.toString() +
+                        ", " +
+                        widget.dateTime.year.toString(),
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16 * o,
+                      fontWeight: FontWeight.w500,
+                      height: 22 / 16 * h,
+                      color: AppTheme.dark,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20 * h,
+                  ),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 16 * w, right: 16 * w),
                           width: MediaQuery.of(context).size.width,
                           margin: EdgeInsets.symmetric(horizontal: 16 * w),
                           decoration: BoxDecoration(
-                            border:
-                                Border.all(color: AppTheme.greyE4, width: 1),
-                            color: AppTheme.white,
+                            color: AppTheme.milk,
                             borderRadius: BorderRadius.circular(8 * o),
                           ),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 24 * o,
-                                width: 24 * o,
-                                decoration: BoxDecoration(
-                                    color: Utils.getColor(color),
-                                    borderRadius: BorderRadius.circular(4),
-                                    border: color == 1
-                                        ? Border.all(
-                                            color: const Color(0xFFECECEC),
-                                          )
-                                        : null),
-                              ),
-                              SizedBox(
-                                width: 16 * w,
-                              ),
-                              Text(
-                                "Standart rang",
-                                style: TextStyle(
-                                  color: AppTheme.black,
+                          child:  TextField(
+                              controller: _controller,
+                              decoration: InputDecoration(
+                                hintText: "Sarlavha nomi",
+                                border: InputBorder.none,
+                                hintStyle: TextStyle(
+                                  color: AppTheme.black.withOpacity(0.3),
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16 * o,
                                   fontStyle: FontStyle.normal,
                                   height: 19 / 16 * h,
                                 ),
                               ),
-                              const Spacer(),
-                              SvgPicture.asset(
-                                "assets/icons/more.svg",
-                              ),
-                              SizedBox(
-                                width: 24 * w,
-                              ),
-                            ],
+                            ),
+                          ),
+
+                        SizedBox(
+                          height: 16 * h,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            BottomDialog.showDatePicker(
+                              context,
+                              start,
+                              end,
+                              (_start, _end) {
+                                setState(() {
+                                  start = _start;
+                                  end = _end;
+                                });
+                              },
+                            );
+                          },
+                          child: Container(
+                            height: 56 * h,
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 56,
+                                  width: 156 * w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(8 * o),
+                                      bottomLeft: Radius.circular(8 * o),
+                                    ),
+                                    border: Border.all(
+                                      color: AppTheme.greyE4,
+                                      width: 1 * o,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 16 * w,
+                                      ),
+                                      SvgPicture.asset(
+                                        "assets/icons/hour.svg",
+                                      ),
+                                      SizedBox(
+                                        width: 8 * w,
+                                      ),
+                                      Text(
+                                        start.toString() + " pm",
+                                        style: TextStyle(
+                                          color: AppTheme.black,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16 * o,
+                                          height: 19 / 16 * h,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 12 * w,
+                                      ),
+                                      SvgPicture.asset(
+                                        "assets/icons/more.svg",
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 56,
+                                  width: 155 * w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(8 * o),
+                                      bottomRight: Radius.circular(8 * o),
+                                    ),
+                                    border: Border.all(
+                                      color: AppTheme.greyE4,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 16 * w,
+                                      ),
+                                      SvgPicture.asset(
+                                        "assets/icons/hour.svg",
+                                      ),
+                                      SizedBox(
+                                        width: 8 * w,
+                                      ),
+                                      Text(
+                                        end.toString() + " pm",
+                                        style: TextStyle(
+                                          color: AppTheme.black,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16 * o,
+                                          height: 19 / 16 * h,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 12 * w,
+                                      ),
+                                      SvgPicture.asset(
+                                        "assets/icons/more.svg",
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16 * h,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            BottomDialog.showDefaultColor(
+                              context,
+                              color,
+                              (_id) {
+                                setState(() {
+                                  color = _id;
+                                });
+                              },
+                            );
+                          },
+                          child: Container(
+                            height: 56 * h,
+                            padding: EdgeInsets.only(left: 16 * w),
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 16 * w),
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: AppTheme.greyE4, width: 1),
+                              color: AppTheme.white,
+                              borderRadius: BorderRadius.circular(8 * o),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 24 * o,
+                                  width: 24 * o,
+                                  decoration: BoxDecoration(
+                                      color: Utils.getColor(color),
+                                      borderRadius: BorderRadius.circular(4),
+                                      border: color == 1
+                                          ? Border.all(
+                                              color: const Color(0xFFECECEC),
+                                            )
+                                          : null),
+                                ),
+                                SizedBox(
+                                  width: 16 * w,
+                                ),
+                                Text(
+                                  "Standart rang",
+                                  style: TextStyle(
+                                    color: AppTheme.black,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16 * o,
+                                    fontStyle: FontStyle.normal,
+                                    height: 19 / 16 * h,
+                                  ),
+                                ),
+                                const Spacer(),
+                                SvgPicture.asset(
+                                  "assets/icons/more.svg",
+                                ),
+                                SizedBox(
+                                  width: 24 * w,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16 * h,
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      if (isNext) {
+                        var id = await _repository.saveNotes(
+                          NotesModel(
+                            id: 0,
+                            color: color,
+                            year: widget.dateTime.year,
+                            month: widget.dateTime.month,
+                            day: widget.dateTime.day,
+                            startHour: start,
+                            endHour: end,
+                            userId: widget.id,
+                            title: _controller.text,
+                          ),
+                        );
+                        if (id >= 0) {
+                          taskBloc.getOneTask(widget.id, widget.dateTime);
+                        }
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: Container(
+                      height: 56,
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 40 * w),
+                      decoration: BoxDecoration(
+                        color: isNext ? AppTheme.blue : AppTheme.milk,
+                        borderRadius: BorderRadius.circular(32 * o),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Saqlash",
+                          style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 18 * o,
+                            fontWeight: FontWeight.w500,
+                            height: 21 / 18 * h,
+                            color: isNext
+                                ? AppTheme.white
+                                : AppTheme.dark.withOpacity(0.3),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 16 * h,
-                      ),
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    if (isNext) {
-                      var id = await _repository.saveNotes(
-                        NotesModel(
-                          id: 0,
-                          color: color,
-                          year: widget.dateTime.year,
-                          month: widget.dateTime.month,
-                          day: widget.dateTime.day,
-                          startHour: start,
-                          endHour: end,
-                          userId: widget.id,
-                          title: _controller.text,
-                        ),
-                      );
-                      if (id >= 0) {
-                        taskBloc.getOneTask(widget.id, widget.dateTime);
-                      }
-                      Navigator.pop(context);
-                    }
-                  },
-                  child: Container(
-                    height: 56,
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 40 * w),
-                    decoration: BoxDecoration(
-                      color: isNext ? AppTheme.blue : AppTheme.milk,
-                      borderRadius: BorderRadius.circular(32 * o),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Saqlash",
-                        style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 18 * o,
-                          fontWeight: FontWeight.w500,
-                          height: 21 / 18 * h,
-                          color: isNext
-                              ? AppTheme.white
-                              : AppTheme.dark.withOpacity(0.3),
-                        ),
-                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 36 * h,
-                ),
-              ],
+                  SizedBox(
+                    height: 36 * h,
+                  ),
+                ],
+              ),
             ),
-          ),
+
         ],
       ),
     );
