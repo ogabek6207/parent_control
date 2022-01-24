@@ -72,8 +72,8 @@ class _AlertScreenState extends State<AlertScreen> {
         actions: [
           Center(
             child: Container(
-              height: 48 * o,
-              width: 48 * o,
+              height: 44 * o,
+              width: 44 * o,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8 * o),
               ),
@@ -106,6 +106,7 @@ class _AlertScreenState extends State<AlertScreen> {
             height: 16 * h,
           ),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 2*w),
             height: 72 * h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12 * o),

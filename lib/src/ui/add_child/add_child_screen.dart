@@ -56,31 +56,28 @@ class _AddChildScreenState extends State<AddChildScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.blue,
-
       body: Column(
         children: [
-
           Container(
-            margin: EdgeInsets.only(top: 48*h),
-            height: 56*h,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.transparent,
-          child: Center(
-            child: Text(
-            "Farzandingiz profilini yarating",
-            style: TextStyle(
-                color: AppTheme.white,
-                fontSize: 22 * o,
-                fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.w500,
-                height: 26 / 22 * h),
+            margin: EdgeInsets.only(top: 48 * h),
+            height: 56 * h,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.transparent,
+            child: Center(
+              child: Text(
+                "Farzandingiz profilini yarating",
+                style: TextStyle(
+                    color: AppTheme.white,
+                    fontSize: 22 * o,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w500,
+                    height: 26 / 22 * h),
+              ),
+            ),
           ),
-          
-          ),),
           Expanded(
             child: ListView(
               children: [
-
                 Container(
                   height: 648 * h,
                   width: MediaQuery.of(context).size.width,
@@ -103,15 +100,15 @@ class _AddChildScreenState extends State<AddChildScreen> {
                                 BottomDialog.showGalleryDialog(
                                   context,
                                   () async {
-                                    final XFile? image = await _picker.pickImage(
-                                        source: ImageSource.gallery);
+                                    final XFile? image = await _picker
+                                        .pickImage(source: ImageSource.gallery);
                                     setState(() {
                                       data = File(image!.path);
                                     });
                                   },
                                   () async {
-                                    final XFile? image = await _picker.pickImage(
-                                        source: ImageSource.camera);
+                                    final XFile? image = await _picker
+                                        .pickImage(source: ImageSource.camera);
                                     setState(() {
                                       data = File(image!.path);
                                     });
