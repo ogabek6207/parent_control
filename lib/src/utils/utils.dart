@@ -20,27 +20,22 @@ class Utils {
       case 2:
         {
           return "assets/images/tiktok.png";
-
         }
       case 3:
         {
           return "assets/images/youtube.png";
-
         }
       case 4:
         {
           return "assets/images/twitter.png";
-
         }
       case 5:
         {
           return "assets/images/steam.png";
-
         }
       case 6:
         {
           return "assets/images/facebook.png";
-
         }
       default:
         {
@@ -58,7 +53,6 @@ class Utils {
       case 2:
         {
           return "Tiktok";
-
         }
       case 3:
         {

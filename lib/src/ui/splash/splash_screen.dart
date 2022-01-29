@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/repository/repository.dart';
 import 'package:parent_control/src/ui/add_child/add_child_screen.dart';
-import 'package:parent_control/src/ui/main_screen.dart';
 import 'package:parent_control/src/ui/onboard/onboard_screen.dart';
+import 'package:parent_control/src/ui/persistent_bar/curved_navigation_bar.dart';
 import 'package:parent_control/src/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
           builder: (context) {
             return !isFirst
                 ? const OnBoardScreen()
-                : (k != 0 ? const MainScreen() : const AddChildScreen());
+                : (k != 0 ? const CurvedNavigationBar1() : const AddChildScreen());
           },
         ),
       );

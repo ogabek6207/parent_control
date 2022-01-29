@@ -19,6 +19,7 @@ dependencies:
   rxdart: ^0.27.3
   numberpicker: ^2.1.1
   intl: ^0.17.0
+  curved_navigation_bar: ^1.0.2
 
 
 dev_dependencies:

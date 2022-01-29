@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parent_control/src/ui/splash/splash_screen.dart';
+import 'package:parent_control/src/ui/persistent_bar/curved_navigation_bar.dart';
+import 'package:parent_control/src/ui/persistent_bar/persistent_bar_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home:   const SplashScreen(),
+      home:  CurvedNavigationBar1(
+
+      ),
     );
   }
 }

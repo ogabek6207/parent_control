@@ -75,6 +75,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
               ),
             ),
           ),
+
           Expanded(
             child: ListView(
               children: [
@@ -221,13 +222,13 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "Bola",
+                                "O'g'il Bola",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 16,
-                                  height: 19 / 16 * h,
+                                  fontSize: 14*o,
+
                                 ),
                               ),
                             ],
@@ -260,13 +261,13 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "Qiz",
+                                "Qiz bola",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 16,
-                                  height: 19 / 16 * h,
+                                  fontSize: 14*o,
+
                                 ),
                               ),
                             ],

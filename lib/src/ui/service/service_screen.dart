@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parent_control/src/app%20theme/app_theme.dart';
 import 'package:parent_control/src/bloc/social_bloc.dart';
 import 'package:parent_control/src/model/social_model.dart';
-import 'package:parent_control/src/ui/main_screen.dart';
+import 'package:parent_control/src/ui/persistent_bar/curved_navigation_bar.dart';
 import 'package:parent_control/src/utils/utils.dart';
 
 class ServiceScreen extends StatefulWidget {
@@ -177,7 +177,7 @@ child: Center(
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return const MainScreen();
+                                  return  const CurvedNavigationBar1();
                                 },
                               ),
                             );

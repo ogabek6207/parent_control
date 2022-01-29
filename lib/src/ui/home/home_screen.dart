@@ -27,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  PageController controller = PageController(viewportFraction: 0.85);
+  PageController controller = PageController(viewportFraction: 0.95);
   bool isFirst = true;
 
   @override
@@ -99,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: 16 * h,
                           left: 16 * w,
                           right: 16 * w,
+
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8 * o),
@@ -509,7 +510,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
-            height: (Platform.isIOS ? 44 : 32) * h,
+            height: (Platform.isIOS ? 52 : 40) * h,
           ),
         ],
       ),
