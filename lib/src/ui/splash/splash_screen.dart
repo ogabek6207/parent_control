@@ -77,7 +77,9 @@ class _SplashScreenState extends State<SplashScreen> {
           builder: (context) {
             return !isFirst
                 ? const OnBoardScreen()
-                : (k != 0 ? const CurvedNavigationBar1() : const AddChildScreen());
+                : (k != 0
+                    ? const CurvedNavigationBar1()
+                    : const AddChildScreen());
           },
         ),
       );

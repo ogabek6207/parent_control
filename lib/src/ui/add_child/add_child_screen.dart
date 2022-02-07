@@ -222,7 +222,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "O'g'il Bola",
+                                "O'g'il",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
@@ -261,7 +261,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "Qiz bola",
+                                "Qiz",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,

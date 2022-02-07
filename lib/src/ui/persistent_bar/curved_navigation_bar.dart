@@ -6,6 +6,7 @@ import 'package:parent_control/src/ui/alert/alert_screen.dart';
 import 'package:parent_control/src/ui/home/home_screen.dart';
 import 'package:parent_control/src/ui/setting/setting_screen.dart';
 import 'package:parent_control/src/ui/tasks/tasks_screen.dart';
+import 'package:parent_control/src/utils/utils.dart';
 
 class CurvedNavigationBar1 extends StatefulWidget {
   const CurvedNavigationBar1({Key? key}) : super(key: key);
@@ -23,6 +24,9 @@ class _CurvedNavigationBar1State extends State<CurvedNavigationBar1> {
 
   @override
   Widget build(BuildContext context) {
+    double h = Utils.windowHeight(context);
+    double w = Utils.windowWidth(context);
+    double o = (h + w) / 2;
     final screens = [
       HomeScreen(
         userChanged: (_id, _userName, _userImage, _userGender) {
@@ -33,11 +37,13 @@ class _CurvedNavigationBar1State extends State<CurvedNavigationBar1> {
         },
       ),
       TasksScreen(
-
         id: userId,
         name: userName,
         image: userImage,
-        gender: userGender, onBack: () {_selectedIndex = 0;  },
+        gender: userGender,
+        onBack: () {
+          _selectedIndex = 0;
+        },
       ),
       AlertScreen(
         onBack: () {
@@ -69,14 +75,19 @@ class _CurvedNavigationBar1State extends State<CurvedNavigationBar1> {
     ];
     return Scaffold(
       extendBody: true,
-      body:screens[index],
+      body: Column(
+        children: [
+          Expanded(child: screens[index]),
+          SizedBox(height: 56*h),
+        ],
+      ),
       backgroundColor: AppTheme.blue,
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: AppTheme.blue,
-        height: 60,
+        height: 60*h,
         items: items,
-index: index,
-        onTap: (index)=> setState(() {
+        index: index,
+        onTap: (index) => setState(() {
           this.index = index;
         }),
       ),
