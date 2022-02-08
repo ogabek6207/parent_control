@@ -188,6 +188,7 @@ class _AlertScreenState extends State<AlertScreen> {
                                 });
                               },
 
+
                               child: result[index].isFav == 1
                                   ? SvgPicture.asset(
                                       "assets/icons/dislike_.svg",
