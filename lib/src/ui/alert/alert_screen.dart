@@ -187,6 +187,7 @@ class _AlertScreenState extends State<AlertScreen> {
                                   result[index].isFav = 1;
                                 });
                               },
+
                               child: result[index].isFav == 1
                                   ? SvgPicture.asset(
                                       "assets/icons/dislike_.svg",
