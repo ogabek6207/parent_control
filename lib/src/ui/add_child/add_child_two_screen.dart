@@ -210,7 +210,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
                         ),
                         SizedBox(height: 8 * h),
                         Text(
-                          "Qiz",
+                          "O'g'il",
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
