@@ -33,9 +33,6 @@ class _AlertScreenState extends State<AlertScreen> {
     super.initState();
   }
 
-  bool one = false;
-  bool two = false;
-
   @override
   Widget build(BuildContext context) {
     double h = Utils.windowHeight(context);
@@ -106,7 +103,7 @@ class _AlertScreenState extends State<AlertScreen> {
             height: 16 * h,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 2*w),
+            padding: EdgeInsets.symmetric(horizontal: 2 * w),
             height: 72 * h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12 * o),
@@ -187,10 +184,10 @@ class _AlertScreenState extends State<AlertScreen> {
                             GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  one = !one;
+                                  result[index].isFav = 1;
                                 });
                               },
-                              child: one
+                              child: result[index].isFav == 1
                                   ? SvgPicture.asset(
                                       "assets/icons/dislike_.svg",
                                     )
@@ -204,10 +201,10 @@ class _AlertScreenState extends State<AlertScreen> {
                             GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  two = !two;
+                                  result[index].isFav = 2;
                                 });
                               },
-                              child: two
+                              child: result[index].isFav == 2
                                   ? SvgPicture.asset(
                                       "assets/icons/like_.svg",
                                     )
