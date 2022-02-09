@@ -183,12 +183,12 @@ class _AlertScreenState extends State<AlertScreen> {
                             const Spacer(),
                             GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  result[index].isFav = 1;
-                                });
+                                setState(
+                                  () {
+                                    result[index].isFav = 1;
+                                  },
+                                );
                               },
-
-
                               child: result[index].isFav == 1
                                   ? SvgPicture.asset(
                                       "assets/icons/dislike_.svg",

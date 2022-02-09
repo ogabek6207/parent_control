@@ -52,20 +52,20 @@ class _TasksScreenState extends State<TasksScreen> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: AppTheme.blue,
-        leading: GestureDetector(
-          onTap: () {
-            widget.onBack();
-          },
-          child: SizedBox(
-            height: 24,
-            width: 24,
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: 24,
-              color: AppTheme.white,
-            ),
-          ),
-        ),
+        // leading: GestureDetector(
+        //   onTap: () {
+        //     widget.onBack();
+        //   },
+        //   child: SizedBox(
+        //     height: 24,
+        //     width: 24,
+        //     child: Icon(
+        //       Icons.arrow_back_ios,
+        //       size: 24,
+        //       color: AppTheme.white,
+        //     ),
+        //   ),
+        // ),
         title: Text(
           "Vazifalar " + widget.name,
           style: TextStyle(
@@ -440,7 +440,8 @@ class _TasksScreenState extends State<TasksScreen> {
                                       taskName: snapshot.data![index].title,
                                       startHour:
                                           snapshot.data![index].startHour,
-                                      endHour: snapshot.data![index].endHour, defaultColor: snapshot.data![index].color,
+                                      endHour: snapshot.data![index].endHour,
+                                      defaultColor: snapshot.data![index].color,
                                     );
                                   }),
                                 );

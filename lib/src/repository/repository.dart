@@ -7,7 +7,7 @@ class Repository {
   DatabaseHelper databaseHelper = DatabaseHelper();
 
   //user
-  Future<int> saveProducts(UserModel item) => databaseHelper.saveProducts(item);
+  Future<int> saveProducts(UserModel item) => databaseHelper.saveUser(item);
 
   //social
   Future<int> saveSocial(SocialModel item) => databaseHelper.saveSocial(item);

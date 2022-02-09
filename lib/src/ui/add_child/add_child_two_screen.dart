@@ -36,7 +36,7 @@ class _AddChildScreenTwoState extends State<AddChildTwoScreen> {
       body: ListView(
         children: [
           SizedBox(
-            height: 60 * h,
+            height: 16 * h,
           ),
           Row(
             children: [

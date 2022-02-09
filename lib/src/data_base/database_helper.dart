@@ -21,6 +21,7 @@ class DatabaseHelper {
   //social
   final String tableSocial = 'socialTable';
   final String columnSocialId = 'id';
+  final String columnSocialIsFav = 'isFav';
   final String columnSocialTypeId = 'type_id';
   final String columnSocialUserId = 'user_id';
 
@@ -35,6 +36,13 @@ class DatabaseHelper {
   final String columnNotesColor = 'color';
   final String columnNotesUserId = 'user_id';
   final String columnNotesTitle = 'title';
+
+
+
+
+  // isFav
+  // final String tableIsFAv = 'notesIsFav';
+  // final String colIsFAv = 'notesIsFav';
 
   static Database? _db;
 
@@ -68,6 +76,7 @@ class DatabaseHelper {
     await db.execute('CREATE TABLE $tableSocial('
         '$columnSocialId INTEGER PRIMARY KEY AUTOINCREMENT, '
         '$columnSocialTypeId INTEGER, '
+        '$columnSocialIsFav INTEGER, '
         '$columnSocialUserId INTEGER)');
 
     //notes
@@ -83,8 +92,30 @@ class DatabaseHelper {
         '$columnNotesYear INTEGER)');
   }
 
+
+  //isFav
+  Future<int> saveIsFav(SocialModel isFav) async {
+    var dbClient = await db;
+    var result = await dbClient.insert(
+      tableSocial,
+      isFav.toJson(),
+    );
+    return result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   //user save
-  Future<int> saveProducts(UserModel item) async {
+  Future<int> saveUser(UserModel item) async {
     var dbClient = await db;
     var result = await dbClient.insert(
       tableUser,

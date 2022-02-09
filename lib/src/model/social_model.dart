@@ -16,5 +16,6 @@ class SocialModel {
   Map<String, dynamic> toJson() => {
         "type_id": typeId,
         "user_id": userId,
+        "isFav": userId,
       };
 }
