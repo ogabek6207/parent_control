@@ -80,8 +80,8 @@ class _AddChildScreenState extends State<AddChildScreen> {
           Expanded(
             child: ListView(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(top: 16*h),
               children: [
                 Container(
                   height: 648 * h,
