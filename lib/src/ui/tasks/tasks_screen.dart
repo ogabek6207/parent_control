@@ -115,7 +115,7 @@ class _TasksScreenState extends State<TasksScreen> {
             height: 600 * h,
             width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.only(
-              top: 16 * h,
+              top: 14 * h,
               left: 16 * w,
               right: 16 * w,
               bottom: 18 * h,
