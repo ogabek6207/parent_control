@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -78,6 +79,9 @@ class _AddChildScreenState extends State<AddChildScreen> {
 
           Expanded(
             child: ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
               children: [
                 Container(
                   height: 648 * h,
@@ -222,7 +226,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "O'g'il",
+                                "O'g'il bola",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
@@ -261,7 +265,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                               ),
                               SizedBox(height: 8 * h),
                               Text(
-                                "Qiz",
+                                "Qiz bola",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w400,
